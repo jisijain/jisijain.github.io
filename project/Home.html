@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mahima Jain, UI/UX Designer</title>
+<meta name="description" content="Mahima Jain, UI/UX Designer based in Noida, India. 4+ years crafting user-centered enterprise and consumer products." />
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="assets/image-slot.js"></script>
+</head>
+<body>
+
+<!-- ===== Loader ===== -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__name">MAHIMA</div>
+    <div class="loader__bar"><i></i></div>
+  </div>
+</div>
+
+<!-- ===== Nav ===== -->
+<header class="nav">
+  <a class="nav__logo" href="Home.html">Mahima<span class="dot"></span></a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="Home.html" class="active">Home</a>
+    <a href="Work.html">Work</a>
+    <a href="Services.html">Services</a>
+    <a href="About.html">About</a>
+  </nav>
+  <div class="nav__cta">
+    <a class="btn btn--light magnetic" data-mag="0.3" href="Contact.html">Contact me <span class="arrow">↗</span></a>
+    <button class="nav__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== Mobile menu ===== -->
+<div class="mobile-menu" aria-hidden="true">
+  <a href="Home.html"><span class="idx">01</span> Home</a>
+  <a href="Work.html"><span class="idx">02</span> Work</a>
+  <a href="Services.html"><span class="idx">03</span> Services</a>
+  <a href="About.html"><span class="idx">04</span> About</a>
+  <a class="btn btn--light mobile-menu__btn magnetic" data-mag="0.2" href="Contact.html">Contact me <span class="arrow">↗</span></a>
+</div>
+
+<main class="page">
+
+<!-- ===== HERO ===== -->
+<section class="section section--red framed hero" data-screen-label="Home / Hero" style="padding-block:clamp(120px,16vw,180px) clamp(60px,8vw,90px);">
+  <!-- floating decor -->
+  <svg class="float bob" style="--rot:-8deg; top:16%; left:6%; width:46px; color:var(--red-bright);" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C55 35 65 45 100 50C65 55 55 65 50 100C45 65 35 55 0 50C35 45 45 35 50 0Z"/></svg>
+  <svg class="float bob" style="--rot:12deg; bottom:18%; left:42%; width:30px; color:var(--cream); animation-delay:1.5s;" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C55 35 65 45 100 50C65 55 55 65 50 100C45 65 35 55 0 50C35 45 45 35 50 0Z"/></svg>
+
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">Welcome to my portfolio</p>
+      <h1 class="display h-mega hero__title" data-drift="-14" style="margin-top:.12em;">
+        <span class="line-mask"><span>Mahima</span></span>
+        <span class="line-mask"><span style="color:transparent;-webkit-text-stroke:2px var(--cream);">Jain</span></span>
+      </h1>
+      <div class="hero__meta reveal" data-d="2">
+        <span class="chip">UI / UX Designer</span>
+        <span class="hero__loc"><span class="pin"></span> Noida, India</span>
+      </div>
+      <p class="lead reveal muted" data-d="3" style="margin:1.4em 0 0;">
+        I craft user-centered experiences for enterprise platforms and consumer products,
+        from research and IA to interaction design, systems, and developer handoff.
+      </p>
+      <div class="hero__cta reveal" data-d="4">
+        <a class="btn btn--lg magnetic" data-mag="0.4" href="Work.html">View my work <span class="arrow">↗</span></a>
+        <a class="btn btn--ghost btn--lg magnetic" data-mag="0.4" href="Contact.html">Contact me</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" data-drift="22">
+      <div class="bubble hero__bubble bob" style="--rot:0deg;">Want to know<br/>about me? <span style="color:var(--red-bright)">→</span></div>
+      <image-slot id="hero-char" class="char-slot" shape="rounded" radius="28"
+        placeholder="Drop your 3D character render"
+        style="width:100%; height:100%;" data-comment-anchor="f95c121cb0-image-slot"></image-slot>
+    </div>
+  </div>
+
+  <!-- scroll hint + socials -->
+  <div class="wrap hero__foot">
+    <a class="scroll-hint" href="#about-teaser">
+      <span class="scroll-hint__dot"></span> scroll down
+    </a>
+    <div class="hero__socials">
+      <span class="eyebrow" style="opacity:.7">Follow me</span>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/mahimahere" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.2V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
+        <a href="mailto:jisi.mahima@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <a href="tel:9319106858" aria-label="Phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Marquee ===== -->
+<div class="marquee section--ink" style="padding-block:24px;">
+  <div class="marquee__track" aria-hidden="true">
+    <span>UX Strategy <b class="star">✳</b> User Research <b class="star">✳</b> Design Systems <b class="star">✳</b> Prototyping <b class="star">✳</b> Accessibility <b class="star">✳</b> Interaction Design <b class="star">✳</b></span>
+    <span>UX Strategy <b class="star">✳</b> User Research <b class="star">✳</b> Design Systems <b class="star">✳</b> Prototyping <b class="star">✳</b> Accessibility <b class="star">✳</b> Interaction Design <b class="star">✳</b></span>
+  </div>
+</div>
+
+<!-- ===== ABOUT TEASER ===== -->
+<section id="about-teaser" class="section section--cream" data-screen-label="Home / About teaser">
+  <div class="wrap about-teaser">
+    <div class="about-teaser__head">
+      <p class="eyebrow reveal">About me</p>
+      <h2 class="display h-sec reveal" data-d="1" style="margin-top:.2em;">Design that<br/>does the <span style="color:var(--red-bright)">work.</span></h2>
+    </div>
+    <div class="about-teaser__body">
+      <p class="lead reveal" data-d="2">
+        UI/UX Designer with <strong>4 years</strong> delivering user-centered solutions across enterprise B2B
+        platforms and consumer apps. I lead end-to-end processes across research, IA, interaction design, and systems,
+        and collaborate closely with engineering to ship scalable, accessible products.
+      </p>
+      <div class="stats reveal" data-d="3">
+        <div class="stat"><span class="stat__num"><i data-count="4" data-suffix="+">0</i></span><span class="stat__label">Years of<br/>experience</span></div>
+        <div class="stat"><span class="stat__num"><i data-count="70" data-suffix="%">0</i></span><span class="stat__label">Faster task<br/>completion</span></div>
+        <div class="stat"><span class="stat__num"><i data-count="20" data-suffix="+">0</i></span><span class="stat__label">Modules &<br/>screens shipped</span></div>
+      </div>
+      <a class="btn btn--ink magnetic" data-mag="0.3" href="About.html" style="margin-top:8px;">More about me <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS TEASER ===== -->
+<section class="section section--ink" data-screen-label="Home / Projects teaser">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow reveal">Selected work</p>
+        <h2 class="display h-sec reveal" data-d="1">Projects</h2>
+      </div>
+      <a class="btn btn--light magnetic" data-mag="0.3" href="Work.html">See all work <span class="arrow">↗</span></a>
+    </div>
+    <div class="proj-grid">
+      <article class="proj reveal" data-tilt="5">
+        <div class="proj__media"><image-slot id="home-proj-1" placeholder="GranGram app screens" shape="rounded" radius="16" style="width:100%;height:100%;"></image-slot><span class="proj__go">↗</span></div>
+        <div class="proj__meta"><span class="proj__tag">Mobile · EdTech</span><h3>GranGram</h3><p>UPSC learning platform with assessment-integrated, continuous-scroll UX designed in a 4-week sprint.</p></div>
+      </article>
+      <article class="proj reveal" data-d="1" data-tilt="5">
+        <div class="proj__media"><image-slot id="home-proj-flexispace" placeholder="FlexiSpace booking app screens" shape="rounded" radius="16" style="width:100%;height:100%;"></image-slot><span class="proj__go">↗</span></div>
+        <div class="proj__meta"><span class="proj__tag">Mobile · Productivity</span><h3>FlexiSpace</h3><p>End-to-end workspace booking experience, research to high-fidelity prototype, optimised for hybrid work.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES TEASER ===== -->
+<section class="section section--stone" data-screen-label="Home / Services teaser">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow reveal">What I do</p>
+        <h2 class="display h-sec reveal" data-d="1">Services</h2>
+      </div>
+      <p class="lead reveal muted" data-d="2" style="max-width:42ch;">From wireframes to interactive prototypes, every element is designed to enhance usability and leave a lasting impression.</p>
+    </div>
+    <ul class="svc-list">
+      <li class="svc reveal"><span class="svc__num">01</span><span class="svc__name">UX Strategy</span><span class="svc__arr">↗</span></li>
+      <li class="svc reveal" data-d="1"><span class="svc__num">02</span><span class="svc__name">User Research</span><span class="svc__arr">↗</span></li>
+      <li class="svc reveal" data-d="2"><span class="svc__num">03</span><span class="svc__name">Wireframing</span><span class="svc__arr">↗</span></li>
+      <li class="svc reveal" data-d="3"><span class="svc__num">04</span><span class="svc__name">UI Design</span><span class="svc__arr">↗</span></li>
+    </ul>
+    <a class="btn magnetic" data-mag="0.3" href="Services.html" style="margin-top:36px;">All 8 services <span class="arrow">↗</span></a>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="section section--ink" data-screen-label="Home / Process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow reveal">How I work</p>
+        <h2 class="display h-sec reveal" data-d="1">Work process</h2>
+        <p class="lead muted reveal" data-d="2" style="margin-top:1.1em;">Structured yet flexible: strategy, collaboration and attention to detail from start to finish.</p>
+      </div>
+      <div class="bubble bubble--red bob reveal" data-d="2" style="--rot:0deg; align-self:start;">Relaxed, but<br/>seriously strategic.</div>
+    </div>
+    <ol class="process">
+      <li class="proc reveal"><span class="proc__i">01</span><h3>Discovery</h3><p>Understand goals, users and constraints before a pixel moves.</p></li>
+      <li class="proc reveal" data-d="1"><span class="proc__i">02</span><h3>Research</h3><p>Interviews, competitive analysis, journey mapping, personas.</p></li>
+      <li class="proc reveal" data-d="2"><span class="proc__i">03</span><h3>Wireframing</h3><p>Information architecture and low-fi flows to test direction fast.</p></li>
+      <li class="proc reveal" data-d="3"><span class="proc__i">04</span><h3>UI Design</h3><p>High-fidelity, accessible interfaces built on a real system.</p></li>
+      <li class="proc reveal" data-d="4"><span class="proc__i">05</span><h3>Prototyping</h3><p>Interactive Figma prototypes for usability testing.</p></li>
+      <li class="proc reveal" data-d="5"><span class="proc__i">06</span><h3>Handoff</h3><p>Specs, tokens and API contracts for rework-free builds.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="section section--red cta-band" data-screen-label="Home / CTA">
+  <div class="wrap center">
+    <p class="eyebrow reveal" style="justify-content:center;">Let's collaborate</p>
+    <h2 class="display reveal" data-d="1" style="font-size:clamp(2.4rem,8vw,7rem); margin:.2em 0 .5em; text-wrap:balance;">Let's build meaningful digital experiences together.</h2>
+    <a class="btn btn--light btn--lg magnetic" data-mag="0.45" href="Contact.html">Start a project <span class="arrow">↗</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h3>Mahima<br/>Jain</h3>
+        <p class="muted" style="max-width:34ch; margin:.4em 0 1.4em;">UI/UX Designer crafting user-centered, accessible products across enterprise and consumer platforms.</p>
+        <div class="socials" style="color:var(--ink)">
+          <a href="https://www.linkedin.com/in/mahimahere" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.2V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
+          <a href="mailto:jisi.mahima@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a href="tel:9319106858" aria-label="Phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h5>Sitemap</h5>
+        <a href="Home.html">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="Work.html">Work</a>
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h5>Get in touch</h5>
+        <a href="mailto:jisi.mahima@gmail.com">jisi.mahima@gmail.com</a>
+        <a href="tel:9319106858">+91 93191 06858</a>
+        <a href="https://www.linkedin.com/in/mahimahere" target="_blank" rel="noopener">linkedin.com/in/mahimahere</a>
+        <a href="Responsive Showcase.html">Responsive showcase ↗</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Mahima Jain · Noida, India</span>
+      <span>Designed &amp; built with care.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/animations.js"></script>
+<script src="assets/tweaks.js"></script>
+<script>
+(function(){
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "heroImageHeight": 760,
+    "heroImageWidth": 42,
+    "heroStyle": "cutout",
+    "aboutImageHeight": 600
+  }/*EDITMODE-END*/;
+  function applyHomeTweaks(t){
+    const grid = document.querySelector('.hero__grid');
+    if(grid) grid.style.setProperty('--hero-cols', (100 - t.heroImageWidth) + 'fr ' + t.heroImageWidth + 'fr');
+    const vis = document.querySelector('.hero__visual');
+    if(vis) vis.style.setProperty('--hero-img-h', t.heroImageHeight + 'px');
+    const slot = document.getElementById('hero-char');
+    if(slot){
+      const cutout = t.heroStyle === 'cutout';
+      slot.classList.toggle('is-cutout', cutout);
+      slot.setAttribute('fit', cutout ? 'contain' : 'cover');
+    }
+  }
+  mountTweaks({
+    defaults: TWEAKS,
+    apply: applyHomeTweaks,
+    schema: [
+      { key:'heroImageHeight', type:'slider', label:'Character height', min:220, max:820, step:10, unit:'px' },
+      { key:'heroImageWidth', type:'slider', label:'Character width', min:32, max:58, step:1, unit:'%' },
+      { key:'heroStyle', type:'segment', label:'Background', options:[{label:'Framed',value:'framed'},{label:'Cutout',value:'cutout'}] }
+    ]
+  });
+})();
+</script>
+<style id="__om-edit-overrides"></style>
+</body>
+</html>
