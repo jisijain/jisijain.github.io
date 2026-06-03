@@ -549,6 +549,7 @@ a.contact-row:hover .contact-row__a{ transform:translate(4px,-4px); opacity:1; }
   .hero__visual{ height:220px !important; max-width:200px; }
   .section.hero{ padding-block-start:clamp(60px,10vw,100px) !important; padding-block-end:clamp(30px,5vw,50px) !important; }
   .hero__grid{ gap:16px; }
+  .hero__bubble{ font-size:.62rem !important; padding:.45em .7em !important; border-radius:10px 10px 10px 3px !important; position:relative !important; top:auto !important; left:auto !important; right:auto !important; transform:none !important; display:block !important; width:fit-content !important; margin:0 0 -12px auto !important; }
 }
 
 /* =========================================================================
