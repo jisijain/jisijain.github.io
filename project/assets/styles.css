@@ -533,8 +533,11 @@ a.contact-row:hover .contact-row__a{ transform:translate(4px,-4px); opacity:1; }
 /* responsive tweaks for these components */
 @media (max-width: 900px){
   .hero__grid{ grid-template-columns:1fr; }
-  .hero__visual{ max-width:440px; margin-inline:auto; order:-1; }
-  .hero__bubble{ right:0; }
+  .hero__copy{ order:1; text-align:center; }
+  .hero__meta{ justify-content:center; }
+  .hero__cta{ justify-content:center; }
+  .hero__visual{ max-width:260px; margin-inline:auto; order:2; height:300px !important; }
+  .hero__bubble{ right:0; top:-14px; }
   .about-teaser{ grid-template-columns:1fr; }
   .about-teaser__head .h-sec{ position:static; }
   .process{ grid-template-columns:repeat(2,1fr); }
@@ -543,6 +546,9 @@ a.contact-row:hover .contact-row__a{ transform:translate(4px,-4px); opacity:1; }
 @media (max-width: 560px){
   .process{ grid-template-columns:1fr; }
   .hero__foot{ flex-direction:column; align-items:flex-start; }
+  .hero__visual{ height:220px !important; max-width:200px; }
+  .section.hero{ padding-block-start:clamp(60px,10vw,100px) !important; padding-block-end:clamp(30px,5vw,50px) !important; }
+  .hero__grid{ gap:16px; }
 }
 
 /* =========================================================================
