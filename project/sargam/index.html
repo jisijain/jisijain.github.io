@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sargam · Case Study — Mahima Jain</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#0c0e14;
+  --ink-2:#101320;
+  --panel:#191d2c;
+  --panel-2:#212636;
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.16);
+  --blue:#1A27BB;
+  --blue-lit:#3347ff;
+  --magenta:#6D166A;
+  --pink:#FF4D6D;
+  --slate:#232B39;
+  --white:#ffffff;
+  --text:#e7e9f2;
+  --muted:#9aa0bb;
+  --muted-2:#666c88;
+  --grad:linear-gradient(100deg,#2a3bff 0%,#7b2fb0 48%,#ff4d6d 100%);
+  --grad-soft:linear-gradient(100deg,#1A27BB,#6D166A 55%,#FF4D6D);
+  --maxw:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:"Montserrat",system-ui,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:rgba(255,77,109,.32);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;background:var(--grad);box-shadow:0 0 16px rgba(123,47,176,.7)}
+
+/* page backdrop washes */
+.bgwash{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+   radial-gradient(1100px 700px at 78% 4%,rgba(109,22,106,.30),transparent 60%),
+   radial-gradient(1000px 800px at 8% 38%,rgba(26,39,187,.26),transparent 58%),
+   radial-gradient(1100px 700px at 92% 72%,rgba(255,77,109,.14),transparent 55%),
+   radial-gradient(900px 900px at 20% 96%,rgba(123,47,176,.22),transparent 60%);
+}
+
+/* board column */
+.board{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+section{position:relative}
+.sec{padding:clamp(72px,9vw,120px) 0;border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:none}
+
+/* section header strip */
+.shead{display:flex;align-items:center;justify-content:space-between;
+  font-weight:600;font-size:13.5px;letter-spacing:.06em;color:var(--muted);margin-bottom:46px}
+.shead .lab{color:#c7ccde}
+.shead .lab b{color:var(--pink);font-weight:700;margin-right:4px}
+.shead .pg{font-weight:500;color:var(--muted-2);letter-spacing:.04em}
+
+/* giant gradient titles */
+.giant{font-weight:800;line-height:.92;letter-spacing:-.02em;
+  font-size:clamp(58px,13vw,184px);
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 14px 60px rgba(123,47,176,.45));position:relative;width:max-content;max-width:100%}
+.giant.center{margin:0 auto;text-align:center}
+.giant.spaced{letter-spacing:clamp(.06em,2vw,.22em);font-weight:700}
+
+h2.head{font-weight:800;font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-.02em;color:#fff}
+.lead{font-size:clamp(15px,1.5vw,18px);color:var(--muted);max-width:60ch;line-height:1.75}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ========= HERO ========= */
+.hero{padding-top:clamp(70px,9vw,120px)}
+.hero .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.chip{font-weight:600;font-size:12.5px;letter-spacing:.02em;color:#dfe3f1;
+  padding:8px 15px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.04)}
+.chip b{color:var(--pink);font-weight:700}
+.hero h1{font-weight:800;font-size:clamp(34px,5.2vw,68px);line-height:1.04;letter-spacing:-.025em;color:#fff;max-width:17ch}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{margin-top:24px;max-width:58ch}
+.cover{margin-top:clamp(40px,5vw,64px);border-radius:24px;overflow:hidden;border:1px solid var(--line-2);
+  box-shadow:0 50px 120px rgba(0,0,0,.6);position:relative}
+.cover img{width:100%;display:block}
+.moodband{margin-top:clamp(40px,5vw,60px);display:flex;align-items:center;gap:30px}
+.moodband .rule{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line-2))}
+
+/* ========= WORKFLOW ========= */
+.wf-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,6vw,90px);align-items:start}
+@media(max-width:840px){.wf-grid{grid-template-columns:1fr}}
+.wf-left h2{margin-bottom:18px}
+.wf-list{display:flex;flex-direction:column}
+.wstep{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;
+  padding:26px 0;border-bottom:1px solid var(--line)}
+.wstep:last-child{border-bottom:none}
+.wstep .no{font-weight:800;font-size:clamp(30px,3vw,40px);line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;min-width:54px}
+.wstep h4{font-weight:700;font-size:clamp(18px,1.7vw,21px);color:#fff;margin-bottom:6px}
+.wstep p{color:var(--muted);font-size:14.5px;max-width:52ch}
+.wordmark-foot{margin-top:54px;opacity:.7}
+.wordmark-foot img{height:30px;width:auto}
+
+/* ========= PERSONA ========= */
+.persona-card{margin-top:clamp(30px,4vw,44px);display:grid;grid-template-columns:.74fr 1.26fr;gap:0;
+  border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--ink-2)}
+@media(max-width:820px){.persona-card{grid-template-columns:1fr}}
+.persona-photo{position:relative;min-height:440px;background:#0e0f17;overflow:hidden}
+.persona-photo .ph{position:absolute;inset:0;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 12px,transparent 12px 24px);
+  display:grid;place-items:center}
+.persona-photo .ph span{font-family:"Caveat";font-size:22px;color:var(--muted)}
+.persona-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.persona-photo .ptag{position:absolute;left:22px;bottom:22px;z-index:3}
+.persona-photo .ptag h3{font-weight:800;font-size:26px;color:#fff;letter-spacing:.01em}
+.persona-photo .ptag small{display:block;font-weight:600;font-size:13px;color:var(--pink);letter-spacing:.04em;margin-top:2px}
+.persona-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,9,14,.85),transparent 50%)}
+.persona-body{padding:clamp(26px,3vw,38px)}
+.pb-head{font-weight:800;font-size:20px;color:#fff;margin-bottom:18px}
+.info-row{display:flex;flex-wrap:wrap;gap:26px 44px;padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.info-row .it small{display:block;font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+.info-row .it b{font-weight:600;font-size:15px;color:#eef0f8}
+.pb-sub{font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.pb-text{color:var(--muted);font-size:14.5px;margin-bottom:26px;max-width:64ch}
+.gf{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-bottom:28px}
+@media(max-width:560px){.gf{grid-template-columns:1fr}}
+.gf ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.gf li{position:relative;padding-left:20px;font-size:14px;color:#d4d8e6}
+.gf li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:2px;background:var(--grad)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:560px){.skills{grid-template-columns:1fr 1fr}}
+.skill{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.ring{position:relative;width:84px;height:84px}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:16px;color:#fff}
+.skill .nm{font-size:12px;color:var(--muted);max-width:12ch;line-height:1.3}
+
+/* ========= TYPE & COLOR ========= */
+.alpha{text-align:center;color:#cfd3e3;font-weight:500;margin-bottom:8px}
+.alpha .up{font-size:clamp(15px,2.4vw,30px);letter-spacing:.1em}
+.alpha .low{font-size:clamp(15px,2.4vw,30px);letter-spacing:.1em;color:var(--muted)}
+.swatches{margin-top:clamp(34px,4vw,52px);display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.sw{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:14px;
+  border:1px solid var(--line);background:rgba(255,255,255,.025);font-weight:600;font-size:14px;letter-spacing:.04em}
+.sw i{width:30px;height:30px;border-radius:8px;border:1px solid var(--line-2);display:block}
+
+/* ========= VISUALS ========= */
+/* bare full-bleed screen PNGs presented inside real device frames with a notch */
+.visuals-stage{margin-top:clamp(40px,6vw,72px);display:flex;justify-content:center;align-items:flex-end;
+  gap:clamp(16px,2.4vw,30px);flex-wrap:wrap}
+.vmock{display:flex;flex-direction:column;align-items:center;gap:18px;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+/* device frame */
+.vmock .ph{position:relative;width:clamp(154px,15.8vw,222px);
+  background:linear-gradient(160deg,#1b1d28,#0a0b10);
+  border-radius:38px;padding:7px;
+  box-shadow:0 30px 54px rgba(0,0,0,.55),
+             inset 0 0 0 1.5px rgba(255,255,255,.10),
+             inset 0 0 0 4px #05060a;
+  transition:box-shadow .45s,transform .45s}
+.vmock .ph .screen{position:relative;border-radius:31px;overflow:hidden;
+  background:#05060a;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.vmock .ph .screen img{width:100%;display:block}
+/* notch pill */
+.vmock .ph .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:42%;height:5.2%;min-height:18px;background:#05060a;
+  border-radius:0 0 13px 13px;z-index:4}
+.vmock.raise{transform:translateY(-30px)}
+.vmock:hover{transform:translateY(-12px)}
+.vmock.raise:hover{transform:translateY(-42px)}
+.vmock:hover .ph{box-shadow:0 40px 80px rgba(123,47,176,.42),
+             inset 0 0 0 1.5px rgba(255,255,255,.14),
+             inset 0 0 0 4px #05060a}
+.vmock .cap{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.vmock .cap b{font-weight:700;font-size:15px;color:#eef0f8;letter-spacing:.01em}
+.vmock .cap span{font-weight:500;font-size:12.5px;color:var(--muted)}
+@media(max-width:680px){.vmock.raise{transform:none}.vmock.raise:hover{transform:translateY(-12px)}}
+
+/* ========= LIVE UI (auto-scrolling screens) ========= */
+.live-stage{margin-top:clamp(36px,5vw,64px);display:flex;gap:clamp(22px,4vw,52px);
+  justify-content:center;flex-wrap:wrap}
+.pwin{width:264px;height:560px;border-radius:38px;overflow:hidden;position:relative;
+  background:#0a0b10;box-shadow:0 36px 80px rgba(0,0,0,.6),0 0 0 7px #14161f,0 0 0 8.5px rgba(255,255,255,.08);
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.pwin:hover{transform:translateY(-12px);box-shadow:0 44px 96px rgba(123,47,176,.4),0 0 0 7px #14161f,0 0 0 8.5px rgba(255,255,255,.1)}
+.pwin .strip{width:264px;display:block;animation:scrollScreen linear infinite}
+.pwin:hover .strip{animation-play-state:paused}
+.pwin .island{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:84px;height:24px;
+  background:#000;border-radius:60px;z-index:4}
+.pwin .pcap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:46px 16px 16px;
+  font-weight:600;font-size:13px;letter-spacing:.02em;color:#eef0f8;text-align:center;
+  background:linear-gradient(0deg,rgba(8,9,14,.94),rgba(8,9,14,.5) 60%,transparent);pointer-events:none}
+.pwin .pcap b{display:inline-flex;align-items:center;gap:7px}
+.pwin .pcap b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad);
+  box-shadow:0 0 10px rgba(255,77,109,.8)}
+@keyframes scrollScreen{
+  0%,7%{transform:translateY(0)}
+  50%{transform:translateY(calc(-100% + 560px))}
+  93%,100%{transform:translateY(0)}
+}
+.live-hint{margin-top:26px;text-align:center;font-weight:500;font-size:13px;color:var(--muted-2);letter-spacing:.02em}
+@media(prefers-reduced-motion:reduce){.pwin .strip{animation:none}}
+
+/* ========= ANNOTATED WALKTHROUGH (THE MUST) ========= */
+.walk{padding-top:clamp(56px,7vw,100px)}
+/* two pre-composited boards sit side by side; equal 8249px source height
+   means proportional widths auto-match their rendered heights */
+.walk-board{margin-top:clamp(34px,4vw,60px);display:flex;align-items:flex-start;justify-content:center;
+  gap:clamp(8px,1.4vw,22px)}
+.walk-board img{display:block;height:auto}
+.wb-home{width:47.7%}
+.wb-prem{width:52.3%}
+/* stack vertically on narrow screens, each centered */
+@media(max-width:820px){
+  .walk-board{flex-direction:column;align-items:center;gap:clamp(28px,6vw,52px)}
+  .wb-home,.wb-prem{width:min(92%,420px)}
+}
+
+/* ========= THANKS ========= */
+.thanks{position:relative;overflow:hidden;min-height:84vh;display:grid;place-items:center;text-align:center;border-top:1px solid var(--line)}
+.blob{position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#7db4ff,#3a6dff 55%,#1f4fd6);
+  box-shadow:inset 0 -12px 36px rgba(0,0,40,.45),0 24px 70px rgba(58,109,255,.32);opacity:.9}
+.blob.b1{width:120px;height:120px;top:12%;left:7%;animation:flo 9s ease-in-out infinite}
+.blob.b2{width:210px;height:210px;top:16%;right:-56px;opacity:.5;filter:blur(5px);animation:flo 12s ease-in-out infinite reverse}
+.blob.b3{width:150px;height:150px;bottom:9%;left:-30px;opacity:.6;filter:blur(3px);animation:flo 11s ease-in-out infinite}
+.blob.b4{width:96px;height:96px;bottom:20%;right:13%;border-radius:24px;animation:floR 10s ease-in-out infinite}
+.blob.b5{width:66px;height:66px;top:46%;left:13%;border-radius:18px;opacity:.85;animation:floR 8s ease-in-out infinite reverse}
+@keyframes flo{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-26px) translateX(12px)}}
+@keyframes floR{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(16deg)}}
+.thanks-in{position:relative;z-index:3;padding:40px 20px}
+.thanks h2{font-weight:600;font-size:clamp(54px,11vw,140px);line-height:.95;color:#ece6d8;letter-spacing:-.02em}
+.thanks .mail{position:absolute;top:30px;right:34px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;color:#dfe3f1;z-index:4}
+.thanks .mail img{height:22px;width:auto}
+.thanks .press{margin-top:34px;font-weight:700;font-size:clamp(18px,2.4vw,26px);color:#ece6d8;display:inline-flex;align-items:center;gap:12px}
+.thanks .press svg{width:30px;height:30px;fill:#5b8def}
+.thanks .credit{margin-top:30px;display:inline-flex;align-items:center;gap:13px;padding:11px 20px;border-radius:999px;border:1px solid var(--line-2);background:rgba(10,12,22,.4)}
+.thanks .credit .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#0c0e14;font-size:14px;background:var(--grad)}
+.thanks .credit b{font-weight:700;font-size:14px;color:#fff}
+.thanks .credit small{color:var(--muted);font-size:12px}
+.totop{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-weight:500;font-size:12px;letter-spacing:.05em;color:var(--muted-2);z-index:4;cursor:pointer}
+.totop:hover{color:var(--pink)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<a href="../Work.html" style="position:fixed;top:20px;left:24px;z-index:300;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);color:#e7e9f2;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.16)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">← Back to Work</a>
+<div class="bgwash"></div>
+
+<!-- ===== HERO / INTRO ===== -->
+<section class="sec hero" data-screen-label="Intro">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> INTRODUCING SARGAM</span><span class="pg">01</span></div>
+    <div class="chips reveal d1">
+      <span class="chip"><b>Role</b>&nbsp; UX / UI Designer</span>
+      <span class="chip"><b>Platform</b>&nbsp; iOS · Music App</span>
+      <span class="chip"><b>Type</b>&nbsp; AI-Powered Concept</span>
+    </div>
+    <h1 class="reveal d1">Sargam — where music meets <span>mood, culture, and creativity.</span></h1>
+    <p class="lead sub reveal d2">An AI-powered streaming concept built around the way Indian listeners actually discover music — by mood, movie, language and moment. A vibrant, expressive interface filled with rich visuals and interactive elements.</p>
+    <div class="cover reveal d2"><img src="assets/Cover.png" alt="Sargam app — hero" /></div>
+    <div class="moodband reveal d1">
+      <span class="giant">Mood-Based</span>
+      <span class="rule"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESIGN WORKFLOW ===== -->
+<section class="sec" data-screen-label="Design Process">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> DESIGN PROCESS</span><span class="pg">02</span></div>
+    <div class="wf-grid">
+      <div class="wf-left reveal d1">
+        <h2 class="head">Design<br/>Workflow</h2>
+        <p class="lead" style="margin-top:18px">Sargam's design is vibrant and expressive, filled with rich visuals and interactive elements. The process moved from research to a polished, brand-aligned product in five focused phases.</p>
+        <div class="wordmark-foot"><img src="assets/wordmark-gold.png" alt="Sargam" /></div>
+      </div>
+      <div class="wf-list">
+        <div class="wstep reveal d1"><div class="no">1.</div><div><h4>UX Research</h4><p>Gather user insights and analyze market needs to define the app's goals.</p></div></div>
+        <div class="wstep reveal d2"><div class="no">2.</div><div><h4>Strategy &amp; Planning</h4><p>Outline core features, user personas, and the app roadmap.</p></div></div>
+        <div class="wstep reveal d2"><div class="no">3.</div><div><h4>Wireframing</h4><p>Build simple screen layouts showing navigation flow and structure.</p></div></div>
+        <div class="wstep reveal d3"><div class="no">4.</div><div><h4>Concepts &amp; Prototyping</h4><p>Develop interactive prototypes and design concepts to test the experience.</p></div></div>
+        <div class="wstep reveal d3"><div class="no">5.</div><div><h4>UI / UX Design</h4><p>Create polished visual designs ensuring accessibility, consistency, and brand alignment.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== USER PERSONA ===== -->
+<section class="sec" data-screen-label="User Persona">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> ABOUT PROJECT</span><span class="pg">03</span></div>
+    <div class="giant reveal d1">User Persona</div>
+    <div class="persona-card reveal d2">
+      <div class="persona-photo">
+        <img src="assets/persona-rhea.png" alt="Rhea Soni" />
+        <div class="ptag"><h3>Rhea Soni</h3><small>DIGITAL ARTIST</small></div>
+      </div>
+      <div class="persona-body">
+        <div class="pb-head">More Information</div>
+        <div class="info-row">
+          <div class="it"><small>Age</small><b>25</b></div>
+          <div class="it"><small>Status</small><b>Single</b></div>
+          <div class="it"><small>Education</small><b>MA, Fine Arts</b></div>
+          <div class="it"><small>Location</small><b>Jaipur</b></div>
+        </div>
+        <div class="pb-sub">Background</div>
+        <p class="pb-text">Rhea is a creative professional who spends long hours illustrating and designing. Music is her constant companion — she leans on it to set the mood for deep-focus work and to unwind after it.</p>
+        <div class="gf">
+          <div>
+            <div class="pb-sub">Goals</div>
+            <ul>
+              <li>Mood-based music for different contexts</li>
+              <li>Discover regional &amp; indie music easily</li>
+              <li>Seamless cross-device listening experience</li>
+              <li>Fresh and engaging recommendations</li>
+            </ul>
+          </div>
+          <div>
+            <div class="pb-sub">Frustration</div>
+            <ul>
+              <li>Repetitive recommendations on existing apps</li>
+              <li>Hard-to-find regional music</li>
+              <li>Overwhelming, cluttered UI in payments</li>
+              <li>Complex navigation in some apps</li>
+            </ul>
+          </div>
+        </div>
+        <div class="skills">
+          <div class="skill"><div class="ring" data-pct="90"><svg width="84" height="84"></svg><div class="pct">90%</div></div><div class="nm">Digital Illustration</div></div>
+          <div class="skill"><div class="ring" data-pct="80"><svg width="84" height="84"></svg><div class="pct">80%</div></div><div class="nm">Graphic Design</div></div>
+          <div class="skill"><div class="ring" data-pct="85"><svg width="84" height="84"></svg><div class="pct">85%</div></div><div class="nm">Music Knowledge</div></div>
+          <div class="skill"><div class="ring" data-pct="95"><svg width="84" height="84"></svg><div class="pct">95%</div></div><div class="nm">Creativity</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona-card reveal d2">
+      <div class="persona-photo">
+        <img src="assets/persona-aarav.png" alt="Aarav Mehta" />
+        <div class="ptag"><h3>Aarav Mehta</h3><small>COLLEGE STUDENT</small></div>
+      </div>
+      <div class="persona-body">
+        <div class="pb-head">More Information</div>
+        <div class="info-row">
+          <div class="it"><small>Age</small><b>20</b></div>
+          <div class="it"><small>Status</small><b>Single</b></div>
+          <div class="it"><small>Education</small><b>B.Tech, 2nd Yr</b></div>
+          <div class="it"><small>Location</small><b>Indore</b></div>
+        </div>
+        <div class="pb-sub">Background</div>
+        <p class="pb-text">Aarav is a budget-conscious student who lives on his phone. He discovers music through reels and friends, plays it everywhere — gym, commute, hostel — and hates ads breaking the vibe mid-song.</p>
+        <div class="gf">
+          <div>
+            <div class="pb-sub">Goals</div>
+            <ul>
+              <li>Trending &amp; viral songs in one tap</li>
+              <li>Affordable, student-friendly premium</li>
+              <li>Quick mood-based playlists for any moment</li>
+              <li>Share and listen with friends together</li>
+            </ul>
+          </div>
+          <div>
+            <div class="pb-sub">Frustration</div>
+            <ul>
+              <li>Frequent ads interrupting playback</li>
+              <li>Premium plans feel too expensive</li>
+              <li>Same songs recommended on repeat</li>
+              <li>Too many steps to find a trending track</li>
+            </ul>
+          </div>
+        </div>
+        <div class="skills">
+          <div class="skill"><div class="ring" data-pct="95"><svg width="84" height="84"></svg><div class="pct">95%</div></div><div class="nm">Tech Savvy</div></div>
+          <div class="skill"><div class="ring" data-pct="90"><svg width="84" height="84"></svg><div class="pct">90%</div></div><div class="nm">Social Sharing</div></div>
+          <div class="skill"><div class="ring" data-pct="70"><svg width="84" height="84"></svg><div class="pct">70%</div></div><div class="nm">Budget Spend</div></div>
+          <div class="skill"><div class="ring" data-pct="88"><svg width="84" height="84"></svg><div class="pct">88%</div></div><div class="nm">Trend Aware</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TYPOGRAPHY & COLORS ===== -->
+<section class="sec" data-screen-label="Typography & Colors">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> TYPOGRAPHY &amp; COLORS</span><span class="pg">04</span></div>
+    <div class="alpha reveal d1">
+      <div class="up">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
+      <div class="low">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    </div>
+    <div class="giant center reveal d2" style="margin-top:24px">Montserrat</div>
+    <div class="swatches reveal d2">
+      <span class="sw"><i style="background:#1A27BB"></i> #1A27BB</span>
+      <span class="sw"><i style="background:#6D166A"></i> #6D166A</span>
+      <span class="sw"><i style="background:#232B39"></i> #232B39</span>
+      <span class="sw"><i style="background:#FF4D6D"></i> #FF4D6D</span>
+      <span class="sw"><i style="background:#FFFFFF"></i> #FFFFFF</span>
+      <span class="sw"><i style="background:#13161C"></i> #13161C</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISUALS ===== -->
+<section class="sec" data-screen-label="Visuals">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> VISUALS / UI</span><span class="pg">05</span></div>
+    <div class="giant center spaced reveal d1">Visuals</div>
+    <div class="visuals-stage reveal d2">
+      <div class="vmock">
+        <div class="ph"><span class="notch"></span><div class="screen"><img src="assets/screens/signup_new.png" alt="Sign up screen" /></div></div>
+        <div class="cap"><b>Sign up</b><span>Social &amp; email onboarding</span></div>
+      </div>
+      <div class="vmock raise">
+        <div class="ph"><span class="notch"></span><div class="screen"><img src="assets/screens/welcome_new.png" alt="Welcome screen" /></div></div>
+        <div class="cap"><b>Welcome</b><span>Feel the rhythm, create the magic</span></div>
+      </div>
+      <div class="vmock">
+        <div class="ph"><span class="notch"></span><div class="screen"><img src="assets/screens/login_new.png" alt="Login screen" /></div></div>
+        <div class="cap"><b>Login</b><span>Return in a single tap</span></div>
+      </div>
+      <div class="vmock">
+        <div class="ph"><span class="notch"></span><div class="screen"><img src="assets/screens/pickartist2.png" alt="Pick artists screen" /></div></div>
+        <div class="cap"><b>Pick artists</b><span>Tailor the feed from day one</span></div>
+      </div>
+      <div class="vmock">
+        <div class="ph"><span class="notch"></span><div class="screen"><img src="assets/screens/search2.png" alt="Search screen" /></div></div>
+        <div class="cap"><b>Search</b><span>By song, artist or mood</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIVE UI (auto-scrolling) ===== -->
+<section class="sec" data-screen-label="Live UI">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> LIVE UI</span><span class="pg">06</span></div>
+    <h2 class="head reveal d1" style="margin-bottom:10px">The product, in motion.</h2>
+    <p class="lead reveal d2">A deep midnight canvas, gold brand moments and electric-blue accents — full screens scroll on their own so you can feel the flow end to end.</p>
+    <div class="live-stage reveal d1">
+      <div class="pwin"><span class="island"></span><img class="strip" src="assets/screens/home_new.png" alt="Home feed" style="animation-duration:32s" /><div class="pcap"><b>Home feed</b></div></div>
+      <div class="pwin"><span class="island"></span><img class="strip" src="assets/screens/player.png" alt="Now playing" style="animation-duration:22s" /><div class="pcap"><b>Now playing</b></div></div>
+      <div class="pwin"><span class="island"></span><img class="strip" src="assets/screens/gopremium.png" alt="Go premium" style="animation-duration:30s" /><div class="pcap"><b>Go premium</b></div></div>
+    </div>
+    <div class="live-hint reveal d2">Hover any screen to pause the scroll</div>
+  </div>
+</section>
+
+<!-- ===== ANNOTATED WALKTHROUGH (THE MUST) ===== -->
+<section class="sec walk" data-screen-label="Feature Walkthrough">
+  <div class="board">
+    <div class="shead reveal"><span class="lab"><b>//</b> FEATURE WALKTHROUGH</span><span class="pg">07</span></div>
+    <h2 class="head reveal d1" style="margin-bottom:10px">Every section, with intent.</h2>
+    <p class="lead reveal d2" style="margin-bottom:8px">The home feed meets listeners where their mood is — while the premium flow turns the paywall into a delightful, low-pressure invitation.</p>
+
+    <!-- two pre-composited boards, side by side; stacks on narrow screens -->
+    <div class="walk-board reveal d2">
+      <img class="wb-home" src="assets/walk/home_full.png" alt="Home feed walkthrough — mood picks, reels, favourites, nostalgia and global trends, with lifted song, movie and mini-player components annotated" />
+      <img class="wb-prem" src="assets/walk/premium_full.png" alt="Go premium walkthrough — why go premium, spin &amp; win, and the Individual, Family, Duo and Student plans, each annotated" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== THANKS ===== -->
+<section class="sec thanks" data-screen-label="Thanks">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span><span class="blob b5"></span>
+  <div class="mail"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="" onerror="this.style.display='none'" /> jisi.mahima@gmail.com</div>
+  <div class="thanks-in reveal">
+    <h2>Thanks<br/>for your time</h2>
+    <div class="press">Press <svg viewBox="0 0 24 24"><path d="M2 10h4v11H2zM22 11a2 2 0 00-2-2h-5l1-4a2 2 0 00-2-2l-5 8v10h11a2 2 0 002-1.7l1-7z"/></svg> to make my day!</div>
+    <div class="credit"><span class="av">MJ</span><div style="text-align:left"><b>Mahima Jain</b><br/><small>Product / UX Designer</small></div></div>
+  </div>
+  <div class="totop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ BACK TO TOP</div>
+</section>
+
+<script>
+// progress bar
+const prog=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;const sc=h.scrollTop/(h.scrollHeight-h.clientHeight);prog.style.width=(sc*100)+'%';},{passive:true});
+
+// reveal on scroll
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// skill rings
+document.querySelectorAll('.ring').forEach(r=>{
+  const pct=+r.dataset.pct, R=36, C=2*Math.PI*R, svg=r.querySelector('svg');
+  svg.innerHTML=`<circle cx="42" cy="42" r="${R}" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="7"/>
+  <circle cx="42" cy="42" r="${R}" fill="none" stroke="url(#rg)" stroke-width="7" stroke-linecap="round"
+   stroke-dasharray="${C}" stroke-dashoffset="${C}" data-c="${C}" data-p="${pct}"/>
+  <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3bff"/><stop offset=".5" stop-color="#7b2fb0"/><stop offset="1" stop-color="#ff4d6d"/></linearGradient></defs>`;
+});
+const ringIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const c=e.target.querySelector('circle[data-c]');const C=+c.dataset.c,p=+c.dataset.p;requestAnimationFrame(()=>{c.style.transition='stroke-dashoffset 1.2s cubic-bezier(.2,.7,.2,1)';c.style.strokeDashoffset=C*(1-p/100);});ringIO.unobserve(e.target);}});},{threshold:.4});
+document.querySelectorAll('.ring').forEach(r=>ringIO.observe(r));
+</script>
+</body>
+</html>
