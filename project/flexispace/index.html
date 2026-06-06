@@ -10,6 +10,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="casestudy/cs.css" />
+<link rel="stylesheet" href="casestudy/theme-dark.css" />
+<style>
+/* Dark portfolio theme — inline fallback */
+:root{--ink:#f4ebe6;--ink2:#c9b5ae;--ink3:#9a7e78;--ink-on:#1c0a0d;--teal:#b32434;--teal-deep:#c8384a;--indigo:#7a1420;--electric:#c8384a;--violet:#5c0f1b;--canvas:#0d0507;--surface:#1c0a0d;--panel:#271013;--line:rgba(244,235,230,.08);--grad:linear-gradient(105deg,#b32434 0%,#7a1420 100%);}
+html,body{background:#0d0507!important;color:#f4ebe6!important;}
+.topbar{background:rgba(13,5,7,.85)!important;border-bottom:1px solid rgba(244,235,230,.08)!important;}
+.hero{background:#0d0507!important;}
+.band,.band-sm{background:#0d0507;}
+.card,.feature-card,.insight-card,.quote-card,.flow-step,.outcome-card,.metric-card,.process-card,.research-card,.finding-card,.stat-card{background:#1c0a0d!important;border-color:rgba(244,235,230,.08)!important;color:#f4ebe6!important;}
+.eyebrow{color:#c8384a!important;}.eyebrow::before{background:#b32434!important;}
+.grad-text{background:linear-gradient(100deg,#c8384a 0%,#f4ebe6 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;}
+.pill,.tag,.chip,.badge{background:rgba(179,36,52,.15)!important;color:#c8384a!important;border-color:rgba(179,36,52,.25)!important;}
+.progress{background:#b32434!important;}
+section[class*="bg-"],.bg-deep,.bg-panel{background:#1c0a0d!important;}
+footer,.footer{background:#07030e!important;color:#9a7e78!important;}
+.topbar-cta{color:#f4ebe6!important;border-color:rgba(244,235,230,.2)!important;background:rgba(244,235,230,.06)!important;}
+.section-head h2,.lede{color:inherit;}
+.hero-meta,.hero-stat-label,.kicker{color:#9a7e78!important;}
+h1,h2,h3,h4,h5,p,li,span{color:inherit;}
+/* phone frames — dark instead of white */
+.phone{background:#1c0a0d!important;}
+/* hero background — remove original gradient */
+.hero{background:#0d0507!important;}
+/* any decorative teal blobs/shapes → dark surface */
+.hero-art,.hero-blob,.deco,.blob,[class*="blob"],[class*="deco"]{background:#1c0a0d!important;}
+/* inline SVG strokes — replace teal with portfolio red where possible */
+svg path[stroke="#5FE9D6"],svg path[stroke="#0E9C8E"]{stroke:#b32434!important;}
+/* challenge/band section backgrounds */
+.band,.band-sm,.challenge,.opp,.process,.feat-band,.ds-band,.demo,.outcome{background:#0d0507!important;}
+/* section accent backgrounds */
+section[style*="background"]{background:#0d0507!important;}
+/* overrides for sections with class-based dark bg */
+.bg-deep,.bg-ink,.deep-section{background:#07030e!important;}
+/* teal gradient in hero right column */
+.hero-right,.hero-visual,.hero-phones-wrap{background:transparent!important;}
+/* scroll cue bar */
+.scroll-cue .bar::after{background:#b32434!important;}
+.scroll-cue{color:#9a7e78!important;}
+</style>
 <template id="__bundler_thumbnail">
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <rect width="100" height="100" rx="22" fill="#0B1119"/>

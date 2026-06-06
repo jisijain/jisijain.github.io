@@ -1,0 +1,127 @@
+/* ── Dark theme override — matches portfolio red palette ── */
+:root {
+  --ink:       #f4ebe6;
+  --ink2:      #c9b5ae;
+  --ink3:      #9a7e78;
+  --ink-on:    #1c0a0d;
+  --teal:      #b32434;
+  --teal-deep: #c8384a;
+  --indigo:    #7a1420;
+  --electric:  #c8384a;
+  --violet:    #5c0f1b;
+  --amber:     #e8a87c;
+  --green:     #7abf8e;
+  --canvas:    #0d0507;
+  --surface:   #1c0a0d;
+  --panel:     #271013;
+  --line:      rgba(244,235,230,.08);
+  --line-soft: rgba(244,235,230,.05);
+  --deep:      #07030e;
+  --deep-2:    #0d0507;
+  --deep-line: rgba(244,235,230,.1);
+  --grad:      linear-gradient(105deg, #b32434 0%, #7a1420 100%);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.4);
+  --shadow-md: 0 10px 30px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.3);
+  --shadow-lg: 0 30px 70px rgba(0,0,0,.6), 0 8px 22px rgba(0,0,0,.4);
+}
+
+/* base — !important forces override of any inline or js-applied styles */
+html { background: #0d0507 !important; }
+body { background: #0d0507 !important; color: #f4ebe6 !important; }
+::selection { background: rgba(179,36,52,.35); color: #fff; }
+
+/* topbar */
+.topbar {
+  background: rgba(13,5,7,.8);
+  border-bottom-color: rgba(244,235,230,.08);
+}
+.topbar.scrolled { border-bottom-color: rgba(244,235,230,.12); }
+.topbar-cta {
+  color: var(--ink);
+  border-color: rgba(244,235,230,.18);
+  background: rgba(244,235,230,.06);
+}
+.topbar-cta:hover { background: rgba(244,235,230,.12); }
+
+/* progress bar */
+.progress { background: var(--teal); }
+
+/* eyebrow */
+.eyebrow { color: #c8384a; }
+.eyebrow::before { background: #b32434; }
+.kicker { color: var(--ink3); }
+
+/* gradient text */
+.grad-text {
+  background: linear-gradient(100deg, #c8384a 0%, #f4ebe6 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* hero */
+.hero { background: var(--canvas); }
+.hero-meta { color: var(--ink3); }
+.hero-role, .hero-stat-label { color: var(--ink3); }
+
+/* stat cards */
+.stat-card { background: var(--surface); border-color: var(--line); }
+.stat-card .stat-val { color: var(--ink); }
+
+/* section bands */
+.band, .band-sm { border-top-color: var(--line); }
+
+/* cards / panels */
+.card, .feature-card, .insight-card, .quote-card,
+.flow-step, .outcome-card, .metric-card,
+.process-card, .research-card, .finding-card {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* pill / tag chips */
+.pill, .tag, .chip, .badge {
+  background: rgba(179,36,52,.15);
+  color: #c8384a;
+  border-color: rgba(179,36,52,.25);
+}
+
+/* section backgrounds */
+.bg-deep, .bg-panel, [class*="bg-"] {
+  background: var(--surface);
+}
+.bg-ink { background: #0d0507; }
+
+/* buttons */
+.btn-primary, .btn {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(244,235,230,.25);
+}
+.btn-outline:hover { background: rgba(244,235,230,.08); }
+
+/* demo / prototype section */
+.demo-frame, .phone-frame, .mockup-wrap {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+/* tables */
+table th { background: var(--panel); color: var(--ink2); }
+table td { border-color: var(--line); }
+table tr:hover td { background: rgba(244,235,230,.03); }
+
+/* code / mono blocks */
+pre, code { background: var(--panel); color: var(--ink); border-color: var(--line); }
+
+/* dividers */
+hr { border-color: var(--line); }
+
+/* footer */
+footer, .footer { background: #07030e; color: var(--ink3); }
+.footer a { color: var(--ink2); }
