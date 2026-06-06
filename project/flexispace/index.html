@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlexiSpace · Case Study — Mahima Jain</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<meta name="description" content="FlexiSpace — a workplace booking app rethought as a workplace operating system. Employee mobile experience case study." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="casestudy/cs.css" />
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="22" fill="#0B1119"/>
+    <rect x="30" y="22" width="40" height="56" rx="9" fill="none" stroke="#0E9C8E" stroke-width="3"/>
+    <circle cx="50" cy="40" r="6" fill="#0E9C8E"/>
+    <rect x="40" y="52" width="20" height="4" rx="2" fill="#4F46E5"/>
+    <rect x="40" y="60" width="14" height="4" rx="2" fill="#2F6BFF"/>
+  </svg>
+</template>
+</head>
+<body>
+<a href="../Work.html" style="position:fixed;top:20px;left:24px;z-index:300;display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);color:#fff;font-family:'Schibsted Grotesk',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(0,0,0,.65)'" onmouseout="this.style.background='rgba(0,0,0,.45)'">← Back to Work</a>
+
+<!-- ░░ topbar ░░ -->
+<div class="topbar" id="topbar">
+  <a href="#top" class="brand" style="text-decoration:none;color:inherit;">
+    <span class="mark">
+      <svg viewBox="0 0 143 161" fill="none"><path d="M62.2 80.9H36.5V44.7c0-14.9 1.5-15.8 11.9-16.3h77.2c4.5 0 12.6-1.6 13.4-11.3.7-9.4-8.6-13.1-13.4-13.1-8.9.1-69.8.5-78.5.3-8.7-.2-16.6.2-22.8 1.6C7.5 9.6 3.8 24.2 4 31v103.7c0 14.4 2.2 20.6 17.8 21.5 7.7.4 14.4-4 14.6-14v-7.6s-.4-10.6.3-13.4c1-3.9 4.6-5.7 6.7-5.8h18.4c3.5.2 12.8-3.9 12.8-16.3 0-13.8-8.4-18.4-12.4-18.4z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M77.9 44.9c-4.2 1-10.9 5.6-10.9 16 0 13.9 8.4 18.4 12.4 18.4h25.7v36.2c0 14.9-1.5 15.8-11.9 16.3H56.5c-4.5 0-12.6 1.6-13.4 11.3-.7 9.4 8.6 13.1 13.4 13.1 2.2 0 5-.1 8.3-.1 9.9-.1 23-.3 29.6-.2 8.7.2 16.6-.2 22.8-1.6 16.8-3.8 20.5-18.4 20.3-25.2V44.9H77.9z" fill="#bfe9e3"/></svg>
+    </span>
+    <span>FlexiSpace<small>WORKPLACE OS · CASE STUDY</small></span>
+  </a>
+  <a href="#demo" class="topbar-cta">▶ Try the prototype</a>
+</div>
+<div class="progress" id="progress"></div>
+
+<!-- ░░ hero ░░ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow hero-eyebrow reveal">Workplace OS · 2026 Redesign</div>
+      <h1 class="reveal" data-d="1">Flexi<span class="grad-text">Space</span></h1>
+      <p class="lede reveal" data-d="2">A workplace booking app, rethought as a <strong>workplace operating system</strong> — answering <em>“where do I sit, who’s in, can I park, which room’s free?”</em> in seconds.</p>
+      <div class="hero-tags reveal" data-d="3">
+        <span class="tag">Desk booking</span>
+        <span class="tag">Meeting rooms</span>
+        <span class="tag">Parking</span>
+        <span class="tag">Team discovery</span>
+        <span class="tag">Floor maps</span>
+      </div>
+    </div>
+    <div class="phones reveal" data-d="2">
+      <div class="phone ph-b"><img src="casestudy/img/map.png" alt="FlexiSpace floor map" loading="eager" /></div>
+      <div class="phone ph-c"><img src="casestudy/img/desk-detail.png" alt="FlexiSpace desk detail" loading="eager" /></div>
+      <div class="phone ph-a"><img src="casestudy/img/home.png" alt="FlexiSpace home dashboard" loading="eager" /></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
+</header>
+
+<!-- ░░ meta ░░ -->
+<section class="band-sm">
+  <div class="wrap">
+    <div class="meta reveal">
+      <div><div class="k">Duration</div><div class="v">10 weeks<small>Feb – Apr 2026</small></div></div>
+      <div><div class="k">Role</div><div class="v">Lead Product Designer<small>UX · UI · Motion · Prototyping</small></div></div>
+      <div><div class="k">Team</div><div class="v">Small &amp; fast<small>1 designer · 2 engineers · 1 PM</small></div></div>
+      <div><div class="k">Platform</div><div class="v">iOS &amp; Android<small>Mobile-first · employee app</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ challenge ░░ -->
+<section class="band challenge">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Challenge</div>
+      <h2>Hybrid work broke the office.</h2>
+      <p>When everyone stopped coming in every day, the simplest questions became the hardest. FlexiSpace existed — but it answered almost none of them.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob reveal" data-d="1">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17.5" cy="9" r="2.2"/><path d="M15.5 19c0-2.4 1.5-4 3.8-4 1 0 1.9.3 2.7.9"/></svg></span>
+        <div class="num">01</div>
+        <h3>“Where does everyone sit?”</h3>
+        <p>Teammates were scattered across floors with no way to find each other — or know who was even in — before commuting in.</p>
+      </div>
+      <div class="prob reveal" data-d="2">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 4v16M4 9h4"/><circle cx="14.5" cy="13" r="2"/></svg></span>
+        <div class="num">02</div>
+        <h3>“Which room is actually free?”</h3>
+        <p>Rooms were hunted by walking the corridor and peering through glass. Double-bookings and ghost reservations were routine.</p>
+      </div>
+      <div class="prob reveal" data-d="3">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><path d="M6 11V8a2 2 0 012-2h8a2 2 0 012 2v3"/><path d="M4 11h16v4a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M7 16v3M17 16v3"/></svg></span>
+        <div class="num">03</div>
+        <h3>“Is there even a desk?”</h3>
+        <p>Booking happened blind — no view of what was free, who you’d sit beside, or which spots had the monitor and standing options you needed.</p>
+      </div>
+      <div class="prob reveal" data-d="4">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><path d="M5 16l1.5-5A2 2 0 018.4 9.5h7.2a2 2 0 011.9 1.5L19 16"/><path d="M4 16h16v3a1 1 0 01-1 1h-2a1 1 0 01-1-1v-1H8v1a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><circle cx="7.5" cy="16.5" r="1"/><circle cx="16.5" cy="16.5" r="1"/></svg></span>
+        <div class="num">04</div>
+        <h3>“Did I get parking?”</h3>
+        <p>Parking ran on spreadsheets and luck. People circled the basement at 9am, unsure whether a bay — or a charger — would be there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ opportunity ░░ -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Opportunity</div>
+      <h2>One app to plan the&nbsp;day.</h2>
+      <p>Every question above is really a single need: <strong>see the workplace, then act on it</strong> — in one thumb-reachable flow.</p>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-list">
+        <div class="opp-item reveal" data-d="1"><div class="n">01</div><div><h3>Simpler booking</h3><p>Desk, room and parking collapse behind one center action — book in three taps, never more.</p></div></div>
+        <div class="opp-item reveal" data-d="2"><div class="n">02</div><div><h3>Team visibility</h3><p>See who’s in and where they’re sitting before you commit your own day.</p></div></div>
+        <div class="opp-item reveal" data-d="3"><div class="n">03</div><div><h3>Interactive floor maps</h3><p>Pan and orbit the real floor to locate people, desks and the route to your seat.</p></div></div>
+        <div class="opp-item reveal" data-d="4"><div class="n">04</div><div><h3>Workplace planning</h3><p>A live week strip turns scattered hybrid days into a plan you can read at a glance.</p></div></div>
+      </div>
+      <div class="opp-phone reveal" data-d="2">
+        <div class="phone" style="width:268px;position:relative;border-radius:34px;"><img src="casestudy/img/map.png" alt="Interactive floor map" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ principles ░░ -->
+<section class="band-sm principles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Design Principles</div>
+      <h2>Five rules that decided every screen.</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="princ-grid">
+      <div class="princ reveal" data-d="1"><div class="pn">P01</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg></div><h3>Mobile First</h3><p>Designed thumb-out, for a phone in a hallway — not a dashboard on a desk.</p></div>
+      <div class="princ reveal" data-d="2"><div class="pn">P02</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg></div><h3>Reduce Friction</h3><p>Every flow earns its taps. Defaults are smart; confirmation is one motion.</p></div>
+      <div class="princ reveal" data-d="3"><div class="pn">P03</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></div><h3>Workplace Transparency</h3><p>Availability and presence are never hidden — the office is legible at a glance.</p></div>
+      <div class="princ reveal" data-d="4"><div class="pn">P04</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Fast Decision Making</h3><p>The right information surfaces first, so a choice takes seconds, not scrolling.</p></div>
+      <div class="princ reveal" data-d="5"><div class="pn">P05</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3l2.2 5.5L20 9l-4.5 3.7L17 18l-5-3-5 3 1.5-5.3L4 9l5.8-.5z"/></svg></div><h3>Delight Through Motion</h3><p>Transitions explain where things go — motion as wayfinding, never decoration.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ product evolution ░░ -->
+<section class="band">
+  <div class="wrap">
+    <div class="evo-stage">
+      <div class="ba reveal" id="ba">
+        <div class="ba-layer ba-before">
+          <div class="wire">
+            <!-- greeting + avatar -->
+            <div class="wl bold" style="left:4.48%;top:6.1%;width:18%;height:3.2%;"></div>
+            <div class="wdot" style="left:4.48%;top:9.9%;width:3.4%;height:1.8%;"></div>
+            <div class="wl soft" style="left:9.4%;top:10.1%;width:30%;height:1.5%;"></div>
+            <div class="wcirc" style="left:74.5%;top:6.7%;width:8%;height:3.65%;"></div>
+            <div class="wcirc fill" style="left:85.57%;top:6.56%;width:9.95%;height:4.55%;"></div>
+            <!-- week selector: 7 pills -->
+            <div class="wpill" style="left:4.48%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <div class="wpill" style="left:17.58%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <div class="wpill on" style="left:30.68%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <div class="wpill" style="left:43.78%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <div class="wpill" style="left:56.88%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <div class="wpill" style="left:69.98%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <div class="wpill" style="left:83.08%;top:13.58%;width:12.44%;height:7.65%;"></div>
+            <!-- today's plan card -->
+            <div class="wcard" style="left:4.48%;top:23.06%;width:91.04%;height:46.26%;"></div>
+            <div class="wl bold" style="left:9%;top:24.7%;width:22%;height:2%;"></div>
+            <div class="wtag" style="left:33%;top:24.85%;width:14%;height:1.9%;"></div>
+            <div class="wl soft" style="left:78%;top:25%;width:11.5%;height:1.6%;"></div>
+            <!-- row 0 (Desk + Route pill) -->
+            <div class="wic" style="left:9.2%;top:30.4%;width:7%;height:3.2%;"></div>
+            <div class="wl" style="left:18.5%;top:30.5%;width:34%;height:1.6%;"></div>
+            <div class="wl soft" style="left:18.5%;top:32.7%;width:22%;height:1.3%;"></div>
+            <div class="wtag" style="left:76%;top:30.7%;width:13.5%;height:2.8%;"></div>
+            <!-- row 1 -->
+            <div class="wic" style="left:9.2%;top:38.25%;width:7%;height:3.2%;"></div>
+            <div class="wl" style="left:18.5%;top:38.35%;width:30%;height:1.6%;"></div>
+            <div class="wl soft" style="left:18.5%;top:40.55%;width:18%;height:1.3%;"></div>
+            <div class="wch" style="left:89%;top:39.6%;"></div>
+            <!-- row 2 -->
+            <div class="wic" style="left:9.2%;top:46.1%;width:7%;height:3.2%;"></div>
+            <div class="wl" style="left:18.5%;top:46.2%;width:26%;height:1.6%;"></div>
+            <div class="wl soft" style="left:18.5%;top:48.4%;width:20%;height:1.3%;"></div>
+            <div class="wch" style="left:89%;top:47.45%;"></div>
+            <!-- row 3 -->
+            <div class="wic" style="left:9.2%;top:53.95%;width:7%;height:3.2%;"></div>
+            <div class="wl" style="left:18.5%;top:54.05%;width:28%;height:1.6%;"></div>
+            <div class="wl soft" style="left:18.5%;top:56.25%;width:19%;height:1.3%;"></div>
+            <div class="wch" style="left:89%;top:55.3%;"></div>
+            <!-- row 4 -->
+            <div class="wic" style="left:9.2%;top:61.8%;width:7%;height:3.2%;"></div>
+            <div class="wl" style="left:18.5%;top:61.9%;width:30%;height:1.6%;"></div>
+            <div class="wl soft" style="left:18.5%;top:64.1%;width:17%;height:1.3%;"></div>
+            <div class="wch" style="left:89%;top:63.15%;"></div>
+            <!-- quick actions: 4 circles + labels -->
+            <div class="wact" style="left:10.02%;top:72.2%;width:10%;height:4.6%;"></div>
+            <div class="wl soft" style="left:8.5%;top:78.2%;width:13%;height:1.3%;"></div>
+            <div class="wact" style="left:33.34%;top:72.2%;width:10%;height:4.6%;"></div>
+            <div class="wl soft" style="left:31.8%;top:78.2%;width:13%;height:1.3%;"></div>
+            <div class="wact" style="left:56.66%;top:72.2%;width:10%;height:4.6%;"></div>
+            <div class="wl soft" style="left:55.1%;top:78.2%;width:13%;height:1.3%;"></div>
+            <div class="wact" style="left:79.98%;top:72.2%;width:10%;height:4.6%;"></div>
+            <div class="wl soft" style="left:78.4%;top:78.2%;width:13%;height:1.3%;"></div>
+            <!-- live availability header -->
+            <div class="wdot" style="left:4.48%;top:87.2%;width:3%;height:1.7%;border-radius:999px;"></div>
+            <div class="wl bold" style="left:8.8%;top:87.2%;width:28%;height:1.9%;"></div>
+            <!-- tab bar -->
+            <div class="wbar"></div>
+            <div class="wic" style="left:8%;top:95%;width:6%;height:2.7%;border-radius:6px;"></div>
+            <div class="wic" style="left:27%;top:95%;width:6%;height:2.7%;border-radius:6px;"></div>
+            <div class="wic" style="left:67%;top:95%;width:6%;height:2.7%;border-radius:6px;"></div>
+            <div class="wic" style="left:86%;top:95%;width:6%;height:2.7%;border-radius:6px;"></div>
+            <div class="wfab" style="left:44%;top:91.6%;width:12%;height:5.5%;"></div>
+          </div>
+        </div>
+        <div class="ba-layer ba-after"><img src="casestudy/img/home.png" alt="Redesigned home" /></div>
+        <div class="ba-label before">Before · concept</div>
+        <div class="ba-label after">After · shipped</div>
+        <div class="ba-handle"></div>
+        <div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="#0E1726" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div>
+      </div>
+      <div class="evo-copy reveal" data-d="1">
+        <div class="eyebrow" style="margin-bottom:18px;">Product Evolution</div>
+        <h2>From a stack of widgets to a command center.</h2>
+        <p class="lede">The old app was a pile of disconnected cards. The redesign rebuilt the model from the question down — drag the handle to compare.</p>
+        <div class="evo-rows">
+          <div class="evo-row"><span class="was">Stack of unrelated widgets</span><span class="ar">→</span><span class="now">One scannable command center</span></div>
+          <div class="evo-row"><span class="was">Static isometric render</span><span class="ar">→</span><span class="now">Interactive pan / orbit map</span></div>
+          <div class="evo-row"><span class="was">Blind seat picking</span><span class="ar">→</span><span class="now">Team-aware suggestions</span></div>
+          <div class="evo-row"><span class="was">Booking ≠ management</span><span class="ar">→</span><span class="now">A timeline you can reschedule</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ core experience ░░ -->
+<section class="band-sm principles" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <div class="eyebrow">The Core Experience</div>
+      <h2>Five flows, crafted end&#8209;to&#8209;end.</h2>
+      <p>Each major feature, with the decisions that shaped it. Mockups are captured live from the working prototype.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- Home -->
+    <div class="feat">
+      <div class="feat-media"><div class="feat-frame reveal"><img src="casestudy/img/home.png" alt="Home dashboard" /></div></div>
+      <div class="feat-copy reveal" data-d="1">
+        <div class="eyebrow">01 — Home Dashboard</div>
+        <h2>The day, in one glance.</h2>
+        <p class="lede">Home stopped being a launcher and became a plan. The first scroll answers “what’s my day, and is the office ready for it?”</p>
+        <div class="feat-points">
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span><div><h4>Today’s plan</h4><p>Desk, parking and meetings stitched into one timeline with a live check-in state.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/><path d="M3 12h18M12 3a14 14 0 000 18M12 3a14 14 0 010 18"/></svg></span><div><h4>Live availability</h4><p>Desks, rooms and bays free right now — updated continuously, not on refresh.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></span><div><h4>Quick actions</h4><p>Book a desk, room or bay — or locate a teammate — without leaving home.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><div><h4>Calendar week strip</h4><p>A tappable week with booking dots turns hybrid planning into one swipe.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desk -->
+    <div class="feat rev">
+      <div class="feat-media"><div class="feat-frame reveal"><img src="casestudy/img/desk-detail.png" alt="Desk booking detail" /></div></div>
+      <div class="feat-copy reveal" data-d="1">
+        <div class="eyebrow">02 — Desk Booking</div>
+        <h2>Pick a desk with full context.</h2>
+        <p class="lede">Seat selection became a confident choice. You see the neighborhood, the people, the amenities and the route before you tap book.</p>
+        <div class="feat-points">
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l2.2 5.5L20 9l-4.5 3.7L17 18l-5-3-5 3 1.5-5.3L4 9l5.8-.5z"/></svg></span><div><h4>Smart suggestions</h4><p>Seats ranked by team proximity, your preferences and booking history.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="9" cy="8" r="3"/><path d="M4 19c0-3 2-5 5-5s5 2 5 5"/><circle cx="17" cy="9" r="2"/></svg></span><div><h4>Who’s nearby</h4><p>Live presence of teammates around the seat — sit beside the right people.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 13.4L13.4 20.6a2 2 0 01-2.8 0l-6.2-6.2a2 2 0 01-.6-1.4V5a1 1 0 011-1h7.6a2 2 0 011.4.6l6.8 6.8a2 2 0 010 2z"/><circle cx="8" cy="8" r="1.3"/></svg></span><div><h4>Amenity &amp; zone tags</h4><p>Window, quiet, standing, dual-monitor — filter to the setup you actually need.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12l5 5L20 7"/></svg></span><div><h4>Sticky book CTA</h4><p>A persistent action bar keeps confirmation one thumb-reach away as you scroll.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rooms -->
+    <div class="feat">
+      <div class="feat-media"><div class="feat-frame reveal"><img src="casestudy/img/room-detail.png" alt="Meeting room booking" /></div></div>
+      <div class="feat-copy reveal" data-d="1">
+        <div class="eyebrow">03 — Meeting Rooms</div>
+        <h2>Find a room, hold it, done.</h2>
+        <p class="lede">Booking a room is now a glance at a timeline. Availability, equipment and the busy hours are all on one screen.</p>
+        <div class="feat-points">
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4>Pick-a-time chips</h4><p>Tap an hour and a duration — the timeline shows what’s open at a glance.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19V9M9 19V5M14 19v-7M19 19v-4"/></svg></span><div><h4>Popular hours</h4><p>A mini histogram surfaces peak demand so you avoid the 2pm crunch.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M8 21h8"/></svg></span><div><h4>Equipment at a glance</h4><p>Wi-Fi, AC, projector, whiteboard, video — matched to the meeting you’re running.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 12a9 9 0 11-3-6.7M21 4v4h-4"/></svg></span><div><h4>Recurring &amp; quick book</h4><p>Hold it once or set it to repeat — the schedule carries across every flow.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parking -->
+    <div class="feat rev">
+      <div class="feat-media"><div class="feat-frame reveal"><img src="casestudy/img/parking.png" alt="Parking reservation" /></div></div>
+      <div class="feat-copy reveal" data-d="1">
+        <div class="eyebrow">04 — Parking</div>
+        <h2>A bay, secured before you leave home.</h2>
+        <p class="lede">Parking went from spreadsheet roulette to a live map. Tap a free bay, reserve, and drive in knowing it’s yours.</p>
+        <div class="feat-points">
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h3.5a3 3 0 010 6H9"/></svg></span><div><h4>Live bay map</h4><p>Every bay rendered by zone and status — free spots are obvious and tappable.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19V9M9 19V5M14 19v-7M19 19v-4"/></svg></span><div><h4>Zone breakdown</h4><p>Reserved, general, EV, accessible, visitor — counts update against capacity.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M13 2L5 13h5l-1 9 8-11h-5z"/></svg></span><div><h4>EV, accessible &amp; visitor</h4><p>Chargers and accessible bays are first-class, not buried in a list.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 12a9 9 0 11-3-6.7M21 4v4h-4"/></svg></span><div><h4>Recurring reservation</h4><p>Reserve for the day or set a repeat that mirrors your in-office pattern.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="feat">
+      <div class="feat-media"><div class="feat-frame reveal"><img src="casestudy/img/map.png" alt="Team discovery on the floor map" /></div></div>
+      <div class="feat-copy reveal" data-d="1">
+        <div class="eyebrow">05 — Team Discovery</div>
+        <h2>Find anyone in the building.</h2>
+        <p class="lede">The floor map doubles as a people finder. Search a name, filter a team, and the route to their desk is one tap away.</p>
+        <div class="feat-points">
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><h4>Presence map</h4><p>Live avatars sit on real desks — see who’s in and exactly where they are.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span><div><h4>Filter by team</h4><p>Isolate Design, Engineering, Product and more to find your people fast.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><div><h4>Search anyone</h4><p>One field across people, desks and rooms — type a name, jump to them on the map.</p></div></div>
+          <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l18-8-8 18-2-8z"/></svg></span><div><h4>Profile &amp; route reveal</h4><p>Tap a person for their full profile — and a turn-by-turn route to their seat.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ interactive demo ░░ -->
+<section class="band demo" id="demo">
+  <div class="wrap">
+    <div class="demo-head reveal">
+      <div class="eyebrow center">Interactive Demo</div>
+      <h2>Don’t take my word for it.</h2>
+      <p>The real, working prototype — live below. Tap through it, or jump to a flow.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-chips reveal">
+        <button class="dchip on" data-screen="home">Home</button>
+        <button class="dchip" data-screen="map">Floor map</button>
+        <button class="dchip" data-screen="desk">Desk booking</button>
+        <button class="dchip" data-screen="rooms">Meeting rooms</button>
+        <button class="dchip" data-screen="parking">Parking</button>
+        <button class="dchip" data-screen="bookings">Bookings</button>
+      </div>
+      <div class="device-shell reveal" data-d="1">
+        <iframe id="demoFrame" src="FlexiSpace Demo.html?screen=home&fit=on" title="FlexiSpace interactive prototype" loading="lazy"></iframe>
+      </div>
+      <div class="demo-note"><span class="pulse"></span>Live prototype · fully interactive</div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ design system ░░ -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Design System</div>
+      <h2>A small system, applied with restraint.</h2>
+      <p>An evolved teal-to-indigo identity, one type pairing, and a status language that reads the same on every surface.</p>
+    </div>
+    <div class="ds-grid">
+      <div class="ds-card reveal" data-d="1">
+        <div class="kicker">Brand &amp; accent</div>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#0E9C8E"></div><div class="nm">Teal</div><div class="hx">#0E9C8E</div></div>
+          <div class="sw"><div class="chip" style="background:#4F46E5"></div><div class="nm">Indigo</div><div class="hx">#4F46E5</div></div>
+          <div class="sw"><div class="chip" style="background:#2F6BFF"></div><div class="nm">Electric</div><div class="hx">#2F6BFF</div></div>
+          <div class="sw"><div class="chip" style="background:#0E1726"></div><div class="nm">Ink</div><div class="hx">#0E1726</div></div>
+          <div class="sw"><div class="chip" style="background:linear-gradient(105deg,#0E9C8E,#4F46E5)"></div><div class="nm">Gradient</div><div class="hx">Used sparingly</div></div>
+        </div>
+      </div>
+      <div class="ds-card reveal" data-d="2">
+        <div class="kicker">Type · Schibsted Grotesk + JetBrains Mono</div>
+        <div class="type-spec">
+          <div><div class="big">Aa</div><small>DISPLAY · 700 · -3% TRACKING</small></div>
+          <div style="font-size:18px;font-weight:500;">The quick workplace plans the day.<small>BODY · 500 · TABULAR NUMS</small></div>
+          <div class="mono-row">07 · WORKPLACE OS<small>MONO · LABELS &amp; CODES</small></div>
+        </div>
+      </div>
+      <div class="ds-card reveal ds-span2" data-d="1">
+        <div class="kicker">Status system · one language across map, lists &amp; sheets</div>
+        <div class="status-row">
+          <span class="spill"><span class="d" style="background:#16A34A"></span>Available</span>
+          <span class="spill"><span class="d" style="background:#2F6BFF"></span>Booked</span>
+          <span class="spill"><span class="d" style="background:#0E9C8E"></span>Your desk</span>
+          <span class="spill"><span class="d" style="background:#7C3AED"></span>Executive</span>
+          <span class="spill"><span class="d" style="background:#F59E0B"></span>Maintenance</span>
+          <span class="spill"><span class="d" style="background:#CBD5E1;box-shadow:inset 0 0 0 1.4px #94A3B8"></span>Restricted</span>
+        </div>
+      </div>
+      <div class="ds-card reveal" data-d="1">
+        <div class="kicker">Components</div>
+        <div class="comp-row">
+          <button class="cbtn">Quick book</button>
+          <button class="cbtn ghost">Route</button>
+          <span class="cpill">60 min</span>
+          <span class="cpill">Window seat</span>
+        </div>
+        <div class="icon-row" style="margin-top:22px;">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 16l1.5-5A2 2 0 018.4 9.5h7.2a2 2 0 011.9 1.5L19 16"/><path d="M4 16h16v3h-3v-2H7v2H4z"/></svg></span>
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.2 5.5L20 9l-4.5 3.7L17 18l-5-3-5 3 1.5-5.3L4 9l5.8-.5z"/></svg></span>
+        </div>
+      </div>
+      <div class="ds-card ds-dark reveal" data-d="2">
+        <img src="casestudy/img/home-dark.png" alt="FlexiSpace dark mode" />
+        <div>
+          <div class="kicker">Adaptive</div>
+          <h3>Built dark from the start.</h3>
+          <p>Every token is mode-aware — surfaces, lines and accents lift to AA contrast automatically in dark mode.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ outcomes ░░ -->
+<section class="band outcomes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Outcomes &amp; Design Targets</div>
+      <h2>What the redesign set out to win.</h2>
+      <p>A concept redesign — these are the qualitative shifts and targets the new flows were built to hit.</p>
+    </div>
+    <div class="metrics">
+      <div class="metric reveal" data-d="1"><div class="big" data-count="3" data-suffix=" taps">0</div><div class="lbl">to a confirmed desk, down from a multi-screen flow.</div></div>
+      <div class="metric reveal" data-d="2"><div class="big" data-count="60" data-suffix="%">0</div><div class="lbl">fewer steps to book versus the previous app.</div></div>
+      <div class="metric reveal" data-d="3"><div class="big" data-count="5" data-suffix="→1">0</div><div class="lbl">scattered intents folded into one tab bar.</div></div>
+      <div class="metric reveal" data-d="4"><div class="big" data-count="100" data-suffix="%">0</div><div class="lbl">of the floor visible on one live, interactive map.</div></div>
+    </div>
+    <div class="qual">
+      <div class="qcard reveal" data-d="1"><h4>Faster booking workflows</h4><p>Smart defaults and a sticky CTA collapse desk, room and parking into a single confident motion.</p></div>
+      <div class="qcard reveal" data-d="2"><h4>Workplace transparency</h4><p>Presence and availability are always visible — people plan their day around real information.</p></div>
+      <div class="qcard reveal" data-d="3"><h4>Reduced friction</h4><p>A clearer hierarchy and one map for navigation make the whole office feel legible and quick.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ reflections ░░ -->
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="section-head reveal" style="margin-bottom:40px;">
+      <div class="eyebrow">Reflections</div>
+      <h2>What I took away.</h2>
+    </div>
+    <div class="refl-grid">
+      <div class="refl reveal" data-d="1"><div class="kicker">What I learned</div><h3>The map was the product.</h3><p>Once the floor map became interactive, half the other screens got simpler — wayfinding answered questions the lists were straining to.</p></div>
+      <div class="refl reveal" data-d="2"><div class="kicker">A trade-off</div><h3>Depth over a flat tab bar.</h3><p>Folding desk, room and parking behind one action added a tap, but it kept the bar honest and the home screen calm. Worth it.</p></div>
+      <div class="refl reveal" data-d="3"><div class="kicker">What I’d improve</div><h3>Earlier motion prototyping.</h3><p>Transitions carried so much meaning that I’d prototype them in week one next time, not validate them at the end.</p></div>
+      <div class="refl reveal" data-d="4"><div class="kicker">How it changed me</div><h3>Systems thinking, end to end.</h3><p>Designing one status language and one schedule object — reused across every flow — sharpened how I reason about product, not just screens.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ footer ░░ -->
+<footer class="foot">
+  <div class="dots"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="reveal">Thank you<br/>for watching.</h2>
+    <div class="sub reveal" data-d="1">FlexiSpace · Employee Mobile Experience · 2026</div>
+    <div class="foot-cta reveal" data-d="2">
+      <a href="#demo" class="primary">Try the prototype</a>
+      <a href="#top" class="secondary">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="casestudy/cs.js"></script>
+</body>
+</html>
