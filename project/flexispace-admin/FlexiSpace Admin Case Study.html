@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlexiSpace Admin — Case Study</title>
+<meta name="description" content="FlexiSpace Admin — the operator's command center for a workplace OS. Desktop console case study: live occupancy, 3D floor management, bookings, people & analytics." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="casestudy/cs.css" />
+<style>
+  /* ── Admin case-study supplement: desktop browser chrome + layout overrides ── */
+  .hero{min-height:auto; padding:150px 0 96px;}
+  .ahero-grid{display:grid; grid-template-columns:.84fr 1.16fr; gap:48px; align-items:center;}
+  .ahero h1{font-size:clamp(52px,7.4vw,104px); line-height:.9; letter-spacing:-.045em;}
+  .adm-tag{display:inline-block; font-size:.3em; font-family:var(--mono); font-weight:600; letter-spacing:.14em;
+    text-transform:uppercase; vertical-align:middle; margin-left:.55em; padding:.6em 1em; border:1.6px solid var(--teal);
+    border-radius:999px; color:var(--teal-deep); transform:translateY(-.45em); background:rgba(14,156,142,.06);}
+  .ahero .lede{margin:30px 0 0; max-width:460px;}
+
+  .ahero-win{position:relative; perspective:2000px;}
+  .ahero-win .win.lead{width:780px; max-width:none; transform:rotateY(-13deg) rotateX(5deg); transform-origin:left center;}
+  .ahero-win .peek{position:absolute; right:-34px; top:-46px; width:300px; z-index:-1; transform:rotateY(-13deg) rotateX(5deg);
+    opacity:.92; filter:saturate(1.05);}
+  .live-badge{position:absolute; left:-18px; bottom:34px; z-index:5; display:inline-flex; align-items:center; gap:9px;
+    background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-md); border-radius:999px; padding:11px 17px;
+    font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink);}
+  .live-badge .pdot{width:9px; height:9px; border-radius:999px; background:var(--teal); box-shadow:0 0 0 0 rgba(14,156,142,.6); animation:pulse 2s infinite;}
+
+  /* browser window chrome */
+  .win{border-radius:14px; overflow:hidden; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-lg);}
+  .win-bar{display:flex; align-items:center; gap:8px; padding:11px 15px; background:#E9EEF4; border-bottom:1px solid var(--line);}
+  .win-bar .tl{display:flex; gap:7px;}
+  .win-bar .tl i{width:11px; height:11px; border-radius:999px; display:block;}
+  .win-bar .addr{margin-left:10px; flex:1; height:26px; min-width:0; border-radius:8px; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; gap:8px; padding:0 12px; font-family:var(--mono); font-size:11px; color:var(--ink3); white-space:nowrap; overflow:hidden;}
+  .win-bar .addr svg{flex-shrink:0;}
+  .win > img{width:100%; display:block;}
+  .win.dark .win-bar{background:#0F1722; border-bottom-color:var(--deep-line);}
+  .win.dark .win-bar .addr{background:#0B1119; border-color:var(--deep-line); color:#6b7787;}
+
+  /* opportunity image */
+  .opp-phone .win{width:100%; max-width:460px;}
+
+  /* ── core experience (desktop, alternating) ── */
+  .aexp{display:flex; flex-direction:column; gap:0;}
+  .afeat{display:grid; grid-template-columns:.82fr 1.18fr; gap:64px; padding:88px 0; align-items:center;}
+  .afeat.rev .afeat-media{order:2;}
+  .afeat-media{min-width:0;}
+  .afeat-media .win{width:100%;}
+  .afeat-copy .eyebrow{margin-bottom:18px;}
+  .afeat-copy h2{font-size:clamp(30px,3.4vw,44px);}
+  .afeat-copy .lede{margin:22px 0 30px; font-size:19px;}
+  .afeat-points{display:flex; flex-direction:column; gap:4px;}
+
+  /* ── live demo (desktop console) ── */
+  .ademo-stage{display:flex; flex-direction:column; align-items:center; gap:26px;}
+  .ademo-win{width:100%; max-width:1120px; box-shadow:0 40px 90px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.4);}
+  .ademo-win iframe{width:100%; height:700px; border:0; display:block; background:#F4F6F8;}
+
+  /* ── extra DS card: data viz ── */
+  .dv-row{display:flex; gap:22px; flex-wrap:wrap; align-items:flex-end;}
+  .dv{display:flex; flex-direction:column; gap:9px;}
+  .dv .dv-l{font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink3);}
+  .dv .arc{width:96px; height:54px; border-radius:96px 96px 0 0; border:9px solid var(--line); border-bottom:0;
+    position:relative; overflow:hidden;}
+  .dv .arc::before{content:""; position:absolute; inset:-9px -9px 0; border-radius:96px 96px 0 0;
+    border:9px solid transparent; border-top-color:var(--teal); border-left-color:var(--teal); transform:rotate(28deg); transform-origin:center bottom;}
+  .dv .spark{display:flex; align-items:flex-end; gap:5px; height:54px;}
+  .dv .spark i{width:9px; background:var(--indigo); border-radius:3px; display:block;}
+  .dv .heat{display:grid; grid-template-columns:repeat(6,1fr); gap:3px;}
+  .dv .heat i{width:13px; height:13px; border-radius:3px; display:block;}
+
+  @media(max-width:980px){
+    .ahero-grid,.afeat{grid-template-columns:1fr; gap:40px;}
+    .afeat.rev .afeat-media{order:0;}
+    .ahero-win{perspective:none;}
+    .ahero-win .win.lead{width:100%; transform:none;}
+    .ahero-win .peek{display:none;}
+    .live-badge{left:14px;}
+    .ademo-win iframe{height:560px;}
+  }
+  @media(max-width:560px){
+    .ademo-win iframe{height:480px;}
+    .live-badge{display:none;}
+  }
+</style>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="22" fill="#0B1119"/>
+    <rect x="18" y="24" width="20" height="52" rx="5" fill="#0E9C8E" opacity="0.92"/>
+    <rect x="44" y="24" width="38" height="22" rx="6" fill="#4F46E5" opacity="0.92"/>
+    <rect x="44" y="52" width="17" height="24" rx="5" fill="#2F6BFF" opacity="0.92"/>
+    <rect x="65" y="52" width="17" height="24" rx="5" fill="#0E9C8E" opacity="0.5"/>
+  </svg>
+</template>
+</head>
+<body>
+
+<!-- ░░ topbar ░░ -->
+<div class="topbar" id="topbar">
+  <a href="#top" class="brand" style="text-decoration:none;color:inherit;">
+    <span class="mark">
+      <svg viewBox="0 0 143 161" fill="none"><path d="M62.2 80.9H36.5V44.7c0-14.9 1.5-15.8 11.9-16.3h77.2c4.5 0 12.6-1.6 13.4-11.3.7-9.4-8.6-13.1-13.4-13.1-8.9.1-69.8.5-78.5.3-8.7-.2-16.6.2-22.8 1.6C7.5 9.6 3.8 24.2 4 31v103.7c0 14.4 2.2 20.6 17.8 21.5 7.7.4 14.4-4 14.6-14v-7.6s-.4-10.6.3-13.4c1-3.9 4.6-5.7 6.7-5.8h18.4c3.5.2 12.8-3.9 12.8-16.3 0-13.8-8.4-18.4-12.4-18.4z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M77.9 44.9c-4.2 1-10.9 5.6-10.9 16 0 13.9 8.4 18.4 12.4 18.4h25.7v36.2c0 14.9-1.5 15.8-11.9 16.3H56.5c-4.5 0-12.6 1.6-13.4 11.3-.7 9.4 8.6 13.1 13.4 13.1 2.2 0 5-.1 8.3-.1 9.9-.1 23-.3 29.6-.2 8.7.2 16.6-.2 22.8-1.6 16.8-3.8 20.5-18.4 20.3-25.2V44.9H77.9z" fill="#bfe9e3"/></svg>
+    </span>
+    <span>FlexiSpace<small>WORKPLACE OS · ADMIN CASE STUDY</small></span>
+  </a>
+  <a href="#demo" class="topbar-cta">▶ Try the console</a>
+</div>
+<div class="progress" id="progress"></div>
+
+<!-- ░░ hero ░░ -->
+<header class="hero" id="top">
+  <div class="wrap ahero-grid">
+    <div class="ahero">
+      <div class="eyebrow hero-eyebrow reveal">Workplace OS · Admin Console · 2026</div>
+      <h1 class="reveal" data-d="1">Flexi<span class="grad-text">Space</span><span class="adm-tag">Admin</span></h1>
+      <p class="lede reveal" data-d="2">The operator's side of FlexiSpace — a live <strong>command center</strong> to run desks, rooms, parking and people across every floor and site.</p>
+      <div class="hero-tags reveal" data-d="3">
+        <span class="tag">Live dashboard</span>
+        <span class="tag">3D floor plans</span>
+        <span class="tag">Bookings</span>
+        <span class="tag">People &amp; access</span>
+        <span class="tag">Analytics</span>
+      </div>
+    </div>
+    <div class="ahero-win reveal" data-d="2">
+      <div class="win dark peek">
+        <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span></div>
+        <img src="casestudy/img/admin-dark.png" alt="FlexiSpace admin console in dark mode" loading="eager" />
+      </div>
+      <div class="win lead">
+        <div class="win-bar">
+          <span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span>
+          <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E9C8E" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin</span>
+        </div>
+        <img src="casestudy/img/admin-cc.png" alt="FlexiSpace admin command center" loading="eager" />
+      </div>
+      <span class="live-badge"><span class="pdot"></span>Live · 274 on-site</span>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
+</header>
+
+<!-- ░░ meta ░░ -->
+<section class="band-sm">
+  <div class="wrap">
+    <div class="meta reveal">
+      <div><div class="k">Duration</div><div class="v">6 weeks<small>Apr – May 2026</small></div></div>
+      <div><div class="k">Role</div><div class="v">Lead Product Designer<small>UX · UI · Data viz · Prototyping</small></div></div>
+      <div><div class="k">Team</div><div class="v">Small &amp; fast<small>1 designer · 2 engineers · 1 PM</small></div></div>
+      <div><div class="k">Platform</div><div class="v">Web console<small>Responsive · operator-facing</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ challenge ░░ -->
+<section class="band challenge">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Challenge</div>
+      <h2>The employee app shipped. Who runs the building?</h2>
+      <p>FlexiSpace gave employees a beautiful way to book. But the people managing the workplace were still flying blind — across tools that never talked to each other.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob reveal" data-d="1">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div class="num">01</div>
+        <h3>“Is the office even full?”</h3>
+        <p>No live read on occupancy. Planning ran on guesswork, badge exports and spreadsheets that were stale by lunchtime.</p>
+      </div>
+      <div class="prob reveal" data-d="2">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 4v16M4 9h5"/><path d="M14 14l3-3"/></svg></span>
+        <div class="num">02</div>
+        <h3>“Why are desks empty but booked?”</h3>
+        <p>No-shows quietly locked up inventory all day. There was no way to see the waste, let alone reclaim it automatically.</p>
+      </div>
+      <div class="prob reveal" data-d="3">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <div class="num">03</div>
+        <h3>“Which tool do I open?”</h3>
+        <p>Floor edits, room config, parking and access lived in four separate apps — plus a thread of emails for every change.</p>
+      </div>
+      <div class="prob reveal" data-d="4">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FE9D6" stroke-width="1.8"><path d="M4 19V9M9 19V5M14 19v-7M19 19v-4"/></svg></span>
+        <div class="num">04</div>
+        <h3>“Are we paying for space we don’t use?”</h3>
+        <p>No utilization or cost-per-seat view. Right-sizing the portfolio was a finance exercise done once a year, in the dark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ opportunity ░░ -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Opportunity</div>
+      <h2>One console to run&nbsp;the workplace.</h2>
+      <p>Every question above is really one need: <strong>see the whole building live, then act on it</strong> — without leaving the screen.</p>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-list">
+        <div class="opp-item reveal" data-d="1"><div class="n">01</div><div><h3>A live command center</h3><p>Occupancy, rooms, parking and alerts on one always-current screen — no refresh, no export.</p></div></div>
+        <div class="opp-item reveal" data-d="2"><div class="n">02</div><div><h3>Manage the floor in 3D</h3><p>Edit layouts, flag maintenance and reassign desks directly on the real, interactive plan.</p></div></div>
+        <div class="opp-item reveal" data-d="3"><div class="n">03</div><div><h3>Policy &amp; access in one place</h3><p>Anchor days, auto-release, roles and SSO become simple toggles — not tickets.</p></div></div>
+        <div class="opp-item reveal" data-d="4"><div class="n">04</div><div><h3>Decisions backed by data</h3><p>Utilization, attendance and cost per seat, so space planning is evidence, not instinct.</p></div></div>
+      </div>
+      <div class="opp-phone reveal" data-d="2">
+        <div class="win">
+          <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span></div>
+          <img src="casestudy/img/admin-floors.png" alt="3D floor plan management" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ principles ░░ -->
+<section class="band-sm principles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Design Principles</div>
+      <h2>Five rules for an operator’s tool.</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="princ-grid">
+      <div class="princ reveal" data-d="1"><div class="pn">P01</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></div><h3>Legible at a Glance</h3><p>The whole building reads in one scan — hierarchy and headline numbers before the detail.</p></div>
+      <div class="princ reveal" data-d="2"><div class="pn">P02</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></div><h3>One Status Language</h3><p>The same color and dot system reads identically on the map, the lists and the sheets.</p></div>
+      <div class="princ reveal" data-d="3"><div class="pn">P03</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg></div><h3>Live, Not Refreshed</h3><p>Numbers move on their own. “Updated 1m ago” and a quiet pulse keep the data honest.</p></div>
+      <div class="princ reveal" data-d="4"><div class="pn">P04</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg></div><h3>Insight → Action</h3><p>Every chart carries its next step — reassign, release, manage — never a dead end.</p></div>
+      <div class="princ reveal" data-d="5"><div class="pn">P05</div><div class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 000 18z"/></svg></div><h3>Adaptive Surface</h3><p>Light or dark, airy or compact, sidebar or top-nav — the console fits the operator and the screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ product evolution ░░ -->
+<section class="band">
+  <div class="wrap">
+    <div class="evo-stage" style="grid-template-columns:1.12fr .88fr;">
+      <div class="reveal" style="justify-self:center; width:100%;">
+        <div class="win" style="transform:perspective(1900px) rotateY(7deg) rotateX(4deg); transform-origin:right center;">
+          <div class="win-bar">
+            <span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span>
+            <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E9C8E" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin/analytics</span>
+          </div>
+          <img src="casestudy/img/admin-analytics.png" alt="Analytics replacing spreadsheets" />
+        </div>
+      </div>
+      <div class="evo-copy reveal" data-d="1">
+        <div class="eyebrow" style="margin-bottom:18px;">Product Evolution</div>
+        <h2>From spreadsheets to a control room.</h2>
+        <p class="lede">The old workflow was a drawer of tools and a chain of emails. The console folds it into one model — observe, then act.</p>
+        <div class="evo-rows">
+          <div class="evo-row"><span class="was">Spreadsheets &amp; email threads</span><span class="ar">→</span><span class="now">One live console</span></div>
+          <div class="evo-row"><span class="was">Static floor PDFs</span><span class="ar">→</span><span class="now">Editable 3D floor plans</span></div>
+          <div class="evo-row"><span class="was">Counting heads by walking</span><span class="ar">→</span><span class="now">Live occupancy &amp; heatmaps</span></div>
+          <div class="evo-row"><span class="was">Reacting to complaints</span><span class="ar">→</span><span class="now">Alerts that flag &amp; auto-release</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ core experience ░░ -->
+<section class="band-sm principles" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <div class="eyebrow">The Core Experience</div>
+      <h2>Five surfaces, built end&#8209;to&#8209;end.</h2>
+      <p>Each major area of the console, with the decisions that shaped it. Every screen is captured live from the working build.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="aexp">
+      <!-- Command center -->
+      <div class="afeat">
+        <div class="afeat-copy reveal" data-d="1">
+          <div class="eyebrow">01 — Command Center</div>
+          <h2>The whole site, in one screen.</h2>
+          <p class="lede">The landing view answers the only question that matters first: is the building working right now, and what needs me?</p>
+          <div class="feat-points">
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1018 0"/><path d="M12 12l5-4"/></svg></span><div><h4>Live occupancy gauge</h4><p>People on-site, rooms in session and desk states — counted live, never on a refresh.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 16l5-6 4 3 6-8"/><path d="M3 20h18"/></svg></span><div><h4>KPIs with trend</h4><p>Occupancy, room use, parking and check-in, each with a sparkline and a day-over-day delta.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 14c3-7 5-7 8 0s5 7 8 0"/></svg></span><div><h4>Occupancy through the day</h4><p>Today’s load against last week, with the peak hour called out so you can plan ahead.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span><div><h4>Needs attention</h4><p>Maintenance, no-shows and parking overflow surface as alerts — each with a one-tap action.</p></div></div>
+          </div>
+        </div>
+        <div class="afeat-media reveal" data-d="1">
+          <div class="win">
+            <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span><span class="addr">app.flexispace.io/admin</span></div>
+            <img src="casestudy/img/admin-cc.png" alt="Command center dashboard" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Floor plans -->
+      <div class="afeat rev">
+        <div class="afeat-copy reveal" data-d="1">
+          <div class="eyebrow">02 — Floor Plans</div>
+          <h2>Manage the floor in 3D.</h2>
+          <p class="lede">The same interactive plan employees navigate becomes an editing surface — inventory, maintenance and reassignment in context.</p>
+          <div class="feat-points">
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span><div><h4>Interactive 3D plan</h4><p>Orbit, zoom and click any desk or room to inspect status, occupant and amenities.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><div><h4>Desk inventory</h4><p>Available, booked, assigned and maintenance counts update live per floor.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 21V5a2 2 0 012-2h7l1 2h4v8h-9l-1-2H5"/></svg></span><div><h4>Maintenance queue</h4><p>Flagged desks list out with locate-on-map and reassign, so nothing sits broken unseen.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M14 6l3 3"/></svg></span><div><h4>Edit layout</h4><p>Move desks, set neighborhoods and mark zones directly on the plan — no CAD round-trip.</p></div></div>
+          </div>
+        </div>
+        <div class="afeat-media reveal" data-d="1">
+          <div class="win">
+            <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span><span class="addr">app.flexispace.io/admin/floors</span></div>
+            <img src="casestudy/img/admin-floors.png" alt="Floor plans management" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bookings -->
+      <div class="afeat">
+        <div class="afeat-copy reveal" data-d="1">
+          <div class="eyebrow">03 — Bookings &amp; Rooms</div>
+          <h2>Every reservation, one table.</h2>
+          <p class="lede">Desks, rooms and parking land in a single ledger. Filter, search and read status at a glance across the whole site.</p>
+          <div class="feat-points">
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><div><h4>One unified ledger</h4><p>Person, resource, floor, day, time and status — every booking in a single sortable view.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><div><h4>Filter &amp; search</h4><p>Slice by desks, rooms or parking and find any person or resource as you type.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg></span><div><h4>Shared status language</h4><p>Checked-in, confirmed, pending and no-show read in the same palette as everywhere else.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v5"/></svg></span><div><h4>Room utilization</h4><p>Most-booked rooms, equipment and weekly load help you spot the over- and under-used.</p></div></div>
+          </div>
+        </div>
+        <div class="afeat-media reveal" data-d="1">
+          <div class="win">
+            <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span><span class="addr">app.flexispace.io/admin/bookings</span></div>
+            <img src="casestudy/img/admin-bookings.png" alt="Bookings ledger" />
+          </div>
+        </div>
+      </div>
+
+      <!-- People -->
+      <div class="afeat rev">
+        <div class="afeat-copy reveal" data-d="1">
+          <div class="eyebrow">04 — People &amp; Access</div>
+          <h2>The directory, with permissions.</h2>
+          <p class="lede">Who’s who, who’s in, and who can do what — the org and its access model live on the same screen.</p>
+          <div class="feat-points">
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5"/><circle cx="18" cy="9" r="2"/></svg></span><div><h4>Full directory</h4><p>Name, team, role and live on-site state in one searchable, scannable list.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></span><div><h4>Roles &amp; permissions</h4><p>Workplace admin, team manager and member, each colour-coded and one click to change.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span><div><h4>Live presence</h4><p>On-site or remote shows against each person, fed by badge and app check-ins.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14M5 12h14"/></svg></span><div><h4>Invite &amp; integrate</h4><p>Add people, set access and sync the org through Okta SSO and calendar in settings.</p></div></div>
+          </div>
+        </div>
+        <div class="afeat-media reveal" data-d="1">
+          <div class="win">
+            <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span><span class="addr">app.flexispace.io/admin/people</span></div>
+            <img src="casestudy/img/admin-people.png" alt="People and access directory" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="afeat">
+        <div class="afeat-copy reveal" data-d="1">
+          <div class="eyebrow">05 — Analytics &amp; Cost</div>
+          <h2>Right-size the portfolio.</h2>
+          <p class="lede">The numbers that justify the lease. Attendance, utilization and cost per seat, ready to export to the people who sign the cheques.</p>
+          <div class="feat-points">
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20V8M10 20V4M16 20v-9M22 20v-5" transform="translate(-1)"/></svg></span><div><h4>Daily attendance</h4><p>Headcount on-site across the week, with the anchor-day peak rising out of the bars.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h12M4 12h16M4 17h9"/></svg></span><div><h4>Utilization by team</h4><p>Each team’s share of the building, so space is allocated where it’s actually used.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="10" y="3" width="6" height="6" rx="1"/><rect x="3" y="10" width="6" height="6" rx="1"/></svg></span><div><h4>Occupancy heatmap</h4><p>Average desk load by day and hour reveals the dead zones worth reclaiming.</p></div></div>
+            <div class="fp"><span class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3v18M16 7H10a3 3 0 000 6h4a3 3 0 010 6H8"/></svg></span><div><h4>Cost per seat</h4><p>A live cost figure that drops as you right-size — and a one-click CSV for finance.</p></div></div>
+          </div>
+        </div>
+        <div class="afeat-media reveal" data-d="1">
+          <div class="win">
+            <div class="win-bar"><span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span><span class="addr">app.flexispace.io/admin/analytics</span></div>
+            <img src="casestudy/img/admin-analytics.png" alt="Analytics and cost" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ interactive demo ░░ -->
+<section class="band demo" id="demo">
+  <div class="wrap">
+    <div class="demo-head reveal">
+      <div class="eyebrow center">Live Console</div>
+      <h2>Don’t take my word for it.</h2>
+      <p>The real, working admin console — live below. Switch sections, or use its own sidebar to drive it.</p>
+    </div>
+    <div class="ademo-stage">
+      <div class="demo-chips reveal">
+        <button class="dchip on" data-screen="overview">Command center</button>
+        <button class="dchip" data-screen="floors">Floor plans</button>
+        <button class="dchip" data-screen="bookings">Bookings</button>
+        <button class="dchip" data-screen="people">People</button>
+        <button class="dchip" data-screen="parking">Parking</button>
+        <button class="dchip" data-screen="analytics">Analytics</button>
+      </div>
+      <div class="win ademo-win reveal" data-d="1">
+        <div class="win-bar">
+          <span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span>
+          <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E9C8E" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin</span>
+        </div>
+        <iframe id="demoFrame" src="FlexiSpace Admin.html?section=overview" title="FlexiSpace admin console — live" loading="lazy"></iframe>
+      </div>
+      <div class="demo-note"><span class="pulse"></span>Live console · fully interactive</div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ design system ░░ -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Design System</div>
+      <h2>One system, two products.</h2>
+      <p>The console inherits the employee app’s identity — same palette, type and status language — and extends it with a calm data-viz layer.</p>
+    </div>
+    <div class="ds-grid">
+      <div class="ds-card reveal" data-d="1">
+        <div class="kicker">Brand &amp; accent</div>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#0E9C8E"></div><div class="nm">Teal</div><div class="hx">#0E9C8E</div></div>
+          <div class="sw"><div class="chip" style="background:#4F46E5"></div><div class="nm">Indigo</div><div class="hx">#4F46E5</div></div>
+          <div class="sw"><div class="chip" style="background:#2F6BFF"></div><div class="nm">Electric</div><div class="hx">#2F6BFF</div></div>
+          <div class="sw"><div class="chip" style="background:#0E1726"></div><div class="nm">Ink</div><div class="hx">#0E1726</div></div>
+          <div class="sw"><div class="chip" style="background:linear-gradient(105deg,#0E9C8E,#4F46E5)"></div><div class="nm">Gradient</div><div class="hx">Used sparingly</div></div>
+        </div>
+      </div>
+      <div class="ds-card reveal" data-d="2">
+        <div class="kicker">Type · Schibsted Grotesk + JetBrains Mono</div>
+        <div class="type-spec">
+          <div><div class="big">68%</div><small>DATA · 800 · TABULAR · -2% TRACKING</small></div>
+          <div style="font-size:18px;font-weight:500;">Occupancy is up six points on last week.<small>BODY · 500 · TABULAR NUMS</small></div>
+          <div class="mono-row">UPDATED 1m AGO<small>MONO · LABELS &amp; AXES</small></div>
+        </div>
+      </div>
+      <div class="ds-card reveal ds-span2" data-d="1">
+        <div class="kicker">Status system · one language across map, lists, charts &amp; sheets</div>
+        <div class="status-row">
+          <span class="spill"><span class="d" style="background:#16A34A"></span>Available</span>
+          <span class="spill"><span class="d" style="background:#2F6BFF"></span>Booked</span>
+          <span class="spill"><span class="d" style="background:#0E9C8E"></span>Assigned</span>
+          <span class="spill"><span class="d" style="background:#7C3AED"></span>Executive</span>
+          <span class="spill"><span class="d" style="background:#F59E0B"></span>Maintenance</span>
+          <span class="spill"><span class="d" style="background:#EF4444"></span>No-show</span>
+          <span class="spill"><span class="d" style="background:#CBD5E1;box-shadow:inset 0 0 0 1.4px #94A3B8"></span>Off / remote</span>
+        </div>
+      </div>
+      <div class="ds-card reveal" data-d="1">
+        <div class="kicker">Data viz · gauge · area · bars · heatmap</div>
+        <div class="dv-row">
+          <div class="dv"><div class="arc"></div><div class="dv-l">Gauge</div></div>
+          <div class="dv"><div class="spark"><i style="height:40%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:66%"></i><i style="height:90%"></i></div><div class="dv-l">Trend</div></div>
+          <div class="dv"><div class="heat">
+            <i style="background:rgba(14,156,142,.16)"></i><i style="background:rgba(14,156,142,.32)"></i><i style="background:rgba(14,156,142,.55)"></i><i style="background:rgba(14,156,142,.78)"></i><i style="background:rgba(14,156,142,.95)"></i><i style="background:rgba(14,156,142,.4)"></i>
+            <i style="background:rgba(14,156,142,.32)"></i><i style="background:rgba(14,156,142,.55)"></i><i style="background:rgba(14,156,142,.78)"></i><i style="background:rgba(14,156,142,.95)"></i><i style="background:rgba(14,156,142,.6)"></i><i style="background:rgba(14,156,142,.24)"></i>
+          </div><div class="dv-l">Heatmap</div></div>
+        </div>
+      </div>
+      <div class="ds-card ds-dark reveal" data-d="2">
+        <img src="casestudy/img/admin-dark.png" alt="FlexiSpace admin dark mode" style="width:180px;" />
+        <div>
+          <div class="kicker">Adaptive</div>
+          <h3>Built dark, dense or airy.</h3>
+          <p>Every token is mode-aware, and the shell flips between sidebar and top-nav, airy and compact — so the same console fits any operator.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ outcomes ░░ -->
+<section class="band outcomes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Outcomes &amp; Design Targets</div>
+      <h2>What the console set out to win.</h2>
+      <p>A concept build — these are the qualitative shifts and targets the operator console was designed to hit.</p>
+    </div>
+    <div class="metrics">
+      <div class="metric reveal" data-d="1"><div class="big" data-count="100" data-suffix="%">0</div><div class="lbl">of the floor visible live on one interactive plan.</div></div>
+      <div class="metric reveal" data-d="2"><div class="big" data-count="8" data-suffix="→1">0</div><div class="lbl">scattered tools and spreadsheets folded into one console.</div></div>
+      <div class="metric reveal" data-d="3"><div class="big" data-prefix="<" data-count="30" data-suffix="s">0</div><div class="lbl">from alert to action, straight from the attention feed.</div></div>
+      <div class="metric reveal" data-d="4"><div class="big" data-count="3" data-suffix=" sites">0</div><div class="lbl">run from a single switcher with shared policy.</div></div>
+    </div>
+    <div class="qual">
+      <div class="qcard reveal" data-d="1"><h4>Live workplace visibility</h4><p>Occupancy, presence and alerts on one always-current screen — decisions on real numbers, not stale exports.</p></div>
+      <div class="qcard reveal" data-d="2"><h4>One console, less tool-sprawl</h4><p>Floor, rooms, parking, people and policy in a single place, sharing one status language end to end.</p></div>
+      <div class="qcard reveal" data-d="3"><h4>Data-driven space decisions</h4><p>Utilization and cost-per-seat views turn right-sizing the portfolio into an everyday, evidenced call.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ reflections ░░ -->
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="section-head reveal" style="margin-bottom:40px;">
+      <div class="eyebrow">Reflections</div>
+      <h2>What I took away.</h2>
+    </div>
+    <div class="refl-grid">
+      <div class="refl reveal" data-d="1"><div class="kicker">What I learned</div><h3>A dashboard is a decision tool.</h3><p>Numbers alone don’t help an operator. Pairing every chart with its next action — reassign, release, manage — was what made the console feel useful, not just informative.</p></div>
+      <div class="refl reveal" data-d="2"><div class="kicker">A trade-off</div><h3>Calm over cramming.</h3><p>Operators ask for density, but a wall of numbers hides the signal. I shipped an airy default with a compact mode, rather than packing everything in by force.</p></div>
+      <div class="refl reveal" data-d="3"><div class="kicker">What I’d improve</div><h3>Define the live data model first.</h3><p>“Live, not refreshed” touched every surface. Next time I’d agree the real-time data contracts with engineering in week one, not retrofit them.</p></div>
+      <div class="refl reveal" data-d="4"><div class="kicker">How it changed me</div><h3>Designing for trust, not delight.</h3><p>The employee app earns smiles; the console earns confidence. Reusing one status language across both taught me to design the system, not the screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ footer ░░ -->
+<footer class="foot">
+  <div class="dots"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="reveal">Thank you<br/>for watching.</h2>
+    <div class="sub reveal" data-d="1">FlexiSpace · Admin Console · Workplace OS · 2026</div>
+    <div class="foot-cta reveal" data-d="2">
+      <a href="#demo" class="primary">Try the console</a>
+      <a href="FlexiSpace Case Study.html" class="secondary">View the employee app →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="casestudy/cs.js"></script>
+</body>
+</html>
