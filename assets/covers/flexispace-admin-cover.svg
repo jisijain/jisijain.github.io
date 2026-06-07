@@ -1,0 +1,236 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,-apple-system,sans-serif">
+<defs>
+  <radialGradient id="fabg" cx="50%" cy="45%" r="75%">
+    <stop offset="0%" stop-color="#1c0608"/>
+    <stop offset="55%" stop-color="#0d0507"/>
+    <stop offset="100%" stop-color="#050203"/>
+  </radialGradient>
+  <radialGradient id="faglow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#b32434" stop-opacity=".22"/>
+    <stop offset="100%" stop-color="#b32434" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="fawin" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#1c0a0d"/>
+    <stop offset="100%" stop-color="#150608"/>
+  </linearGradient>
+  <linearGradient id="fared" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#b32434"/>
+    <stop offset="100%" stop-color="#7a1420"/>
+  </linearGradient>
+  <linearGradient id="fachart" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#b32434" stop-opacity=".06"/>
+    <stop offset="100%" stop-color="#b32434" stop-opacity=".4"/>
+  </linearGradient>
+  <linearGradient id="fabar1" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#b32434" stop-opacity=".5"/>
+    <stop offset="100%" stop-color="#c8384a"/>
+  </linearGradient>
+  <linearGradient id="fabar2" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#b32434" stop-opacity=".25"/>
+    <stop offset="100%" stop-color="#b32434" stop-opacity=".6"/>
+  </linearGradient>
+  <clipPath id="faclip"><rect width="984" height="520" rx="12"/></clipPath>
+  <filter id="fadrop"><feDropShadow dx="0" dy="32" stdDeviation="40" flood-color="#000" flood-opacity=".85"/></filter>
+  <filter id="fagf" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="60"/></filter>
+  <filter id="faredglow"><feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#b32434" flood-opacity=".6"/></filter>
+  <pattern id="fadots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="0.8" fill="#f4ebe6" fill-opacity=".06"/>
+  </pattern>
+</defs>
+
+<!-- BG -->
+<rect width="1200" height="700" fill="url(#fabg)"/>
+<rect width="1200" height="700" fill="url(#fadots)"/>
+
+<!-- Red glow -->
+<ellipse cx="600" cy="390" rx="520" ry="280" fill="url(#faglow)" filter="url(#fagf)"/>
+
+<!-- ─── TOP TEXT BAND ─── -->
+<rect x="108" y="52" width="100" height="24" rx="12" fill="#b32434" fill-opacity=".18"/>
+<text x="158" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#c8384a" letter-spacing=".08em">WEB · SAAS</text>
+<rect x="218" y="52" width="112" height="24" rx="12" fill="#b32434" fill-opacity=".18"/>
+<text x="274" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#c8384a" letter-spacing=".08em">DASHBOARD</text>
+<rect x="340" y="52" width="130" height="24" rx="12" fill="#b32434" fill-opacity=".18"/>
+<text x="405" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#c8384a" letter-spacing=".08em">OPERATOR TOOL</text>
+
+<text x="108" y="120" font-size="46" font-weight="800" fill="#f4ebe6" letter-spacing="-.03em">FlexiSpace</text>
+<text x="108" y="162" font-size="46" font-weight="300" fill="#c8384a" letter-spacing="-.03em">Admin</text>
+
+<!-- ─── BROWSER WINDOW ─── -->
+<g transform="translate(108,190)" filter="url(#fadrop)">
+  <!-- Frame -->
+  <rect width="984" height="520" rx="12" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+
+  <!-- Title bar -->
+  <rect width="984" height="42" rx="12" fill="#271013"/>
+  <rect x="0" y="30" width="984" height="12" fill="#271013"/>
+  <rect x="0" y="41" width="984" height="1" fill="rgba(244,235,230,.07)"/>
+  <!-- 3 dots -->
+  <circle cx="20" cy="21" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="21" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="21" r="6" fill="#28c840"/>
+  <!-- Address bar -->
+  <rect x="200" y="9" width="400" height="24" rx="8" fill="rgba(244,235,230,.05)" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+  <text x="400" y="25" text-anchor="middle" font-size="10" fill="#9a7e78">● admin.flexispace.io · Live Overview</text>
+  <!-- Live badge in title bar -->
+  <rect x="900" y="11" width="68" height="20" rx="10" fill="#b32434" fill-opacity=".2" filter="url(#faredglow)"/>
+  <circle cx="915" cy="21" r="4" fill="#b32434"/>
+  <text x="950" y="25" text-anchor="middle" font-size="10" font-weight="700" fill="#c8384a" letter-spacing=".06em">LIVE</text>
+
+  <g clip-path="url(#faclip)">
+    <!-- ── SIDEBAR ── -->
+    <rect x="0" y="42" width="64" height="478" fill="#150608"/>
+    <rect x="63" y="42" width="1" height="478" fill="rgba(244,235,230,.06)"/>
+    <!-- Logo -->
+    <rect x="16" y="58" width="32" height="32" rx="8" fill="url(#fared)"/>
+    <text x="32" y="79" text-anchor="middle" font-size="16" font-weight="900" fill="#fff">F</text>
+    <!-- Nav icons -->
+    <rect x="10" y="104" width="44" height="36" rx="8" fill="#b32434" fill-opacity=".15"/>
+    <text x="32" y="127" text-anchor="middle" font-size="18">⬜</text>
+    <text x="32" y="163" text-anchor="middle" font-size="18">📊</text>
+    <text x="32" y="199" text-anchor="middle" font-size="18">📅</text>
+    <text x="32" y="235" text-anchor="middle" font-size="18">👥</text>
+    <text x="32" y="271" text-anchor="middle" font-size="18">🗺</text>
+    <text x="32" y="307" text-anchor="middle" font-size="18">⚙️</text>
+
+    <!-- ── MAIN CONTENT ── -->
+    <!-- Section heading -->
+    <text x="82" y="72" font-size="14" font-weight="700" fill="#f4ebe6">Live Overview</text>
+    <text x="82" y="88" font-size="10" fill="#9a7e78">Monday, 9 June 2026 · Real-time</text>
+
+    <!-- ── STAT CARDS ROW ── -->
+    <!-- Card 1: Occupied Desks -->
+    <rect x="82" y="100" width="204" height="90" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <rect x="82" y="100" width="4" height="90" rx="2" fill="#b32434"/>
+    <text x="100" y="124" font-size="10" fill="#9a7e78" letter-spacing=".05em">OCCUPIED DESKS</text>
+    <text x="100" y="157" font-size="34" font-weight="800" fill="#f4ebe6">47</text>
+    <text x="172" y="157" font-size="13" fill="#9a7e78">/80</text>
+    <rect x="100" y="168" width="60" height="16" rx="8" fill="#22c55e" fill-opacity=".14"/>
+    <text x="130" y="180" text-anchor="middle" font-size="9" fill="#22c55e" font-weight="600">↑ 12% vs avg</text>
+
+    <!-- Card 2: Bookings Today -->
+    <rect x="298" y="100" width="204" height="90" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <rect x="298" y="100" width="4" height="90" rx="2" fill="#c8384a"/>
+    <text x="316" y="124" font-size="10" fill="#9a7e78" letter-spacing=".05em">BOOKINGS TODAY</text>
+    <text x="316" y="157" font-size="34" font-weight="800" fill="#f4ebe6">124</text>
+    <rect x="316" y="168" width="68" height="16" rx="8" fill="#22c55e" fill-opacity=".14"/>
+    <text x="350" y="180" text-anchor="middle" font-size="9" fill="#22c55e" font-weight="600">↑ 8% this week</text>
+
+    <!-- Card 3: Occupancy Rate -->
+    <rect x="514" y="100" width="204" height="90" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <rect x="514" y="100" width="4" height="90" rx="2" fill="#b32434"/>
+    <text x="532" y="124" font-size="10" fill="#9a7e78" letter-spacing=".05em">OCCUPANCY RATE</text>
+    <text x="532" y="157" font-size="34" font-weight="800" fill="#f4ebe6">83<tspan font-size="18" fill="#9a7e78">%</tspan></text>
+    <!-- Mini donut -->
+    <circle cx="692" cy="147" r="24" fill="none" stroke="#271013" stroke-width="7"/>
+    <circle cx="692" cy="147" r="24" fill="none" stroke="#b32434" stroke-width="7"
+            stroke-dasharray="126 25" stroke-dashoffset="31" stroke-linecap="round"/>
+    <text x="692" y="151" text-anchor="middle" font-size="9" fill="#9a7e78">83%</text>
+
+    <!-- Card 4: Active Users -->
+    <rect x="730" y="100" width="204" height="90" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <rect x="730" y="100" width="4" height="90" rx="2" fill="#7a1420"/>
+    <text x="748" y="124" font-size="10" fill="#9a7e78" letter-spacing=".05em">ACTIVE USERS</text>
+    <text x="748" y="157" font-size="34" font-weight="800" fill="#f4ebe6">34</text>
+    <rect x="748" y="168" width="76" height="16" rx="8" fill="#b32434" fill-opacity=".14"/>
+    <text x="786" y="180" text-anchor="middle" font-size="9" fill="#c8384a" font-weight="600">● Online now</text>
+
+    <!-- ── AREA CHART ── -->
+    <rect x="82" y="206" width="622" height="130" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <text x="98" y="224" font-size="11" font-weight="700" fill="#f4ebe6">Desk utilisation · Last 7 days</text>
+    <!-- Chart area fill -->
+    <polygon points="98,316 98,290 163,272 228,280 293,256 358,264 423,244 488,252 553,238 618,246 688,318" fill="url(#fachart)"/>
+    <!-- Chart line -->
+    <polyline points="98,290 163,272 228,280 293,256 358,264 423,244 488,252 553,238 618,246 688,246"
+              fill="none" stroke="#b32434" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Data point -->
+    <circle cx="553" cy="238" r="4" fill="#c8384a"/>
+    <!-- X-axis labels -->
+    <text x="98"  y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Mon</text>
+    <text x="163" y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Tue</text>
+    <text x="228" y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Wed</text>
+    <text x="293" y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Thu</text>
+    <text x="358" y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Fri</text>
+    <text x="423" y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Sat</text>
+    <text x="488" y="330" font-size="8" fill="#9a7e78" text-anchor="middle">Sun</text>
+    <text x="553" y="330" font-size="8" fill="#c8384a" text-anchor="middle" font-weight="700">Mon</text>
+    <!-- Y-axis labels -->
+    <text x="690" y="254" font-size="8" fill="#9a7e78">80%</text>
+    <text x="690" y="280" font-size="8" fill="#9a7e78">60%</text>
+    <text x="690" y="306" font-size="8" fill="#9a7e78">40%</text>
+
+    <!-- ── FLOOR BARS WIDGET (right of chart) ── -->
+    <rect x="720" y="206" width="214" height="130" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <text x="736" y="224" font-size="11" font-weight="700" fill="#f4ebe6">By floor · Today</text>
+    <!-- Bar: Floor 1 -->
+    <text x="736" y="248" font-size="9" fill="#9a7e78">Floor 1</text>
+    <rect x="780" y="238" width="120" height="12" rx="3" fill="rgba(244,235,230,.06)"/>
+    <rect x="780" y="238" width="108" height="12" rx="3" fill="url(#fabar1)"/>
+    <text x="906" y="248" font-size="9" fill="#c8384a">90%</text>
+    <!-- Floor 2 -->
+    <text x="736" y="270" font-size="9" fill="#9a7e78">Floor 2</text>
+    <rect x="780" y="260" width="120" height="12" rx="3" fill="rgba(244,235,230,.06)"/>
+    <rect x="780" y="260" width="84" height="12" rx="3" fill="url(#fabar2)"/>
+    <text x="906" y="270" font-size="9" fill="#9a7e78">70%</text>
+    <!-- Floor 3 -->
+    <text x="736" y="292" font-size="9" fill="#9a7e78">Floor 3</text>
+    <rect x="780" y="282" width="120" height="12" rx="3" fill="rgba(244,235,230,.06)"/>
+    <rect x="780" y="282" width="60" height="12" rx="3" fill="url(#fabar2)"/>
+    <text x="906" y="292" font-size="9" fill="#9a7e78">50%</text>
+    <!-- Floor 4 -->
+    <text x="736" y="314" font-size="9" fill="#9a7e78">Floor 4</text>
+    <rect x="780" y="304" width="120" height="12" rx="3" fill="rgba(244,235,230,.06)"/>
+    <rect x="780" y="304" width="96" height="12" rx="3" fill="url(#fabar2)"/>
+    <text x="906" y="314" font-size="9" fill="#9a7e78">80%</text>
+
+    <!-- ── BOOKINGS TABLE ── -->
+    <rect x="82" y="352" width="852" height="148" rx="10" fill="#1c0a0d" stroke="rgba(244,235,230,.08)" stroke-width="1"/>
+    <text x="98" y="372" font-size="11" font-weight="700" fill="#f4ebe6">Recent bookings</text>
+    <!-- Table header -->
+    <rect x="82" y="378" width="852" height="24" fill="rgba(244,235,230,.03)"/>
+    <text x="98"  y="394" font-size="9" fill="#9a7e78" letter-spacing=".06em">EMPLOYEE</text>
+    <text x="294" y="394" font-size="9" fill="#9a7e78" letter-spacing=".06em">DESK</text>
+    <text x="410" y="394" font-size="9" fill="#9a7e78" letter-spacing=".06em">FLOOR</text>
+    <text x="530" y="394" font-size="9" fill="#9a7e78" letter-spacing=".06em">TIME</text>
+    <text x="690" y="394" font-size="9" fill="#9a7e78" letter-spacing=".06em">STATUS</text>
+    <text x="820" y="394" font-size="9" fill="#9a7e78" letter-spacing=".06em">CHECK-IN</text>
+    <!-- Row 1 -->
+    <circle cx="114" cy="418" r="11" fill="#b32434" fill-opacity=".3"/>
+    <text x="114" y="422" text-anchor="middle" font-size="10" fill="#c8384a" font-weight="700">P</text>
+    <text x="132" y="422" font-size="11" fill="#f4ebe6" font-weight="600">Priya Sharma</text>
+    <text x="294" y="422" font-size="11" fill="#c9b5ae">3F-12</text>
+    <text x="410" y="422" font-size="11" fill="#c9b5ae">Floor 3</text>
+    <text x="530" y="422" font-size="11" fill="#c9b5ae">9:00 – 18:00</text>
+    <rect x="686" y="411" width="64" height="18" rx="9" fill="#22c55e" fill-opacity=".12"/>
+    <text x="718" y="424" text-anchor="middle" font-size="9" fill="#22c55e" font-weight="700">● Active</text>
+    <text x="820" y="422" font-size="11" fill="#c9b5ae">09:03</text>
+    <!-- Divider -->
+    <line x1="98" y1="434" x2="918" y2="434" stroke="rgba(244,235,230,.05)" stroke-width="1"/>
+    <!-- Row 2 -->
+    <circle cx="114" cy="452" r="11" fill="#7c3aed" fill-opacity=".3"/>
+    <text x="114" y="456" text-anchor="middle" font-size="10" fill="#a78bfa" font-weight="700">A</text>
+    <text x="132" y="456" font-size="11" fill="#f4ebe6" font-weight="600">Aryan Mehta</text>
+    <text x="294" y="456" font-size="11" fill="#c9b5ae">4C-07</text>
+    <text x="410" y="456" font-size="11" fill="#c9b5ae">Floor 4</text>
+    <text x="530" y="456" font-size="11" fill="#c9b5ae">10:00 – 17:00</text>
+    <rect x="686" y="445" width="64" height="18" rx="9" fill="#22c55e" fill-opacity=".12"/>
+    <text x="718" y="458" text-anchor="middle" font-size="9" fill="#22c55e" font-weight="700">● Active</text>
+    <text x="820" y="456" font-size="11" fill="#c9b5ae">10:11</text>
+    <!-- Divider -->
+    <line x1="98" y1="468" x2="918" y2="468" stroke="rgba(244,235,230,.05)" stroke-width="1"/>
+    <!-- Row 3 -->
+    <circle cx="114" cy="486" r="11" fill="#0E9C8E" fill-opacity=".25"/>
+    <text x="114" y="490" text-anchor="middle" font-size="10" fill="#0E9C8E" font-weight="700">S</text>
+    <text x="132" y="490" font-size="11" fill="#f4ebe6" font-weight="600">Sana Quereshi</text>
+    <text x="294" y="490" font-size="11" fill="#c9b5ae">2A-03</text>
+    <text x="410" y="490" font-size="11" fill="#c9b5ae">Floor 2</text>
+    <text x="530" y="490" font-size="11" fill="#c9b5ae">9:00 – 15:00</text>
+    <rect x="686" y="479" width="76" height="18" rx="9" fill="#f59e0b" fill-opacity=".12"/>
+    <text x="724" y="492" text-anchor="middle" font-size="9" fill="#f59e0b" font-weight="700">◑ Checked out</text>
+    <text x="820" y="490" font-size="11" fill="#c9b5ae">15:02</text>
+  </g>
+</g>
+
+<!-- Bottom label -->
+<text x="108" y="656" font-size="12" fill="#3a0a10" font-weight="500" letter-spacing=".12em">CASE STUDY · DASHBOARD DESIGN</text>
+</svg>
