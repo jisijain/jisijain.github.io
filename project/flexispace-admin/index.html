@@ -20,13 +20,50 @@
     border-radius:999px; color:var(--teal-deep); transform:translateY(-.45em); background:rgba(14,156,142,.06);}
   .ahero .lede{margin:30px 0 0; max-width:460px;}
 
-  .ahero-win{position:relative; perspective:2000px;}
-  .ahero-win .win.lead{width:780px; max-width:none; transform:rotateY(-13deg) rotateX(5deg); transform-origin:left center;}
-  .ahero-win .peek{position:absolute; right:-34px; top:-46px; width:300px; z-index:-1; transform:rotateY(-13deg) rotateX(5deg);
-    opacity:.92; filter:saturate(1.05);}
+  .ahero-win{position:relative; perspective:1600px;}
+
+  /* main window — dramatic shadow + red underglow + float */
+  .ahero-win .win.lead{
+    width:780px; max-width:none;
+    transform:rotateY(-12deg) rotateX(4deg);
+    transform-origin:left center;
+    box-shadow:
+      0 0 0 1px rgba(244,235,230,.06),
+      0 2px 4px rgba(0,0,0,.4),
+      0 20px 50px rgba(0,0,0,.65),
+      0 50px 100px rgba(0,0,0,.5),
+      0 0 140px 10px rgba(179,36,52,.10);
+    animation: adminFloat 7s ease-in-out infinite;
+  }
+
+  /* peek window — slightly more visible, complementary float */
+  .ahero-win .peek{
+    position:absolute; right:-34px; top:-46px; width:300px; z-index:-1;
+    transform:rotateY(-12deg) rotateX(4deg);
+    opacity:.80; filter:saturate(1.05);
+    box-shadow: 0 20px 60px rgba(0,0,0,.55), 0 0 60px rgba(179,36,52,.07);
+    animation: adminFloat 7s ease-in-out infinite;
+    animation-delay: .4s;
+  }
+
+  /* live badge — floats with slight delay for organic feel */
   .live-badge{position:absolute; left:-18px; bottom:34px; z-index:5; display:inline-flex; align-items:center; gap:9px;
-    background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-md); border-radius:999px; padding:11px 17px;
-    font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink);}
+    background:var(--surface); border:1px solid var(--line);
+    box-shadow:0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(179,36,52,.18);
+    border-radius:999px; padding:11px 17px;
+    font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink);
+    animation: badgeFloat 7s ease-in-out infinite;
+    animation-delay: .8s;
+  }
+
+  @keyframes adminFloat {
+    0%,100%{ transform:rotateY(-12deg) rotateX(4deg) translateY(0); }
+    50%    { transform:rotateY(-12deg) rotateX(4deg) translateY(-10px); }
+  }
+  @keyframes badgeFloat {
+    0%,100%{ transform:translateY(0); }
+    50%    { transform:translateY(-10px); }
+  }
   .live-badge .pdot{width:9px; height:9px; border-radius:999px; background:var(--teal); box-shadow:0 0 0 0 rgba(14,156,142,.6); animation:pulse 2s infinite;}
 
   /* browser window chrome */
@@ -77,9 +114,9 @@
     .ahero-grid,.afeat{grid-template-columns:1fr; gap:40px;}
     .afeat.rev .afeat-media{order:0;}
     .ahero-win{perspective:none;}
-    .ahero-win .win.lead{width:100%; transform:none;}
+    .ahero-win .win.lead{width:100%; transform:none; animation:none; box-shadow:0 20px 50px rgba(0,0,0,.5);}
     .ahero-win .peek{display:none;}
-    .live-badge{left:14px;}
+    .live-badge{left:14px; animation:none;}
     .ademo-win iframe{height:560px;}
   }
   @media(max-width:560px){
@@ -160,7 +197,7 @@ section[class*="bg-"],.bg-deep,.bg-panel{background:#1c0a0d!important;}
       <div class="win lead">
         <div class="win-bar">
           <span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span>
-          <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E9C8E" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin</span>
+          <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b32434" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin</span>
         </div>
         <img src="casestudy/img/admin-cc.png" alt="FlexiSpace admin command center" loading="eager" />
       </div>
@@ -271,7 +308,7 @@ section[class*="bg-"],.bg-deep,.bg-panel{background:#1c0a0d!important;}
         <div class="win" style="transform:perspective(1900px) rotateY(7deg) rotateX(4deg); transform-origin:right center;">
           <div class="win-bar">
             <span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span>
-            <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E9C8E" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin/analytics</span>
+            <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b32434" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin/analytics</span>
           </div>
           <img src="casestudy/img/admin-analytics.png" alt="Analytics replacing spreadsheets" />
         </div>
@@ -431,7 +468,7 @@ section[class*="bg-"],.bg-deep,.bg-panel{background:#1c0a0d!important;}
       <div class="win ademo-win reveal" data-d="1">
         <div class="win-bar">
           <span class="tl"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></span>
-          <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E9C8E" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin</span>
+          <span class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b32434" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>app.flexispace.io/admin</span>
         </div>
         <iframe id="demoFrame" src="FlexiSpace Admin.html?section=overview" title="FlexiSpace admin console — live" loading="lazy"></iframe>
       </div>
