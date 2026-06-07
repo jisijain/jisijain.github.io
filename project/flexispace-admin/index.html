@@ -98,17 +98,17 @@
   .ademo-win iframe{width:100%; height:700px; border:0; display:block; background:#F4F6F8;}
 
   /* ── extra DS card: data viz ── */
-  .dv-row{display:flex; gap:22px; flex-wrap:wrap; align-items:flex-end;}
-  .dv{display:flex; flex-direction:column; gap:9px;}
+  .dv-row{display:flex; gap:28px; flex-wrap:nowrap; align-items:flex-end; width:100%;}
+  .dv{display:flex; flex-direction:column; gap:10px; flex:1; min-width:0;}
   .dv .dv-l{font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink3);}
-  .dv .arc{width:96px; height:54px; border-radius:96px 96px 0 0; border:9px solid var(--line); border-bottom:0;
+  .dv .arc{width:100%; aspect-ratio:2/1; border-radius:999px 999px 0 0; border:11px solid var(--line); border-bottom:0;
     position:relative; overflow:hidden;}
-  .dv .arc::before{content:""; position:absolute; inset:-9px -9px 0; border-radius:96px 96px 0 0;
-    border:9px solid transparent; border-top-color:var(--teal); border-left-color:var(--teal); transform:rotate(28deg); transform-origin:center bottom;}
-  .dv .spark{display:flex; align-items:flex-end; gap:5px; height:54px;}
-  .dv .spark i{width:9px; background:var(--indigo); border-radius:3px; display:block;}
-  .dv .heat{display:grid; grid-template-columns:repeat(6,1fr); gap:3px;}
-  .dv .heat i{width:13px; height:13px; border-radius:3px; display:block;}
+  .dv .arc::before{content:""; position:absolute; inset:-11px -11px 0; border-radius:999px 999px 0 0;
+    border:11px solid transparent; border-top-color:var(--teal); border-left-color:var(--teal); transform:rotate(28deg); transform-origin:center bottom;}
+  .dv .spark{display:flex; align-items:flex-end; gap:4px; height:90px; width:100%;}
+  .dv .spark i{flex:1; background:var(--indigo); border-radius:4px; display:block; min-width:0;}
+  .dv .heat{display:grid; grid-template-columns:repeat(6,1fr); gap:4px; width:100%;}
+  .dv .heat i{aspect-ratio:1; border-radius:4px; display:block; width:100%;}
 
   @media(max-width:980px){
     .ahero-grid,.afeat{grid-template-columns:1fr; gap:40px;}
@@ -133,7 +133,9 @@ html,body{background:#0d0507!important;color:#f4ebe6!important;}
 .hero,.band,.band-sm{background:#0d0507!important;}
 .eyebrow{color:#c8384a!important;}.eyebrow::before{background:#b32434!important;}
 .grad-text{background:linear-gradient(100deg,#c8384a 0%,#f4ebe6 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;}
-.pill,.tag,.chip,.badge,.adm-tag{background:rgba(179,36,52,.12)!important;color:#c8384a!important;border-color:rgba(179,36,52,.3)!important;}
+/* .chip excluded — colour swatches use inline style bg, must not be overridden */
+.pill,.tag,.badge,.adm-tag{background:rgba(179,36,52,.12)!important;color:#c8384a!important;border-color:rgba(179,36,52,.3)!important;}
+/* .sw .chip has no cascade background — inline style= wins naturally */
 .progress{background:#b32434!important;}
 .win,.win.dark{background:#1c0a0d!important;border-color:rgba(244,235,230,.1)!important;}
 .win-bar{background:#271013!important;border-bottom-color:rgba(244,235,230,.08)!important;}
