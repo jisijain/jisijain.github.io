@@ -183,10 +183,25 @@
     if(btn.classList.contains('is-loading')||btn.classList.contains('is-done')) return;
     btn.classList.add('is-loading');
     btn.querySelector('.submit-btn__label').textContent = 'Sending';
-    setTimeout(()=>{
-      btn.classList.remove('is-loading'); btn.classList.add('is-done');
-      btn.querySelector('.submit-btn__label').textContent = 'Message sent';
-    }, 1400);
+    const data = new FormData(form);
+    data.append('access_key', '6a747abf-b5a8-41c4-a60e-95e24ff866d5');
+    data.append('subject', 'New message from portfolio — ' + (data.get('topic')||'General'));
+    fetch('https://api.web3forms.com/submit', { method:'POST', body: data })
+      .then(r => r.json())
+      .then(res => {
+        btn.classList.remove('is-loading');
+        if(res.success){
+          btn.classList.add('is-done');
+          btn.querySelector('.submit-btn__label').textContent = 'Message sent ✓';
+        } else {
+          btn.querySelector('.submit-btn__label').textContent = 'Try again';
+          console.error('Web3Forms error:', res);
+        }
+      })
+      .catch(()=>{
+        btn.classList.remove('is-loading');
+        btn.querySelector('.submit-btn__label').textContent = 'Try again';
+      });
   });
 })();
 </script>
