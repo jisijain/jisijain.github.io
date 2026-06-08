@@ -646,6 +646,25 @@ a.contact-row:hover .contact-row__a{ transform:translate(4px,-4px); opacity:1; }
 .svc-back:hover{ background:rgba(255,255,255,.13); }
 .svc-back .a{ font-size:1em; line-height:1; }
 
+/* ---- Service page hero: service name ---- */
+/* The eyebrow that IS the service name sits as a direct child of .page-head .wrap,
+   between .svc-back and the h1. Promote it from tiny mono label to a real title. */
+.page-head > .wrap > .eyebrow{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  opacity:1;
+  margin-bottom:.3em;
+}
+/* Remove the tiny decorative bar — wrong scale at this size */
+.page-head > .wrap > .eyebrow::before{ display:none; }
+
+/* ---- Service grid cards (Services page): name weight ---- */
+/* h3 was font-weight:300 (hairline) — bump to 500 so names read clearly */
+.svc-card h3{ font-weight:500; }
+
 /* ---- 4. When You Need This — trigger list ---- */
 /* Same flex pattern as .do — arrow top-aligned, wrapped text indents past arrow */
 .trigger-list{
