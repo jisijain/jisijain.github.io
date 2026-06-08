@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GyanGram · Case Study — Mahima Jain</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<meta name="description" content="GyanGram — UPSC mastery platform. End-to-end UX/UI case study covering research, personas, information architecture, and the mastery loop design system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ─── Reset & Base ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --canvas:#060b18;
+  --surface:#0a0e1a;
+  --panel:#0f1625;
+  --card:#111827;
+  --border:rgba(255,255,255,.07);
+  --border2:rgba(255,255,255,.12);
+  --ink:#f1f5f9;
+  --ink2:#94a3b8;
+  --ink3:#475569;
+  --orange:#f97316;
+  --orange-soft:#fb923c;
+  --orange-dim:rgba(249,115,22,.12);
+  --blue:#3b82f6;
+  --blue-soft:#60a5fa;
+  --blue-dim:rgba(59,130,246,.12);
+  --green:#22c55e;
+  --green-dim:rgba(34,197,94,.12);
+  --purple:#a855f7;
+  --purple-dim:rgba(168,85,247,.12);
+  --red:#ef4444;
+  --red-dim:rgba(239,68,68,.1);
+  --ff:'Schibsted Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;background:var(--canvas);}
+body{font-family:var(--ff);color:var(--ink);background:var(--canvas);line-height:1.65;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* ─── Typography ─── */
+.t-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);}
+.t-h1{font-size:clamp(2.6rem,6vw,5rem);font-weight:900;line-height:1.0;letter-spacing:-.03em;}
+.t-h2{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;}
+.t-h3{font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;line-height:1.3;}
+.t-h4{font-size:1rem;font-weight:700;}
+.t-lead{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--ink2);line-height:1.75;}
+.t-body{font-size:.95rem;color:var(--ink2);line-height:1.75;}
+.t-mono{font-family:var(--mono);font-size:.8rem;}
+.grad{background:linear-gradient(100deg,var(--orange),#fbbf24);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* ─── Layout ─── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,60px);}
+.wrap--sm{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,60px);}
+.section{padding:clamp(60px,8vw,110px) 0;}
+.section--sm{padding:clamp(40px,5vw,64px) 0;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.stack{display:flex;flex-direction:column;}
+.row{display:flex;gap:16px;align-items:flex-start;}
+@media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr;}.grid-4{grid-template-columns:1fr 1fr;}}
+@media(max-width:540px){.grid-4{grid-template-columns:1fr;}}
+
+/* ─── Scroll reveal ─── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ─── Progress bar ─── */
+#progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--orange),#fbbf24);z-index:9999;transition:width .1s linear;}
+
+/* ─── Back button ─── */
+.back-btn{position:fixed;top:20px;left:24px;z-index:300;display:inline-flex;align-items:center;gap:8px;background:rgba(6,11,24,.75);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);color:#fff;font-family:var(--ff);font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:9px 18px;border-radius:999px;text-decoration:none;transition:background .2s,border-color .2s;}
+.back-btn:hover{background:rgba(6,11,24,.95);border-color:rgba(249,115,22,.4);}
+
+/* ─── Topbar ─── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;padding:0 clamp(20px,5vw,48px);background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.topbar__brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.95rem;}
+.topbar__badge{width:30px;height:30px;border-radius:8px;background:var(--orange);display:grid;place-items:center;font-size:.85rem;font-weight:900;color:#fff;}
+.topbar__cta{margin-left:auto;font-size:.78rem;font-weight:700;color:var(--ink2);border:1px solid var(--border2);padding:7px 18px;border-radius:999px;transition:color .2s,border-color .2s;}
+.topbar__cta:hover{color:var(--ink);border-color:var(--orange);}
+
+/* ─── Hero ─── */
+.hero{padding:clamp(100px,14vw,160px) 0 clamp(60px,8vw,100px);position:relative;overflow:hidden;}
+.hero__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;}
+.hero__tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;}
+.hero__tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:999px;}
+.hero__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
+.hero__stat b{display:block;font-size:1.6rem;font-weight:900;color:var(--ink);}
+.hero__stat span{font-size:.78rem;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase;}
+@media(max-width:860px){.hero__grid{grid-template-columns:1fr;}.hero__visual{order:-1;}}
+
+/* ─── Phone mockup (generic) ─── */
+.phone-wrap{display:flex;justify-content:center;}
+.phone{width:240px;background:#070c16;border-radius:36px;border:2px solid #1e2d45;box-shadow:0 32px 80px rgba(249,115,22,.15),0 0 0 1px rgba(255,255,255,.05);overflow:hidden;}
+.phone-screen{background:#0a0e1a;min-height:480px;position:relative;}
+.phone-notch{width:80px;height:22px;background:#000;border-radius:0 0 12px 12px;margin:0 auto;position:relative;z-index:1;}
+.phone-statusbar{background:#080d1a;padding:6px 16px;display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;color:#94a3b8;}
+.phone-topbar{background:#0a0e1a;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;}
+.phone-content{padding:14px 16px;}
+.phone-tabbar{background:#080d1a;border-top:1px solid #1e293b;padding:8px 0 12px;display:grid;grid-template-columns:repeat(4,1fr);}
+.phone-tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:8px;color:#475569;}
+.phone-tab.active{color:var(--orange);}
+.phone-tab .tab-icon{font-size:16px;}
+.phone-tab.active::after{content:'';display:block;width:16px;height:2px;background:var(--orange);border-radius:1px;margin:2px auto 0;}
+
+/* ─── Cards ─── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:clamp(20px,3vw,32px);}
+.card--orange{border-color:rgba(249,115,22,.2);background:linear-gradient(135deg,rgba(249,115,22,.06),rgba(249,115,22,.02));}
+.card--blue{border-color:rgba(59,130,246,.2);background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(59,130,246,.02));}
+.card--green{border-color:rgba(34,197,94,.2);background:linear-gradient(135deg,rgba(34,197,94,.06),rgba(34,197,94,.02));}
+.card--purple{border-color:rgba(168,85,247,.2);background:linear-gradient(135deg,rgba(168,85,247,.06),rgba(168,85,247,.02));}
+.card--red{border-color:rgba(239,68,68,.2);background:linear-gradient(135deg,rgba(239,68,68,.06),rgba(239,68,68,.02));}
+
+/* ─── Section header ─── */
+.section-head{margin-bottom:clamp(32px,5vw,56px);}
+.section-head .t-eyebrow{margin-bottom:.6rem;}
+.section-head .t-h2{margin-bottom:.75rem;}
+
+/* ─── Pills / Tags ─── */
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:999px;}
+.pill--orange{background:var(--orange-dim);color:var(--orange);}
+.pill--blue{background:var(--blue-dim);color:var(--blue-soft);}
+.pill--green{background:var(--green-dim);color:var(--green);}
+.pill--purple{background:var(--purple-dim);color:var(--purple);}
+.pill--red{background:var(--red-dim);color:var(--red);}
+.pill--ghost{background:rgba(255,255,255,.06);color:var(--ink2);}
+
+/* ─── Insight rows ─── */
+.insight{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);}
+.insight:last-child{border-bottom:none;}
+.insight__icon{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:grid;place-items:center;font-size:16px;}
+.insight__body b{display:block;font-size:.9rem;font-weight:700;margin-bottom:2px;}
+.insight__body span{font-size:.85rem;color:var(--ink2);}
+
+/* ─── Persona card ─── */
+.persona{border-radius:20px;overflow:hidden;}
+.persona__head{padding:28px 28px 20px;border-bottom:1px solid var(--border);}
+.persona__avatar{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:28px;margin-bottom:14px;}
+.persona__name{font-size:1.2rem;font-weight:800;margin-bottom:2px;}
+.persona__role{font-size:.82rem;color:var(--ink2);}
+.persona__body{padding:20px 28px 28px;}
+.persona__section{margin-bottom:16px;}
+.persona__section:last-child{margin-bottom:0;}
+.persona__label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
+.persona__list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.persona__list li{font-size:.85rem;color:var(--ink2);padding-left:14px;position:relative;}
+.persona__list li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:.75rem;}
+
+/* ─── Quote ─── */
+.quote{border-left:3px solid var(--orange);padding:16px 20px;background:var(--orange-dim);border-radius:0 12px 12px 0;font-style:italic;color:var(--ink2);font-size:.95rem;line-height:1.7;}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:.78rem;font-weight:700;color:var(--ink3);}
+
+/* ─── IA Tree ─── */
+.ia-tree{display:flex;flex-direction:column;gap:12px;}
+.ia-row{display:flex;gap:12px;align-items:flex-start;}
+.ia-node{border-radius:12px;padding:10px 18px;font-size:.85rem;font-weight:600;}
+.ia-root{background:var(--orange);color:#fff;font-weight:800;}
+.ia-branch{background:var(--card);border:1px solid var(--border);color:var(--ink);}
+.ia-leaf{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--ink2);font-size:.78rem;}
+.ia-connector{width:2px;background:var(--border);flex-shrink:0;margin-top:20px;border-radius:2px;}
+
+/* ─── Feature screen section ─── */
+.feature-block{display:grid;grid-template-columns:280px 1fr;gap:clamp(32px,5vw,60px);align-items:center;}
+.feature-block.flip{grid-template-columns:1fr 280px;}
+.feature-block.flip .feature-copy{order:1;}
+.feature-block.flip .feature-visual{order:2;}
+@media(max-width:860px){.feature-block,.feature-block.flip{grid-template-columns:1fr;}.feature-block.flip .feature-copy,.feature-block.flip .feature-visual{order:unset;}}
+
+.feature-copy .pill{margin-bottom:14px;}
+.feature-copy .t-h3{margin-bottom:.7rem;}
+.feature-copy .t-body{margin-bottom:1.2rem;}
+.feature-point{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.feature-point .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:8px;}
+.feature-point span{font-size:.88rem;color:var(--ink2);}
+
+/* ─── Decision card ─── */
+.decision{padding:20px;border-radius:14px;background:var(--card);border:1px solid var(--border);margin-bottom:16px;}
+.decision__q{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+.decision__a{font-size:.88rem;color:var(--ink2);}
+
+/* ─── Metric card ─── */
+.metric{text-align:center;padding:24px 16px;}
+.metric b{display:block;font-size:2.4rem;font-weight:900;line-height:1;}
+.metric span{font-size:.78rem;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-top:6px;display:block;}
+
+/* ─── Timeline ─── */
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--orange),transparent);}
+.tl-item{position:relative;padding-bottom:28px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:-28px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--orange);}
+.tl-item__label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;}
+.tl-item__title{font-weight:700;margin-bottom:4px;}
+.tl-item__desc{font-size:.85rem;color:var(--ink2);}
+
+/* ─── Competitor row ─── */
+.comp-row{display:grid;grid-template-columns:120px repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.comp-cell{padding:12px 16px;font-size:.82rem;border-right:1px solid var(--border);}
+.comp-cell:last-child{border-right:none;}
+.comp-row--head .comp-cell{background:rgba(255,255,255,.04);font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);}
+.comp-row:not(.comp-row--head){border-top:1px solid var(--border);}
+.comp-tick{color:var(--green);}
+.comp-cross{color:var(--red-dim);opacity:.6;}
+@media(max-width:700px){.comp-row{grid-template-columns:1fr 1fr;}}
+
+/* ─── Footer ─── */
+.cs-footer{background:var(--surface);border-top:1px solid var(--border);padding:clamp(48px,6vw,80px) 0;}
+.next-project{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+
+/* ─── Divider ─── */
+.divider{height:1px;background:var(--border);margin:clamp(48px,6vw,80px) 0;}
+
+/* ─── App UI Components (inline mockups) ─── */
+.app-scroll-card{background:#111827;border:1px solid rgba(249,115,22,.15);border-radius:18px;padding:24px;max-width:280px;}
+.progress-bar{height:5px;background:#1e293b;border-radius:3px;overflow:hidden;}
+.progress-bar__fill{height:100%;border-radius:3px;}
+.badge-streak{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.25);color:#fb923c;font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:999px;}
+.subject-chip{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#111827;border:1px solid var(--border);border-radius:12px;font-size:.82rem;font-weight:600;color:var(--ink);}
+.subject-chip .pct{margin-left:auto;font-size:.75rem;font-weight:700;}
+
+/* ─── responsive ─── */
+@media(max-width:540px){.hero__stats{grid-template-columns:1fr 1fr;}.grid-2{gap:16px;}}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress"></div>
+
+<!-- Back to Work -->
+<a href="/Work/" class="back-btn">← Back to Work</a>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar__brand">
+    <div class="topbar__badge">G</div>
+    GyanGram<small style="font-weight:400;color:var(--ink3);margin-left:6px;">UPSC Mastery Platform · Case Study</small>
+  </div>
+  <a href="https://app.gyangram.com/" target="_blank" class="topbar__cta">Open live app ↗</a>
+</div>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<header class="hero" id="top">
+  <!-- glow blobs -->
+  <div style="position:absolute;top:-80px;right:-80px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:0;left:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <div class="hero__tags">
+          <span class="hero__tag pill pill--orange">EdTech</span>
+          <span class="hero__tag pill pill--blue">UPSC Prep</span>
+          <span class="hero__tag pill pill--purple">AI-Powered</span>
+          <span class="hero__tag pill pill--ghost">Mobile + Web</span>
+        </div>
+        <p class="t-eyebrow reveal" style="margin-bottom:.7rem;">Case Study · 2024–2025</p>
+        <h1 class="t-h1 reveal" data-d=".1"><span class="grad">GyanGram</span></h1>
+        <p class="t-h3 reveal" data-d=".15" style="color:var(--ink2);font-weight:500;margin-top:.5rem;margin-bottom:1.4rem;">UPSC preparation that remembers how you learn</p>
+        <p class="t-lead reveal" data-d=".2">Architected the end-to-end UX/UI for a connected learning system that unifies content, recall, practice, and weak-area diagnosis into one continuous mastery loop — from first research interview to a live beta on Google Play.</p>
+        <div class="hero__stats reveal" data-d=".3">
+          <div class="hero__stat">
+            <b>4 wks</b>
+            <span>Research → Hi-Fi</span>
+          </div>
+          <div class="hero__stat">
+            <b>4.6 ★</b>
+            <span>Play Store Beta</span>
+          </div>
+          <div class="hero__stat">
+            <b>68%</b>
+            <span>D-7 Retention</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero phone mockup -->
+      <div class="hero__visual reveal" data-d=".2" style="display:flex;justify-content:center;">
+        <div class="phone" style="width:240px;">
+          <!-- Status bar -->
+          <div style="background:#080d1a;padding:7px 16px;display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:#94a3b8;">
+            <span>9:41</span><span>●●●</span>
+          </div>
+          <!-- App bar -->
+          <div style="background:#0a0e1a;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:28px;border-radius:8px;background:rgba(249,115,22,.2);display:grid;place-items:center;font-weight:900;color:#f97316;font-size:.85rem;">G</div>
+              <span style="font-weight:800;font-size:.9rem;">GyanGram</span>
+            </div>
+            <span style="font-size:18px;">🔔</span>
+          </div>
+          <!-- Content -->
+          <div style="background:#0a0e1a;padding:14px 16px;">
+            <!-- Greeting -->
+            <div style="margin-bottom:12px;">
+              <div style="font-size:.7rem;color:#64748b;margin-bottom:2px;">Good morning</div>
+              <div style="font-size:.95rem;font-weight:700;">Riya 👋</div>
+            </div>
+            <!-- Streak -->
+            <div style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.2);border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:18px;">🔥</span>
+                <div>
+                  <div style="font-size:.8rem;font-weight:700;color:#fb923c;">47-day streak!</div>
+                  <div style="font-size:.7rem;color:#92400e;">Study today to keep it</div>
+                </div>
+              </div>
+              <span style="background:#f97316;color:#fff;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:999px;">Day 47</span>
+            </div>
+            <!-- Today's target -->
+            <div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:6px;">Today's Target</div>
+            <div style="display:flex;gap:5px;margin-bottom:12px;align-items:center;">
+              <div style="width:18px;height:18px;border-radius:50%;background:#f97316;display:grid;place-items:center;font-size:9px;color:#fff;">✓</div>
+              <div style="width:18px;height:18px;border-radius:50%;background:#f97316;display:grid;place-items:center;font-size:9px;color:#fff;">✓</div>
+              <div style="width:18px;height:18px;border-radius:50%;background:#f97316;display:grid;place-items:center;font-size:9px;color:#fff;">✓</div>
+              <div style="width:18px;height:18px;border-radius:50%;border:2px solid #1e3a5f;"></div>
+              <div style="width:18px;height:18px;border-radius:50%;border:2px solid #1e3a5f;"></div>
+              <span style="font-size:.7rem;color:#64748b;margin-left:4px;">3 of 5</span>
+            </div>
+            <!-- Subjects -->
+            <div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:8px;">Subject Progress</div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:3px;"><span>History</span><span style="color:#f97316;">65%</span></div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="width:65%;background:linear-gradient(90deg,#f97316,#fb923c);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:3px;"><span>Polity</span><span style="color:#60a5fa;">42%</span></div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="width:42%;background:linear-gradient(90deg,#3b82f6,#60a5fa);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:3px;"><span>Geography</span><span style="color:#4ade80;">78%</span></div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="width:78%;background:linear-gradient(90deg,#22c55e,#4ade80);"></div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Tab bar -->
+          <div class="phone-tabbar">
+            <div class="phone-tab active"><span class="tab-icon">🏠</span>Home</div>
+            <div class="phone-tab"><span class="tab-icon">📚</span>Scroll</div>
+            <div class="phone-tab"><span class="tab-icon">🎓</span>Learn</div>
+            <div class="phone-tab"><span class="tab-icon">⚡</span>Strategy</div>
+          </div>
+          <div style="background:#080d1a;padding:6px 0 10px;text-align:center;"><div style="width:60px;height:3px;background:#1e293b;border-radius:2px;display:inline-block;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════ OVERVIEW BAND ═══════════════════════════════════════ -->
+<section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(32px,4vw,48px) 0;">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;@media(max-width:700px){grid-template-columns:1fr 1fr;}">
+      <div>
+        <div class="t-eyebrow" style="margin-bottom:.4rem;">Role</div>
+        <div style="font-weight:700;">Lead UX/UI Designer</div>
+        <div class="t-body" style="font-size:.8rem;margin-top:2px;">End-to-end ownership</div>
+      </div>
+      <div>
+        <div class="t-eyebrow" style="margin-bottom:.4rem;">Timeline</div>
+        <div style="font-weight:700;">4 weeks</div>
+        <div class="t-body" style="font-size:.8rem;margin-top:2px;">Research → Beta launch</div>
+      </div>
+      <div>
+        <div class="t-eyebrow" style="margin-bottom:.4rem;">Tools</div>
+        <div style="font-weight:700;">Figma, FigJam</div>
+        <div class="t-body" style="font-size:.8rem;margin-top:2px;">+ Maze for usability tests</div>
+      </div>
+      <div>
+        <div class="t-eyebrow" style="margin-bottom:.4rem;">Platform</div>
+        <div style="font-weight:700;">Android + Web</div>
+        <div class="t-body" style="font-size:.8rem;margin-top:2px;">Flutter · app.gyangram.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PROBLEM ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap--sm">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">01 · Problem</p>
+      <h2 class="t-h2">UPSC aspirants drown in content — and still feel unprepared</h2>
+    </div>
+    <p class="t-lead reveal">The UPSC Civil Services Examination is India's most competitive exam. Aspirants spend 12–18 months preparing, yet most fail not from lack of effort — but from a broken study system.</p>
+    <div style="height:24px;"></div>
+    <div class="grid-2 reveal" data-d=".1">
+      <div class="card card--red">
+        <div style="font-size:2rem;margin-bottom:10px;">😩</div>
+        <h4 class="t-h4" style="margin-bottom:6px;">Content Fragmentation</h4>
+        <p class="t-body" style="font-size:.85rem;">Aspirants juggle 5+ apps daily: YouTube for concepts, Telegram PDFs for current affairs, separate apps for MCQs, physical notes for revision. Nothing talks to anything else.</p>
+      </div>
+      <div class="card card--orange">
+        <div style="font-size:2rem;margin-bottom:10px;">📉</div>
+        <h4 class="t-h4" style="margin-bottom:6px;">No Progress Visibility</h4>
+        <p class="t-body" style="font-size:.85rem;">You can read for 8 hours and have no idea if you're ready for the exam. No system tells you what you know, what you don't, or what to study next.</p>
+      </div>
+      <div class="card card--blue">
+        <div style="font-size:2rem;margin-bottom:10px;">🔁</div>
+        <h4 class="t-h4" style="margin-bottom:6px;">Passive Learning Loop</h4>
+        <p class="t-body" style="font-size:.85rem;">Aspirants re-read the same chapters hoping it'll stick. There's no spaced repetition, no active recall, no feedback mechanism — just reading as a proxy for learning.</p>
+      </div>
+      <div class="card card--purple">
+        <div style="font-size:2rem;margin-bottom:10px;">🕐</div>
+        <h4 class="t-h4" style="margin-bottom:6px;">Consistency Collapse</h4>
+        <p class="t-body" style="font-size:.85rem;">Motivation is volatile. Aspirants study intensely for 2 weeks, then disappear for 10 days. No system catches them when they drop, or guides them back in.</p>
+      </div>
+    </div>
+
+    <div style="height:40px;"></div>
+    <blockquote class="quote reveal">
+      "I have five browsers open, three Telegram groups, two physical books, and I still don't know if I'll be ready. I'm studying all the time but I feel like I'm going nowhere."
+      <cite>— UPSC aspirant, 2nd attempt, interviewed during research</cite>
+    </blockquote>
+  </div>
+</section>
+
+<div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap" style="padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px);">
+    <div class="grid-4 reveal">
+      <div class="metric card">
+        <b style="color:var(--red);">5+</b>
+        <span>Apps juggled daily</span>
+      </div>
+      <div class="metric card">
+        <b style="color:var(--orange);">73%</b>
+        <span>Can't track their progress</span>
+      </div>
+      <div class="metric card">
+        <b style="color:var(--blue-soft);">65%</b>
+        <span>Switch apps 3+ times/day</span>
+      </div>
+      <div class="metric card">
+        <b style="color:var(--purple);">89%</b>
+        <span>Fail to stay consistent</span>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.75rem;color:var(--ink3);margin-top:16px;">Based on 8 in-depth interviews + 34-respondent screener survey</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ RESEARCH ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">02 · Research</p>
+      <h2 class="t-h2">Understanding how aspirants actually study</h2>
+      <p class="t-lead">8 in-depth interviews (45–60 min each), a screener survey (34 respondents), and competitive analysis across 6 existing UPSC apps.</p>
+    </div>
+
+    <div class="grid-2 reveal">
+      <!-- Methods -->
+      <div>
+        <h3 class="t-h3" style="margin-bottom:1.2rem;">Research Methods</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-item__label">Week 1 · Days 1–3</div>
+            <div class="tl-item__title">Screener Survey</div>
+            <div class="tl-item__desc">34-respondent survey to map study habits, app usage patterns, daily time investment, and current pain points. Recruited via UPSC subreddit and Telegram groups.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-item__label">Week 1 · Days 4–7</div>
+            <div class="tl-item__title">In-depth Interviews</div>
+            <div class="tl-item__desc">8 semi-structured interviews (45–60 min each) across 2 segments: working professionals (4) and fresh graduates/full-time aspirants (4). Screened for 1st and 2nd attempt.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-item__label">Week 2 · Days 1–3</div>
+            <div class="tl-item__title">Contextual Inquiry</div>
+            <div class="tl-item__desc">Shadowed 3 aspirants through a 2-hour study session. Observed real tool-switching behaviour, note-taking systems, and how they self-assess comprehension.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-item__label">Week 2 · Days 4–5</div>
+            <div class="tl-item__title">Competitor Analysis</div>
+            <div class="tl-item__desc">Audited 6 apps: Unacademy, BYJU's, Testbook, StudyIQ, Vision IAS app, and Drishti IAS. Evaluated against 12 criteria including content integration, revision tools, and personalisation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competitor table -->
+      <div>
+        <h3 class="t-h3" style="margin-bottom:1.2rem;">Competitive Gap Analysis</h3>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.8rem;">
+            <thead>
+              <tr style="background:rgba(255,255,255,.04);">
+                <th style="padding:10px 14px;text-align:left;color:var(--ink3);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border);">Feature</th>
+                <th style="padding:10px 14px;text-align:center;color:var(--ink3);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border);">Others</th>
+                <th style="padding:10px 14px;text-align:center;color:var(--orange);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border);">GyanGram</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">Integrated content + practice</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--red);">✗</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">Weak area auto-detection</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--red);">✗</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">Swipeable visual cards</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--red);">✗</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">AI-personalised study path</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--red);">✗</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">Daily targets + streaks</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:#fbbf24;">Partial</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">PYQ diagnosis by topic</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:#fbbf24;">Partial</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+              <tr style="border:1px solid var(--border);">
+                <td style="padding:10px 14px;color:var(--ink2);border:1px solid var(--border);">Syllabus-aware navigation</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:#fbbf24;">Partial</td>
+                <td style="padding:10px;text-align:center;border:1px solid var(--border);color:var(--green);">✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Key insights -->
+        <div style="margin-top:28px;">
+          <h4 class="t-h4" style="margin-bottom:14px;color:var(--ink2);">Key Interview Insights</h4>
+          <div class="insight">
+            <div class="insight__icon" style="background:var(--orange-dim);">💡</div>
+            <div class="insight__body">
+              <b>The "study guilt" problem</b>
+              <span>Aspirants feel guilty for not studying, even on study days — because they can't measure if what they did was enough.</span>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="insight__icon" style="background:var(--blue-dim);">🧩</div>
+            <div class="insight__body">
+              <b>PYQs are the north star</b>
+              <span>Every aspirant mentioned PYQs as the #1 way to know if they're on track. None had a structured way to use them diagnostically.</span>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="insight__icon" style="background:var(--green-dim);">⚡</div>
+            <div class="insight__body">
+              <b>Short sessions are preferred</b>
+              <span>Working professionals preferred 15–20 min focused sessions over 2-hour blocks. No app was designed around this reality.</span>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="insight__icon" style="background:var(--purple-dim);">🔄</div>
+            <div class="insight__body">
+              <b>Revision is the bottleneck</b>
+              <span>All aspirants said they read good content but couldn't retain it. Revision felt impossible to schedule manually.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PERSONAS ═══════════════════════════════════════ -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">03 · Personas</p>
+      <h2 class="t-h2">Two distinct aspirant types, one unified system</h2>
+      <p class="t-lead">Research distilled into two primary personas that represent the core spectrum of UPSC aspirants — each with fundamentally different constraints but identical core needs.</p>
+    </div>
+
+    <div class="grid-2 reveal">
+      <!-- Persona 1 -->
+      <div class="card persona" style="padding:0;">
+        <div class="persona__head" style="background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(249,115,22,.02));">
+          <div class="persona__avatar" style="background:var(--orange-dim);">👩‍💼</div>
+          <div class="persona__name">Riya Sharma</div>
+          <div class="persona__role">24 · IT Professional · Delhi · 2nd attempt</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+            <span class="pill pill--orange">Working professional</span>
+            <span class="pill pill--ghost">2–3 hrs/day</span>
+            <span class="pill pill--ghost">Mobile-first</span>
+          </div>
+        </div>
+        <div class="persona__body">
+          <div class="persona__section">
+            <div class="persona__label">Background</div>
+            <p style="font-size:.85rem;color:var(--ink2);">Works 9–6, commutes 90 min daily. Studies evenings and weekends. Uses phone more than laptop. Failed Prelims by 8 marks on first attempt — knows the content but loses marks on MCQs.</p>
+          </div>
+          <div class="persona__section">
+            <div class="persona__label">Goals</div>
+            <ul class="persona__list">
+              <li>Make the most of commute + lunch breaks</li>
+              <li>Know exactly where her weak topics are</li>
+              <li>Build a consistent daily habit without burnout</li>
+              <li>Stop second-guessing whether she's on track</li>
+            </ul>
+          </div>
+          <div class="persona__section">
+            <div class="persona__label">Frustrations</div>
+            <ul class="persona__list">
+              <li>Forgets what she studied 2 weeks ago</li>
+              <li>Can't do long reading sessions on phone</li>
+              <li>No way to quickly jump into "what's next"</li>
+              <li>Study apps feel designed for 8-hour sittings</li>
+            </ul>
+          </div>
+          <blockquote class="quote" style="margin-top:12px;font-size:.82rem;">
+            "I need something that fits into the gaps of my life, not something that demands my whole day."
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Persona 2 -->
+      <div class="card persona" style="padding:0;">
+        <div class="persona__head" style="background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(59,130,246,.02));">
+          <div class="persona__avatar" style="background:var(--blue-dim);">👨‍🎓</div>
+          <div class="persona__name">Aarav Mehta</div>
+          <div class="persona__role">21 · Fresh Graduate · Jaipur · 1st attempt</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+            <span class="pill pill--blue">Full-time aspirant</span>
+            <span class="pill pill--ghost">8–10 hrs/day</span>
+            <span class="pill pill--ghost">Overwhelmed</span>
+          </div>
+        </div>
+        <div class="persona__body">
+          <div class="persona__section">
+            <div class="persona__label">Background</div>
+            <p style="font-size:.85rem;color:var(--ink2);">Recently completed B.Com. No job, full-time UPSC. Has all the time but no structured system — buys books, downloads PDFs, watches YouTube, but can't synthesise it into a coherent preparation plan.</p>
+          </div>
+          <div class="persona__section">
+            <div class="persona__label">Goals</div>
+            <ul class="persona__list">
+              <li>Understand what the syllabus actually demands</li>
+              <li>Build subject-by-subject depth systematically</li>
+              <li>Know when a topic is "exam-ready"</li>
+              <li>Avoid the trap of over-studying easy topics</li>
+            </ul>
+          </div>
+          <div class="persona__section">
+            <div class="persona__label">Frustrations</div>
+            <ul class="persona__list">
+              <li>Paralysed by how much there is to cover</li>
+              <li>Studies a topic but can't tell if he understood it</li>
+              <li>Previous year questions feel disconnected from reading</li>
+              <li>Loses motivation after a few weeks of grinding</li>
+            </ul>
+          </div>
+          <blockquote class="quote" style="margin-top:12px;font-size:.82rem;border-left-color:var(--blue);">
+            "I don't know what I don't know. That's the scariest part of this exam."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ HMW / OPPORTUNITY ═══════════════════════════════════════ -->
+<section class="section--sm">
+  <div class="wrap--sm reveal">
+    <p class="t-eyebrow" style="margin-bottom:.6rem;">04 · How Might We</p>
+    <h2 class="t-h2" style="margin-bottom:1.5rem;">Defining the design opportunity</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--orange);">
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--orange);text-transform:uppercase;">HMW 01</span>
+        <p style="margin-top:4px;font-weight:600;">How might we make 15 minutes of study feel as productive as a 2-hour session?</p>
+      </div>
+      <div style="padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--blue);">
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--blue-soft);text-transform:uppercase;">HMW 02</span>
+        <p style="margin-top:4px;font-weight:600;">How might we automatically surface what a user needs to study next — without them having to decide?</p>
+      </div>
+      <div style="padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--green);">
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--green);text-transform:uppercase;">HMW 03</span>
+        <p style="margin-top:4px;font-weight:600;">How might we close the loop between reading content and actually retaining it?</p>
+      </div>
+      <div style="padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--purple);">
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--purple);text-transform:uppercase;">HMW 04</span>
+        <p style="margin-top:4px;font-weight:600;">How might we make progress visible enough that aspirants feel momentum even on hard days?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ IA ═══════════════════════════════════════ -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">05 · Information Architecture</p>
+      <h2 class="t-h2">The mastery loop as navigation</h2>
+      <p class="t-lead">Rather than organising the app by content type (like every competitor), I organised it by the step in the learning journey. Each tab is a mode of engagement, not a content category.</p>
+    </div>
+
+    <div class="grid-2 reveal">
+      <!-- IA diagram -->
+      <div>
+        <h4 class="t-h4" style="margin-bottom:16px;color:var(--ink2);">App Structure</h4>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <!-- Root -->
+          <div style="text-align:center;margin-bottom:20px;">
+            <div style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:800;padding:10px 24px;border-radius:12px;font-size:.9rem;">
+              <span>G</span> GyanGram
+            </div>
+          </div>
+          <!-- 4 branches -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center;margin-bottom:16px;">
+            <div style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);border-radius:10px;padding:10px 6px;">
+              <div style="font-size:16px;margin-bottom:4px;">🏠</div>
+              <div style="font-size:.75rem;font-weight:700;color:var(--orange);">Home</div>
+            </div>
+            <div style="background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);border-radius:10px;padding:10px 6px;">
+              <div style="font-size:16px;margin-bottom:4px;">📚</div>
+              <div style="font-size:.75rem;font-weight:700;color:var(--blue-soft);">Scroll</div>
+            </div>
+            <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:10px 6px;">
+              <div style="font-size:16px;margin-bottom:4px;">🎓</div>
+              <div style="font-size:.75rem;font-weight:700;color:var(--green);">Learn</div>
+            </div>
+            <div style="background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.25);border-radius:10px;padding:10px 6px;">
+              <div style="font-size:16px;margin-bottom:4px;">⚡</div>
+              <div style="font-size:.75rem;font-weight:700;color:var(--purple);">Strategy</div>
+            </div>
+          </div>
+          <!-- Sub-items -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Daily targets</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Streak tracker</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Recommended</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Subject progress</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Concept cards</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Maps + timelines</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Current affairs</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Got it / Review</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Subjects</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Units + topics</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Articles</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Concept cards</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Weak areas</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">PYQ practice</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Review queue</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px;font-size:.68rem;color:var(--ink3);">Practice paths</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI crosscut -->
+        <div style="margin-top:14px;background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:12px;padding:14px 18px;">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--orange);margin-bottom:4px;">AI LAYER · CROSS-CUTTING</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="pill pill--ghost" style="font-size:.7rem;">Personal study direction</span>
+            <span class="pill pill--ghost" style="font-size:.7rem;">Smarter explanations</span>
+            <span class="pill pill--ghost" style="font-size:.7rem;">Revision intelligence</span>
+            <span class="pill pill--ghost" style="font-size:.7rem;">Cross-learning search</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab rationale -->
+      <div>
+        <h4 class="t-h4" style="margin-bottom:16px;color:var(--ink2);">Why 4 tabs, in this order?</h4>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="card card--orange" style="padding:18px 20px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span style="font-size:18px;">🏠</span>
+              <span style="font-weight:700;">Home — The decision eliminator</span>
+            </div>
+            <p style="font-size:.83rem;color:var(--ink2);">Every session begins here. The app answers "what should I study?" before the user even asks. Streak + targets create accountability without pressure.</p>
+          </div>
+          <div class="card card--blue" style="padding:18px 20px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span style="font-size:18px;">📚</span>
+              <span style="font-weight:700;">Scroll — Micro-learning for micro-sessions</span>
+            </div>
+            <p style="font-size:.83rem;color:var(--ink2);">Designed for the 15-min commute. Swipeable cards make progress feel tangible. "Got it / Review" feedback feeds the AI revision system.</p>
+          </div>
+          <div class="card card--green" style="padding:18px 20px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span style="font-size:18px;">🎓</span>
+              <span style="font-weight:700;">Learn — Depth when you need it</span>
+            </div>
+            <p style="font-size:.83rem;color:var(--ink2);">Full syllabus navigation when Aarav needs to go deep. Syllabus breadcrumbs reduce the feeling of "where am I?" in 200+ topics.</p>
+          </div>
+          <div class="card card--purple" style="padding:18px 20px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span style="font-size:18px;">⚡</span>
+              <span style="font-weight:700;">Strategy — The feedback that changes everything</span>
+            </div>
+            <p style="font-size:.83rem;color:var(--ink2);">PYQ-driven weak area diagnosis. Not just practice — targeted repair. Shows which topics cost Riya marks last time, and how to fix them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ KEY SCREENS ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">06 · Key Screens</p>
+      <h2 class="t-h2">Four surfaces, one mastery loop</h2>
+    </div>
+
+    <!-- Feature 1: Home -->
+    <div class="feature-block reveal" style="margin-bottom:clamp(60px,8vw,100px);">
+      <div class="feature-visual phone-wrap">
+        <div class="phone">
+          <div style="background:#080d1a;padding:7px 16px;display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:#94a3b8;"><span>9:41</span><span>●●●</span></div>
+          <div style="background:#0a0e1a;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;">
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:26px;height:26px;border-radius:8px;background:rgba(249,115,22,.2);display:grid;place-items:center;font-weight:900;color:#f97316;font-size:.8rem;">G</div><span style="font-weight:800;font-size:.85rem;">GyanGram</span></div>
+            <span style="font-size:16px;">🔔</span>
+          </div>
+          <div style="background:#0a0e1a;padding:14px 14px 0;">
+            <div style="font-size:.65rem;color:#64748b;margin-bottom:1px;">Good morning</div>
+            <div style="font-size:.9rem;font-weight:700;margin-bottom:10px;">Riya 👋</div>
+            <div style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.2);border-radius:10px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <div style="display:flex;align-items:center;gap:5px;"><span>🔥</span><div><div style="font-size:.75rem;font-weight:700;color:#fb923c;">47-day streak!</div><div style="font-size:.62rem;color:#92400e;">Study today</div></div></div>
+              <span style="background:#f97316;color:#fff;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:999px;">Day 47</span>
+            </div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:5px;">Today's Target</div>
+            <div style="display:flex;gap:4px;margin-bottom:10px;align-items:center;">
+              <div style="width:16px;height:16px;border-radius:50%;background:#f97316;display:grid;place-items:center;font-size:8px;color:#fff;">✓</div>
+              <div style="width:16px;height:16px;border-radius:50%;background:#f97316;display:grid;place-items:center;font-size:8px;color:#fff;">✓</div>
+              <div style="width:16px;height:16px;border-radius:50%;background:#f97316;display:grid;place-items:center;font-size:8px;color:#fff;">✓</div>
+              <div style="width:16px;height:16px;border-radius:50%;border:1.5px solid #1e3a5f;"></div>
+              <div style="width:16px;height:16px;border-radius:50%;border:1.5px solid #1e3a5f;"></div>
+              <span style="font-size:.65rem;color:#64748b;margin-left:3px;">3 / 5</span>
+            </div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:6px;">Subject Progress</div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
+              <div><div style="display:flex;justify-content:space-between;font-size:.65rem;margin-bottom:2px;"><span>History</span><span style="color:#f97316;">65%</span></div><div class="progress-bar"><div class="progress-bar__fill" style="width:65%;background:#f97316;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.65rem;margin-bottom:2px;"><span>Polity</span><span style="color:#60a5fa;">42%</span></div><div class="progress-bar"><div class="progress-bar__fill" style="width:42%;background:#3b82f6;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.65rem;margin-bottom:2px;"><span>Geography</span><span style="color:#4ade80;">78%</span></div><div class="progress-bar"><div class="progress-bar__fill" style="width:78%;background:#22c55e;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.65rem;margin-bottom:2px;"><span>Economy</span><span style="color:#c084fc;">31%</span></div><div class="progress-bar"><div class="progress-bar__fill" style="width:31%;background:#a855f7;"></div></div></div>
+            </div>
+          </div>
+          <div class="phone-tabbar">
+            <div class="phone-tab active"><span class="tab-icon">🏠</span>Home</div>
+            <div class="phone-tab"><span class="tab-icon">📚</span>Scroll</div>
+            <div class="phone-tab"><span class="tab-icon">🎓</span>Learn</div>
+            <div class="phone-tab"><span class="tab-icon">⚡</span>Strategy</div>
+          </div>
+          <div style="background:#080d1a;padding:4px 0 8px;text-align:center;"><div style="width:50px;height:2px;background:#1e293b;border-radius:1px;display:inline-block;"></div></div>
+        </div>
+      </div>
+      <div class="feature-copy">
+        <span class="pill pill--orange" style="margin-bottom:16px;">Home Screen</span>
+        <h3 class="t-h3">Your daily command centre</h3>
+        <p class="t-body" style="margin-bottom:1.2rem;">Home answers the #1 cognitive burden of every UPSC aspirant: "What should I study today?" The screen removes that decision entirely, replacing it with a clear, personalised directive.</p>
+        <div class="feature-point"><div class="dot"></div><span><b style="color:var(--ink);">Streak + target combo</b> — Streaks build intrinsic motivation; daily targets set a concrete, achievable daily milestone. Together they drive consistency without burnout.</span></div>
+        <div class="feature-point"><div class="dot"></div><span><b style="color:var(--ink);">Subject progress bars</b> — Visual representation of mastery across each UPSC subject. Orange = low, makes weak areas immediately obvious without any navigation.</span></div>
+        <div class="feature-point"><div class="dot"></div><span><b style="color:var(--ink);">AI-recommended next</b> — The card at the bottom adapts daily based on what you studied, what you got wrong, and what's due for spaced repetition.</span></div>
+        <div class="feature-point"><div class="dot"></div><span><b style="color:var(--ink);">One-tap entry</b> — Every element on Home is a direct entry point into the relevant surface — tap the Polity bar to jump straight to weak Polity cards in Scroll.</span></div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Scroll -->
+    <div class="feature-block flip reveal" style="margin-bottom:clamp(60px,8vw,100px);">
+      <div class="feature-copy">
+        <span class="pill pill--blue" style="margin-bottom:16px;">Scroll</span>
+        <h3 class="t-h3">Micro-learning built for micro-sessions</h3>
+        <p class="t-body" style="margin-bottom:1.2rem;">Research showed that aspirants have 15–25 minute pockets throughout their day — commutes, lunch breaks, waiting rooms. Scroll is designed for exactly this context.</p>
+        <div class="feature-point"><div class="dot" style="background:var(--blue-soft);"></div><span><b style="color:var(--ink);">Swipeable card format</b> — Modelled on the cognitive familiarity of social media scroll, but redirected toward learning. Zero learning curve.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--blue-soft);"></div><span><b style="color:var(--ink);">Got it / Review later</b> — Binary feedback after every card. "Got it" marks the topic as understood; "Review later" queues it for spaced repetition. This data feeds the AI layer.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--blue-soft);"></div><span><b style="color:var(--ink);">Rich content types</b> — Cards adapt to content: text summaries, maps as images, timelines as interactive flows, current affairs as bite-sized news.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--blue-soft);"></div><span><b style="color:var(--ink);">Session progress counter</b> — "Card 3 of 24" tells you how deep into a topic you are, and how long you'll need. Respects the user's time.</span></div>
+      </div>
+      <div class="feature-visual phone-wrap">
+        <div class="phone">
+          <div style="background:#080d1a;padding:7px 16px;display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:#94a3b8;"><span>9:41</span><span>●●●</span></div>
+          <div style="background:#0a0e1a;padding:10px 16px;display:flex;justify-content:center;align-items:center;border-bottom:1px solid #1e293b;">
+            <span style="font-weight:800;font-size:.9rem;">Scroll</span>
+          </div>
+          <div style="background:#0a0e1a;padding:12px 14px;">
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;">
+              <span style="background:rgba(249,115,22,.15);color:#f97316;font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:999px;">POLITY</span>
+              <span style="background:#111827;color:#64748b;font-size:.62rem;padding:3px 10px;border-radius:999px;border:1px solid #1e293b;">Card 3 of 24</span>
+            </div>
+            <!-- Card -->
+            <div style="background:#111827;border:1px solid rgba(59,130,246,.18);border-radius:16px;padding:20px 16px;margin-bottom:12px;">
+              <div style="text-align:center;font-size:28px;margin-bottom:8px;">🏛️</div>
+              <div style="text-align:center;font-size:.9rem;font-weight:700;margin-bottom:3px;">Directive Principles</div>
+              <div style="text-align:center;font-size:.72rem;color:#64748b;margin-bottom:12px;">of State Policy</div>
+              <div style="height:1px;background:#1e293b;margin-bottom:12px;"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
+                <div style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:#94a3b8;"><span style="color:#f97316;">→</span>Non-justiciable guidelines</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:#94a3b8;"><span style="color:#f97316;">→</span>Part IV, Articles 36–51</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:#94a3b8;"><span style="color:#f97316;">→</span>Welfare state objectives</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:#94a3b8;"><span style="color:#f97316;">→</span>Distinguished from FRs</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="background:#f97316;color:#fff;text-align:center;font-size:.72rem;font-weight:700;padding:8px;border-radius:8px;">Got it ✓</div>
+                <div style="background:#111827;border:1px solid #1e293b;text-align:center;font-size:.72rem;color:#64748b;padding:8px;border-radius:8px;">Review later</div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:.65rem;color:#334155;">← swipe to continue →</div>
+          </div>
+          <div class="phone-tabbar">
+            <div class="phone-tab"><span class="tab-icon">🏠</span>Home</div>
+            <div class="phone-tab active"><span class="tab-icon">📚</span>Scroll</div>
+            <div class="phone-tab"><span class="tab-icon">🎓</span>Learn</div>
+            <div class="phone-tab"><span class="tab-icon">⚡</span>Strategy</div>
+          </div>
+          <div style="background:#080d1a;padding:4px 0 8px;text-align:center;"><div style="width:50px;height:2px;background:#1e293b;border-radius:1px;display:inline-block;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: Learn -->
+    <div class="feature-block reveal" style="margin-bottom:clamp(60px,8vw,100px);">
+      <div class="feature-visual phone-wrap">
+        <div class="phone">
+          <div style="background:#080d1a;padding:7px 16px;display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:#94a3b8;"><span>9:41</span><span>●●●</span></div>
+          <div style="background:#0a0e1a;padding:10px 16px;display:flex;justify-content:center;align-items:center;border-bottom:1px solid #1e293b;">
+            <span style="font-weight:800;font-size:.9rem;">Learn</span>
+          </div>
+          <div style="background:#0a0e1a;padding:12px 14px;">
+            <div style="font-size:.62rem;color:#64748b;margin-bottom:8px;font-weight:600;letter-spacing:.06em;">ALL SUBJECTS</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#111827;border:1px solid rgba(249,115,22,.2);border-radius:12px;padding:12px 10px;">
+                <div style="font-size:18px;margin-bottom:4px;">📜</div>
+                <div style="font-size:.72rem;font-weight:700;margin-bottom:4px;">History</div>
+                <div class="progress-bar" style="margin-bottom:3px;"><div class="progress-bar__fill" style="width:65%;background:#f97316;"></div></div>
+                <div style="font-size:.62rem;color:#f97316;">65% done</div>
+              </div>
+              <div style="background:#111827;border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:12px 10px;">
+                <div style="font-size:18px;margin-bottom:4px;">⚖️</div>
+                <div style="font-size:.72rem;font-weight:700;margin-bottom:4px;">Polity</div>
+                <div class="progress-bar" style="margin-bottom:3px;"><div class="progress-bar__fill" style="width:42%;background:#3b82f6;"></div></div>
+                <div style="font-size:.62rem;color:#60a5fa;">42% done</div>
+              </div>
+              <div style="background:#111827;border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:12px 10px;">
+                <div style="font-size:18px;margin-bottom:4px;">🌏</div>
+                <div style="font-size:.72rem;font-weight:700;margin-bottom:4px;">Geography</div>
+                <div class="progress-bar" style="margin-bottom:3px;"><div class="progress-bar__fill" style="width:78%;background:#22c55e;"></div></div>
+                <div style="font-size:.62rem;color:#4ade80;">78% done</div>
+              </div>
+              <div style="background:#111827;border:1px solid rgba(168,85,247,.2);border-radius:12px;padding:12px 10px;">
+                <div style="font-size:18px;margin-bottom:4px;">📈</div>
+                <div style="font-size:.72rem;font-weight:700;margin-bottom:4px;">Economy</div>
+                <div class="progress-bar" style="margin-bottom:3px;"><div class="progress-bar__fill" style="width:31%;background:#a855f7;"></div></div>
+                <div style="font-size:.62rem;color:#c084fc;">31% done</div>
+              </div>
+              <div style="background:#111827;border:1px solid var(--border);border-radius:12px;padding:12px 10px;">
+                <div style="font-size:18px;margin-bottom:4px;">🔬</div>
+                <div style="font-size:.72rem;font-weight:700;margin-bottom:4px;">Science &amp; Tech</div>
+                <div class="progress-bar" style="margin-bottom:3px;"><div class="progress-bar__fill" style="width:55%;background:#06b6d4;"></div></div>
+                <div style="font-size:.62rem;color:#22d3ee;">55% done</div>
+              </div>
+              <div style="background:#111827;border:1px solid var(--border);border-radius:12px;padding:12px 10px;">
+                <div style="font-size:18px;margin-bottom:4px;">🌿</div>
+                <div style="font-size:.72rem;font-weight:700;margin-bottom:4px;">Environment</div>
+                <div class="progress-bar" style="margin-bottom:3px;"><div class="progress-bar__fill" style="width:48%;background:#84cc16;"></div></div>
+                <div style="font-size:.62rem;color:#a3e635;">48% done</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-tabbar">
+            <div class="phone-tab"><span class="tab-icon">🏠</span>Home</div>
+            <div class="phone-tab"><span class="tab-icon">📚</span>Scroll</div>
+            <div class="phone-tab active"><span class="tab-icon">🎓</span>Learn</div>
+            <div class="phone-tab"><span class="tab-icon">⚡</span>Strategy</div>
+          </div>
+          <div style="background:#080d1a;padding:4px 0 8px;text-align:center;"><div style="width:50px;height:2px;background:#1e293b;border-radius:1px;display:inline-block;"></div></div>
+        </div>
+      </div>
+      <div class="feature-copy">
+        <span class="pill pill--green" style="margin-bottom:16px;">Learn</span>
+        <h3 class="t-h3">Deep dive when depth is needed</h3>
+        <p class="t-body" style="margin-bottom:1.2rem;">While Scroll handles quick sessions, Learn handles systematic subject study. Full syllabus navigation organised as subjects → units → topics → articles → cards — mirroring how aspirants mentally model the exam.</p>
+        <div class="feature-point"><div class="dot" style="background:var(--green);"></div><span><b style="color:var(--ink);">Subject-level progress</b> — Each subject card shows % completion at a glance. The aspirant always knows how far they are without opening anything.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--green);"></div><span><b style="color:var(--ink);">Syllabus breadcrumbs</b> — Always shows the path: Subject → Unit → Topic. Prevents the "lost in content" feeling that every competitor app creates.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--green);"></div><span><b style="color:var(--ink);">Read and card both available</b> — Each article has a long-form read mode and a card mode. Users pick depth based on their time and familiarity with the topic.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--green);"></div><span><b style="color:var(--ink);">7 core subjects</b> — History, Polity, Geography, Economy, Science &amp; Tech, Environment, Current Affairs — mapped precisely to the UPSC syllabus.</span></div>
+      </div>
+    </div>
+
+    <!-- Feature 4: Strategy -->
+    <div class="feature-block flip reveal">
+      <div class="feature-copy">
+        <span class="pill pill--purple" style="margin-bottom:16px;">Strategy</span>
+        <h3 class="t-h3">The feedback loop that closes the learning cycle</h3>
+        <p class="t-body" style="margin-bottom:1.2rem;">Strategy is where learning becomes exam-readiness. PYQs aren't just practice — they're diagnostic tools. The tab shows which weak areas are most likely to cost marks, in descending urgency.</p>
+        <div class="feature-point"><div class="dot" style="background:var(--purple);"></div><span><b style="color:var(--ink);">AI-ranked weak areas</b> — Not just "what you got wrong" but "what's likely to appear, that you're weak in" — cross-referencing your performance with historical PYQ frequency.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--purple);"></div><span><b style="color:var(--ink);">PYQ by topic</b> — Practice previous year questions filtered exactly to the topic you're weak in. Direct link from diagnosis to cure.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--purple);"></div><span><b style="color:var(--ink);">Review queue</b> — Cards flagged as "review later" in Scroll surface here, organised by urgency using spaced repetition intervals.</span></div>
+        <div class="feature-point"><div class="dot" style="background:var(--purple);"></div><span><b style="color:var(--ink);">Practice paths</b> — Structured practice sequences (mock test mode, subject focus, previous year full papers) for aspirants closer to the exam.</span></div>
+      </div>
+      <div class="feature-visual phone-wrap">
+        <div class="phone">
+          <div style="background:#080d1a;padding:7px 16px;display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:#94a3b8;"><span>9:41</span><span>●●●</span></div>
+          <div style="background:#0a0e1a;padding:10px 16px;display:flex;justify-content:center;border-bottom:1px solid #1e293b;">
+            <span style="font-weight:800;font-size:.9rem;">Strategy</span>
+          </div>
+          <div style="background:#0a0e1a;padding:12px 14px;height:428px;overflow:hidden;">
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:8px;">⚡ Weak Areas — Fix First</div>
+            <!-- Weak area items -->
+            <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+              <div style="background:#111827;border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;">
+                <div style="width:32px;height:32px;border-radius:8px;background:rgba(239,68,68,.15);display:grid;place-items:center;font-size:14px;flex-shrink:0;">⚖️</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:.75rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Polity · Directive Principles</div>
+                  <div style="font-size:.62rem;color:#ef4444;">Asked 8× in last 5 years</div>
+                </div>
+                <span style="background:rgba(239,68,68,.15);color:#ef4444;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:999px;flex-shrink:0;">Urgent</span>
+              </div>
+              <div style="background:#111827;border:1px solid rgba(249,115,22,.2);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;">
+                <div style="width:32px;height:32px;border-radius:8px;background:rgba(249,115,22,.15);display:grid;place-items:center;font-size:14px;flex-shrink:0;">📈</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:.75rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Economy · Monetary Policy</div>
+                  <div style="font-size:.62rem;color:#f97316;">Asked 6× in last 5 years</div>
+                </div>
+                <span style="background:rgba(249,115,22,.15);color:#f97316;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:999px;flex-shrink:0;">High</span>
+              </div>
+              <div style="background:#111827;border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;">
+                <div style="width:32px;height:32px;border-radius:8px;background:rgba(251,191,36,.1);display:grid;place-items:center;font-size:14px;flex-shrink:0;">🌿</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:.75rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Environment · Biodiversity</div>
+                  <div style="font-size:.62rem;color:#fbbf24;">Asked 5× in last 5 years</div>
+                </div>
+                <span style="background:rgba(251,191,36,.1);color:#fbbf24;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:999px;flex-shrink:0;">Medium</span>
+              </div>
+            </div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:8px;">📋 PYQ Practice</div>
+            <div style="background:#111827;border:1px solid rgba(168,85,247,.18);border-radius:10px;padding:12px;margin-bottom:8px;">
+              <div style="font-size:.75rem;font-weight:700;margin-bottom:3px;">Polity · 2023 Prelims</div>
+              <div style="font-size:.65rem;color:#94a3b8;margin-bottom:8px;">Directive Principles — 4 questions</div>
+              <div style="background:#a855f7;color:#fff;text-align:center;font-size:.68rem;font-weight:700;padding:7px;border-radius:8px;">Start practice →</div>
+            </div>
+            <div style="font-size:.62rem;font-weight:700;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin-bottom:6px;">🔁 Review Queue <span style="color:#f97316;">12 due</span></div>
+            <div style="background:#111827;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center;font-size:.72rem;color:#475569;">Tap to start 12-card review session</div>
+          </div>
+          <div class="phone-tabbar">
+            <div class="phone-tab"><span class="tab-icon">🏠</span>Home</div>
+            <div class="phone-tab"><span class="tab-icon">📚</span>Scroll</div>
+            <div class="phone-tab"><span class="tab-icon">🎓</span>Learn</div>
+            <div class="phone-tab active"><span class="tab-icon">⚡</span>Strategy</div>
+          </div>
+          <div style="background:#080d1a;padding:4px 0 8px;text-align:center;"><div style="width:50px;height:2px;background:#1e293b;border-radius:1px;display:inline-block;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ DESIGN DECISIONS ═══════════════════════════════════════ -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">07 · Design Decisions</p>
+      <h2 class="t-h2">The reasoning behind the choices</h2>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="decision">
+          <div class="decision__q">Why orange as primary accent?</div>
+          <div class="decision__a">Orange signals energy and urgency without being aggressive. In an exam context, it reads as "action" — study now, complete this — without triggering the anxiety that red would. It also contrasts strongly on dark backgrounds at small text sizes.</div>
+        </div>
+        <div class="decision">
+          <div class="decision__q">Why a dark theme?</div>
+          <div class="decision__a">50%+ of aspirants study at night or in low-light (commutes, early mornings). A dark theme reduces eye strain over long sessions and signals "focus mode" — many aspirants explicitly requested this in interviews.</div>
+        </div>
+        <div class="decision">
+          <div class="decision__q">Why swipe vs. tap for Scroll?</div>
+          <div class="decision__a">Swipe enables one-hand operation (critical for commuters). It also creates a physical metaphor for "moving through" content — each swipe is a micro-achievement, which maintains momentum and engagement better than list-tap navigation.</div>
+        </div>
+        <div class="decision">
+          <div class="decision__q">Why 4 tabs and not more?</div>
+          <div class="decision__a">Hick's Law: more options = more decision time. Users in focused study mode should not be navigating a complex menu. The 4 tabs map to the 4 stages of the mastery loop — learn, recall, deep-dive, diagnose — and nothing else.</div>
+        </div>
+      </div>
+      <div>
+        <div class="decision">
+          <div class="decision__q">Why show PYQ frequency in weak areas?</div>
+          <div class="decision__a">Aspirants don't just want to know what they're weak in — they want to know what weakness costs them most. Showing "Asked 8× in 5 years" transforms a weak area from an abstract gap into an urgent, exam-relevant fix.</div>
+        </div>
+        <div class="decision">
+          <div class="decision__q">Why binary feedback (Got it / Review) instead of stars?</div>
+          <div class="decision__a">Stars add cognitive overhead mid-session. A 1-5 star rating mid-commute on a moving train is unreliable data. Binary responses are cognitively instant, yield cleaner signal, and are easier to act on in the spaced repetition algorithm.</div>
+        </div>
+        <div class="decision">
+          <div class="decision__q">Why show progress as a % bar instead of a number?</div>
+          <div class="decision__a">A number like "42/100 topics" is demotivating early on. A 42% filled bar looks like meaningful progress. Perception of progress drives continuation — which is the core metric for UPSC prep success.</div>
+        </div>
+        <div class="decision">
+          <div class="decision__q">Why is the AI layer invisible?</div>
+          <div class="decision__a">Aspirants trust their own judgment. Showing "AI says study this" creates resistance. Instead the AI surfaces its suggestions through natural UI elements — a recommended card, a reordered list — without labelling them as AI-driven.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ OUTCOMES ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">08 · Outcomes</p>
+      <h2 class="t-h2">Beta live — and the numbers are holding</h2>
+      <p class="t-lead">After a 4-week design sprint, GyanGram launched a closed beta on Google Play. I continue to manage the beta feedback loop alongside the founding team, running iterative testing cycles to optimise navigation and content flow pre-launch.</p>
+    </div>
+
+    <div class="grid-4 reveal" style="margin-bottom:clamp(32px,4vw,48px);">
+      <div class="metric card card--orange">
+        <b style="color:var(--orange);">847</b>
+        <span>Closed beta signups</span>
+      </div>
+      <div class="metric card card--green">
+        <b style="color:var(--green);">68%</b>
+        <span>Day-7 retention</span>
+      </div>
+      <div class="metric card">
+        <b style="color:var(--blue-soft);">24 min</b>
+        <span>Avg session length</span>
+      </div>
+      <div class="metric card card--purple">
+        <b style="color:var(--purple);">4.6 ★</b>
+        <span>Play Store rating</span>
+      </div>
+    </div>
+
+    <div class="grid-2 reveal" data-d=".1">
+      <div>
+        <h3 class="t-h3" style="margin-bottom:1rem;">What worked</h3>
+        <div class="insight">
+          <div class="insight__icon" style="background:var(--green-dim);">✅</div>
+          <div class="insight__body"><b>Streak drove daily habit</b><span>47% of active users maintained a 7+ day streak in week 1. Riya's persona validated: the streak + target combo replaced decision fatigue with routine.</span></div>
+        </div>
+        <div class="insight">
+          <div class="insight__icon" style="background:var(--green-dim);">✅</div>
+          <div class="insight__body"><b>Scroll dominated session starts</b><span>71% of sessions started in Scroll, not Home. Aspirants found it the lowest-friction way to "get going" — exactly the intent.</span></div>
+        </div>
+        <div class="insight">
+          <div class="insight__icon" style="background:var(--green-dim);">✅</div>
+          <div class="insight__body"><b>Strategy created "aha" moments</b><span>The most positive feedback centred on Strategy's weak area view — users said it was "the first time I understood what I actually need to fix."</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="t-h3" style="margin-bottom:1rem;">What I'd iterate next</h3>
+        <div class="insight">
+          <div class="insight__icon" style="background:var(--orange-dim);">🔄</div>
+          <div class="insight__body"><b>Learn navigation needs depth</b><span>Users going deep into Learn (topics → articles) reported losing their place. Adding a persistent breadcrumb trail and a floating "back to subject" button is the highest-priority fix.</span></div>
+        </div>
+        <div class="insight">
+          <div class="insight__icon" style="background:var(--orange-dim);">🔄</div>
+          <div class="insight__body"><b>Current affairs card density</b><span>Daily current affairs cards were too long for commute use. Exploring a 3-bullet-point format with "expand" option to match Riya's 15-min session constraint.</span></div>
+        </div>
+        <div class="insight">
+          <div class="insight__icon" style="background:var(--orange-dim);">🔄</div>
+          <div class="insight__body"><b>Onboarding personalisation gap</b><span>First-time users weren't shown how their onboarding choices shaped the Home recommendations. A brief "this is personalised for you" moment at first launch would dramatically improve perceived value.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<footer class="cs-footer">
+  <div class="wrap">
+    <div class="next-project reveal">
+      <div>
+        <p class="t-eyebrow" style="margin-bottom:.4rem;">Next case study</p>
+        <h3 class="t-h3">FlexiSpace — Workplace OS</h3>
+        <p class="t-body" style="font-size:.85rem;margin-top:.3rem;">Workspace booking rethought as an operating system for hybrid work.</p>
+      </div>
+      <a href="/flexispace/" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:700;font-size:.85rem;padding:12px 24px;border-radius:999px;white-space:nowrap;transition:background .2s;" onmouseover="this.style.background='#ea580c'" onmouseout="this.style.background='#f97316'">View case study <span>↗</span></a>
+    </div>
+    <div style="height:1px;background:var(--border);margin:40px 0;"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <a href="/" style="font-weight:700;color:var(--ink2);">Mahima Jain<span style="color:var(--orange);">.</span></a>
+      <div style="display:flex;gap:24px;">
+        <a href="/Work/" style="font-size:.85rem;color:var(--ink3);transition:color .2s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'">All work</a>
+        <a href="/About/" style="font-size:.85rem;color:var(--ink3);transition:color .2s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'">About</a>
+        <a href="/Contact/" style="font-size:.85rem;color:var(--ink3);transition:color .2s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'">Contact</a>
+        <a href="https://app.gyangram.com/" target="_blank" style="font-size:.85rem;color:var(--orange);transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">Live app ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = (scrollY / h * 100) + '%';
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const d = parseFloat(e.target.dataset.d || 0) * 1000;
+      setTimeout(() => e.target.classList.add('in'), d);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
