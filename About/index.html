@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About · Mahima Jain</title>
 <meta name="description" content="About Mahima Jain, UI/UX Designer with 4+ years across enterprise B2B and consumer products. Skills, tools and education." />
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="assets/styles.css" />
-<script src="assets/image-slot.js"></script>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/image-slot.js"></script>
 </head>
 <body>
 
@@ -17,21 +17,21 @@
   <a class="nav__logo" href="/">Mahima<span class="dot"></span></a>
   <nav class="nav__links" aria-label="Primary">
     <a href="/">Home</a>
-    <a href="Work.html">Work</a>
-    <a href="Services.html">Services</a>
-    <a href="About.html" class="active">About</a>
+    <a href="/Work/">Work</a>
+    <a href="/Services/">Services</a>
+    <a href="/About/" class="active">About</a>
   </nav>
   <div class="nav__cta">
-    <a class="btn btn--light magnetic" data-mag="0.3" href="Contact.html">Contact me <span class="arrow">↗</span></a>
+    <a class="btn btn--light magnetic" data-mag="0.3" href="/Contact/">Contact me <span class="arrow">↗</span></a>
     <button class="nav__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <div class="mobile-menu" aria-hidden="true">
   <a href="/"><span class="idx">01</span> Home</a>
-  <a href="Work.html"><span class="idx">02</span> Work</a>
-  <a href="Services.html"><span class="idx">03</span> Services</a>
-  <a href="About.html"><span class="idx">04</span> About</a>
-  <a class="btn btn--light mobile-menu__btn magnetic" data-mag="0.2" href="Contact.html">Contact me <span class="arrow">↗</span></a>
+  <a href="/Work/"><span class="idx">02</span> Work</a>
+  <a href="/Services/"><span class="idx">03</span> Services</a>
+  <a href="/About/"><span class="idx">04</span> About</a>
+  <a class="btn btn--light mobile-menu__btn magnetic" data-mag="0.2" href="/Contact/">Contact me <span class="arrow">↗</span></a>
 </div>
 
 <main class="page">
@@ -44,13 +44,13 @@
       <h1 class="display h-hero reveal" data-d="1" style="margin:.1em 0 .4em;">Hi, I'm<br/>Mahima.</h1>
       <p class="lead reveal" data-d="2">A UI/UX Designer with <strong>4+ years</strong> delivering user-centered solutions across enterprise B2B platforms and consumer applications. I lead end-to-end design across UX strategy, research, information architecture, interaction design, usability testing, systems, accessibility and developer collaboration.</p>
       <div class="about-cta reveal" data-d="3">
-        <a class="btn btn--light magnetic" data-mag="0.35" href="Work.html">See my work <span class="arrow">↗</span></a>
-        <a class="btn btn--ghost magnetic" data-mag="0.35" href="Contact.html">Get in touch</a>
+        <a class="btn btn--light magnetic" data-mag="0.35" href="/Work/">See my work <span class="arrow">↗</span></a>
+        <a class="btn btn--ghost magnetic" data-mag="0.35" href="/Contact/">Get in touch</a>
       </div>
     </div>
     <div class="about-portrait reveal" data-d="2" data-drift="14">
       <span class="bubble bob" style="--rot:0deg; position:absolute; top:-18px; left:-10px; z-index:3;">That's me →</span>
-      <image-slot id="about-portrait" class="char-slot" shape="rounded" radius="26" placeholder="Drop your portrait / character render" src="assets/character.webp" style="width:100%; height:100%;"></image-slot>
+      <image-slot id="about-portrait" class="char-slot" shape="rounded" radius="26" placeholder="Drop your portrait / character render" src="../assets/character.webp" style="width:100%; height:100%;"></image-slot>
     </div>
   </div>
 </section>
@@ -129,7 +129,7 @@
   <div class="wrap center">
     <p class="eyebrow reveal" style="justify-content:center;">Let's collaborate</p>
     <h2 class="display reveal" data-d="1" style="font-size:clamp(2.4rem,8vw,7rem); margin:.2em 0 .5em; text-wrap:balance;">Let's build something meaningful.</h2>
-    <a class="btn btn--light btn--lg magnetic" data-mag="0.45" href="Contact.html">Start a project <span class="arrow">↗</span></a>
+    <a class="btn btn--light btn--lg magnetic" data-mag="0.45" href="/Contact/">Start a project <span class="arrow">↗</span></a>
   </div>
 </section>
 
@@ -149,7 +149,7 @@
       </div>
       <div class="footer__col">
         <h5>Sitemap</h5>
-        <a href="/">Home</a><a href="Services.html">Services</a><a href="Work.html">Work</a><a href="About.html">About</a><a href="Contact.html">Contact</a>
+        <a href="/">Home</a><a href="/Services/">Services</a><a href="/Work/">Work</a><a href="/About/">About</a><a href="/Contact/">Contact</a>
       </div>
       <div class="footer__col">
         <h5>Get in touch</h5>
@@ -163,8 +163,8 @@
   </div>
 </footer>
 
-<script src="assets/animations.js"></script>
-<script src="assets/tweaks.js"></script>
+<script src="../assets/animations.js"></script>
+<script src="../assets/tweaks.js"></script>
 <script>
 (function(){
   const TWEAKS = /*EDITMODE-BEGIN*/{

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -24,12 +24,12 @@
   <a class="nav__logo" href="/">Mahima<span class="dot"></span></a>
   <nav class="nav__links" aria-label="Primary">
     <a href="/" class="active">Home</a>
-    <a href="Work.html">Work</a>
-    <a href="Services.html">Services</a>
-    <a href="About.html">About</a>
+    <a href="/Work/">Work</a>
+    <a href="/Services/">Services</a>
+    <a href="/About/">About</a>
   </nav>
   <div class="nav__cta">
-    <a class="btn btn--light magnetic" data-mag="0.3" href="Contact.html">Contact me <span class="arrow">↗</span></a>
+    <a class="btn btn--light magnetic" data-mag="0.3" href="/Contact/">Contact me <span class="arrow">↗</span></a>
     <button class="nav__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -37,10 +37,10 @@
 <!-- ===== Mobile menu ===== -->
 <div class="mobile-menu" aria-hidden="true">
   <a href="/"><span class="idx">01</span> Home</a>
-  <a href="Work.html"><span class="idx">02</span> Work</a>
-  <a href="Services.html"><span class="idx">03</span> Services</a>
-  <a href="About.html"><span class="idx">04</span> About</a>
-  <a class="btn btn--light mobile-menu__btn magnetic" data-mag="0.2" href="Contact.html">Contact me <span class="arrow">↗</span></a>
+  <a href="/Work/"><span class="idx">02</span> Work</a>
+  <a href="/Services/"><span class="idx">03</span> Services</a>
+  <a href="/About/"><span class="idx">04</span> About</a>
+  <a class="btn btn--light mobile-menu__btn magnetic" data-mag="0.2" href="/Contact/">Contact me <span class="arrow">↗</span></a>
 </div>
 
 <main class="page">
@@ -67,13 +67,13 @@
         from research and IA to interaction design, systems, and developer handoff.
       </p>
       <div class="hero__cta reveal" data-d="4">
-        <a class="btn btn--lg magnetic" data-mag="0.4" href="Work.html">View my work <span class="arrow">↗</span></a>
-        <a class="btn btn--ghost btn--lg magnetic" data-mag="0.4" href="Contact.html">Contact me</a>
+        <a class="btn btn--lg magnetic" data-mag="0.4" href="/Work/">View my work <span class="arrow">↗</span></a>
+        <a class="btn btn--ghost btn--lg magnetic" data-mag="0.4" href="/Contact/">Contact me</a>
       </div>
     </div>
 
     <div class="hero__visual" data-drift="22">
-      <a href="About.html" class="bubble hero__bubble bob" style="--rot:0deg; text-decoration:none; cursor:pointer;">Want to know<br/>about me? <span style="color:var(--red-bright)">→</span></a>
+      <a href="/About/" class="bubble hero__bubble bob" style="--rot:0deg; text-decoration:none; cursor:pointer;">Want to know<br/>about me? <span style="color:var(--red-bright)">→</span></a>
       <image-slot id="hero-char" class="char-slot" shape="rounded" radius="28"
         placeholder="Drop your 3D character render" src="assets/character.webp"
         style="width:100%; height:100%;" data-comment-anchor="f95c121cb0-image-slot"></image-slot>
@@ -122,7 +122,7 @@
         <div class="stat"><span class="stat__num"><i data-count="70" data-suffix="%">0</i></span><span class="stat__label">Faster task<br/>completion</span></div>
         <div class="stat"><span class="stat__num"><i data-count="20" data-suffix="+">0</i></span><span class="stat__label">Modules &<br/>screens shipped</span></div>
       </div>
-      <a class="btn btn--ink magnetic" data-mag="0.3" href="About.html" style="margin-top:8px;">More about me <span class="arrow">↗</span></a>
+      <a class="btn btn--ink magnetic" data-mag="0.3" href="/About/" style="margin-top:8px;">More about me <span class="arrow">↗</span></a>
     </div>
   </div>
 </section>
@@ -135,18 +135,18 @@
         <p class="eyebrow reveal">Selected work</p>
         <h2 class="display h-sec reveal" data-d="1">Projects</h2>
       </div>
-      <a class="btn btn--light magnetic" data-mag="0.3" href="Work.html">See all work <span class="arrow">↗</span></a>
+      <a class="btn btn--light magnetic" data-mag="0.3" href="/Work/">See all work <span class="arrow">↗</span></a>
     </div>
     <div class="proj-grid">
-      <article class="proj reveal" data-tilt="5" style="cursor:pointer;" onclick="location.href='flexispace/index.html'">
+      <article class="proj reveal" data-tilt="5" style="cursor:pointer;" onclick="location.href='/flexispace/'">
         <div class="proj__media"><image-slot id="home-proj-flexispace" placeholder="FlexiSpace booking app screens" src="assets/covers/flexispace-cover.svg" shape="rounded" radius="16" style="width:100%;height:100%;"></image-slot><span class="proj__go">↗</span></div>
         <div class="proj__meta"><span class="proj__tag">Mobile · Productivity</span><h3>FlexiSpace</h3><p>End-to-end workspace booking experience, research to high-fidelity prototype, optimised for hybrid work.</p></div>
       </article>
-      <article class="proj reveal" data-d="1" data-tilt="5" style="cursor:pointer;" onclick="location.href='sargam/index.html'">
+      <article class="proj reveal" data-d="1" data-tilt="5" style="cursor:pointer;" onclick="location.href='/sargam/'">
         <div class="proj__media"><image-slot id="home-proj-sargam" placeholder="Sargam music app screens" src="assets/covers/sargam-cover.svg" shape="rounded" radius="16" style="width:100%;height:100%;"></image-slot><span class="proj__go">↗</span></div>
         <div class="proj__meta"><span class="proj__tag">Mobile · AI</span><h3>Sargam</h3><p>Mood-based AI music discovery app across 12 screens — from research to high-fidelity UI in two weeks.</p></div>
       </article>
-      <article class="proj reveal" data-d="2" data-tilt="5" style="cursor:pointer;" onclick="location.href='flexispace-admin/index.html'">
+      <article class="proj reveal" data-d="2" data-tilt="5" style="cursor:pointer;" onclick="location.href='/flexispace-admin/'">
         <div class="proj__media"><image-slot id="home-proj-flexiadmin" placeholder="FlexiSpace Admin dashboard" src="assets/covers/flexispace-admin-cover.svg" shape="rounded" radius="16" style="width:100%;height:100%;"></image-slot><span class="proj__go">↗</span></div>
         <div class="proj__meta"><span class="proj__tag">Web · Dashboard</span><h3>FlexiSpace Admin</h3><p>Operator command centre for a workplace OS — live occupancy, 3D floor maps, analytics and booking controls.</p></div>
       </article>
@@ -165,12 +165,12 @@
       <p class="lead reveal muted" data-d="2" style="max-width:42ch;">From wireframes to interactive prototypes, every element is designed to enhance usability and leave a lasting impression.</p>
     </div>
     <ul class="svc-list">
-      <a class="svc reveal" href="services/ux-strategy.html"><span class="svc__num">01</span><span class="svc__name">UX Strategy</span><span class="svc__arr">↗</span></a>
-      <a class="svc reveal" data-d="1" href="services/user-research.html"><span class="svc__num">02</span><span class="svc__name">User Research</span><span class="svc__arr">↗</span></a>
-      <a class="svc reveal" data-d="2" href="services/wireframing.html"><span class="svc__num">03</span><span class="svc__name">Wireframing</span><span class="svc__arr">↗</span></a>
-      <a class="svc reveal" data-d="3" href="services/ui-design.html"><span class="svc__num">04</span><span class="svc__name">UI Design</span><span class="svc__arr">↗</span></a>
+      <a class="svc reveal" href="/services/ux-strategy/"><span class="svc__num">01</span><span class="svc__name">UX Strategy</span><span class="svc__arr">↗</span></a>
+      <a class="svc reveal" data-d="1" href="/services/user-research/"><span class="svc__num">02</span><span class="svc__name">User Research</span><span class="svc__arr">↗</span></a>
+      <a class="svc reveal" data-d="2" href="/services/wireframing/"><span class="svc__num">03</span><span class="svc__name">Wireframing</span><span class="svc__arr">↗</span></a>
+      <a class="svc reveal" data-d="3" href="/services/ui-design/"><span class="svc__num">04</span><span class="svc__name">UI Design</span><span class="svc__arr">↗</span></a>
     </ul>
-    <a class="btn magnetic" data-mag="0.3" href="Services.html" style="margin-top:36px;">All 8 services <span class="arrow">↗</span></a>
+    <a class="btn magnetic" data-mag="0.3" href="/Services/" style="margin-top:36px;">All 8 services <span class="arrow">↗</span></a>
   </div>
 </section>
 
@@ -201,7 +201,7 @@
   <div class="wrap center">
     <p class="eyebrow reveal" style="justify-content:center;">Let's collaborate</p>
     <h2 class="display reveal" data-d="1" style="font-size:clamp(2.4rem,8vw,7rem); margin:.2em 0 .5em; text-wrap:balance;">Let's build meaningful digital experiences together.</h2>
-    <a class="btn btn--light btn--lg magnetic" data-mag="0.45" href="Contact.html">Start a project <span class="arrow">↗</span></a>
+    <a class="btn btn--light btn--lg magnetic" data-mag="0.45" href="/Contact/">Start a project <span class="arrow">↗</span></a>
   </div>
 </section>
 
@@ -223,10 +223,10 @@
       <div class="footer__col">
         <h5>Sitemap</h5>
         <a href="/">Home</a>
-        <a href="Services.html">Services</a>
-        <a href="Work.html">Work</a>
-        <a href="About.html">About</a>
-        <a href="Contact.html">Contact</a>
+        <a href="/Services/">Services</a>
+        <a href="/Work/">Work</a>
+        <a href="/About/">About</a>
+        <a href="/Contact/">Contact</a>
       </div>
       <div class="footer__col">
         <h5>Get in touch</h5>
