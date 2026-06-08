@@ -571,3 +571,77 @@ a.contact-row:hover .contact-row__a{ transform:translate(4px,-4px); opacity:1; }
   .footer__grid{ grid-template-columns:1fr; gap:36px; }
   .footer__bottom{ flex-direction:column; align-items:flex-start; }
 }
+
+/* =========================================================================
+   SERVICE DETAIL PAGES — do-list · svc-nav · svc-back
+   ========================================================================= */
+
+/* ---- 1. What I Do — numbered bullet list ---- */
+/* Flex row: number top-aligned with first line; wrapped lines indent past number */
+.do-list{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column; gap:clamp(14px,2vw,22px);
+}
+.do{
+  display:flex; align-items:flex-start; gap:clamp(16px,2.4vw,28px);
+}
+.do__i{
+  font-family:var(--font-mono); font-weight:700; font-size:.9rem;
+  color:var(--red-bright); flex-shrink:0; min-width:2ch;
+  line-height:1.65; /* matches <p> line-height so baselines align */
+}
+.do p{ margin:0; line-height:1.65; }
+
+/* ---- 2. Prev / Next service navigation ---- */
+/* Both buttons span the full row with equal width */
+.svc-nav{
+  display:flex; justify-content:space-between;
+  gap:clamp(12px,2vw,24px);
+}
+.svc-nav__item{
+  flex:1;                       /* each button takes equal share of full width */
+  display:flex; flex-direction:column; gap:.45em;
+  padding:clamp(18px,2.5vw,28px);
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-card);
+  text-decoration:none; color:inherit;
+  transition:background .25s var(--ease), border-color .25s var(--ease);
+}
+.svc-nav__item:hover{
+  background:rgba(255,255,255,.13);
+  border-color:rgba(255,255,255,.26);
+}
+.svc-nav__item--next{ align-items:flex-end; text-align:right; }
+.svc-nav__k{
+  display:inline-flex; align-items:center; gap:.4em;
+  font-family:var(--font-mono); font-size:.74rem;
+  text-transform:uppercase; letter-spacing:.1em; opacity:.6;
+}
+.svc-nav__name{
+  font-family:var(--font-display); font-weight:300;
+  text-transform:uppercase;
+  font-size:clamp(1.1rem,2.4vw,1.9rem); line-height:1;
+}
+@media(max-width:540px){
+  .svc-nav{ flex-direction:column; }
+  .svc-nav__item--next{ align-items:flex-start; text-align:left; }
+}
+
+/* ---- 3. Top service bar — counter · service name · All Services link ---- */
+/* Styles .svc-back as a pill chip; sits above the eyebrow (service name) */
+.svc-back{
+  display:inline-flex; align-items:center; gap:.5em;
+  font-family:var(--font-mono); font-size:.76rem;
+  text-transform:uppercase; letter-spacing:.1em;
+  text-decoration:none; color:inherit;
+  padding:.5em 1.1em;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:var(--r-pill);
+  background:rgba(255,255,255,.07);
+  margin-bottom:1.6em;
+  transition:background .2s, opacity .2s;
+  vertical-align:middle;
+}
+.svc-back:hover{ background:rgba(255,255,255,.13); }
+.svc-back .a{ font-size:1em; line-height:1; }
