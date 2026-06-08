@@ -645,3 +645,19 @@ a.contact-row:hover .contact-row__a{ transform:translate(4px,-4px); opacity:1; }
 }
 .svc-back:hover{ background:rgba(255,255,255,.13); }
 .svc-back .a{ font-size:1em; line-height:1; }
+
+/* ---- 4. When You Need This — trigger list ---- */
+/* Same flex pattern as .do — arrow top-aligned, wrapped text indents past arrow */
+.trigger-list{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column; gap:clamp(12px,1.8vw,20px);
+}
+.trigger{
+  display:flex; align-items:flex-start; gap:clamp(16px,2.4vw,28px);
+}
+.trigger__mark{
+  flex-shrink:0; min-width:1.2ch;
+  font-weight:700; font-size:1rem;
+  color:var(--red-bright); line-height:1.65;
+}
+.trigger p{ margin:0; line-height:1.65; }
