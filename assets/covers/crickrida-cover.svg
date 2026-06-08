@@ -1,0 +1,219 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,-apple-system,sans-serif">
+<defs>
+  <linearGradient id="crbg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0d1117"/>
+    <stop offset="100%" stop-color="#0a0e18"/>
+  </linearGradient>
+  <linearGradient id="crcard" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#161b24"/>
+    <stop offset="100%" stop-color="#111620"/>
+  </linearGradient>
+  <filter id="crglow1"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#00d4ff" flood-opacity=".35"/></filter>
+  <filter id="crglow2"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#ffd700" flood-opacity=".35"/></filter>
+  <filter id="crglow3"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#ff4d6d" flood-opacity=".35"/></filter>
+  <filter id="crglow4"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#00e676" flood-opacity=".35"/></filter>
+</defs>
+
+<!-- Background -->
+<rect width="1200" height="700" fill="url(#crbg)"/>
+
+<!-- ── TOPBAR ── -->
+<rect width="1200" height="54" fill="#161b24"/>
+<rect x="0" y="54" width="1200" height="1" fill="rgba(255,255,255,.07)"/>
+<text x="28" y="23" font-size="18" font-weight="800" fill="#f0f4ff">IPL Dashboard</text>
+<text x="28" y="40" font-size="10" fill="#4a5568">Comprehensive analytics across all IPL seasons</text>
+<text x="1070" y="28" font-size="11" fill="#4a5568">Season</text>
+<rect x="1104" y="14" width="88" height="28" rx="6" fill="#1e2535" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+<text x="1148" y="32" text-anchor="middle" font-size="11" fill="#e2e8f0">All Seasons</text>
+<text x="1184" y="32" font-size="10" fill="#4a5568">▾</text>
+
+<!-- ── STAT CARDS ROW ── -->
+<!-- Card 1: Total Matches -->
+<rect x="20"   y="70" width="183" height="72" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<text x="36"   y="91" font-size="9" fill="#4a5568" letter-spacing=".08em" font-weight="600">TOTAL MATCHES</text>
+<text x="36"   y="122" font-size="30" font-weight="800" fill="#00d4ff" filter="url(#crglow1)">1,243</text>
+
+<!-- Card 2: Total Runs -->
+<rect x="213"  y="70" width="183" height="72" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<text x="229"  y="91" font-size="9" fill="#4a5568" letter-spacing=".08em" font-weight="600">TOTAL RUNS</text>
+<text x="229"  y="122" font-size="30" font-weight="800" fill="#ffd700" filter="url(#crglow2)">4,01,423</text>
+
+<!-- Card 3: Total Wickets -->
+<rect x="406"  y="70" width="183" height="72" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<text x="422"  y="91" font-size="9" fill="#4a5568" letter-spacing=".08em" font-weight="600">TOTAL WICKETS</text>
+<text x="422"  y="122" font-size="30" font-weight="800" fill="#ff4d6d" filter="url(#crglow3)">14,674</text>
+
+<!-- Card 4: Total Boundaries -->
+<rect x="599"  y="70" width="183" height="72" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<text x="615"  y="91" font-size="9" fill="#4a5568" letter-spacing=".08em" font-weight="600">TOTAL BOUNDARIES</text>
+<text x="615"  y="122" font-size="30" font-weight="800" fill="#ffd700" filter="url(#crglow2)">49,934</text>
+
+<!-- Card 5: Avg Score -->
+<rect x="792"  y="70" width="183" height="72" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<text x="808"  y="91" font-size="9" fill="#4a5568" letter-spacing=".08em" font-weight="600">AVG SCORE</text>
+<text x="808"  y="122" font-size="30" font-weight="800" fill="#00e676" filter="url(#crglow4)">162.2</text>
+
+<!-- Card 6: Total Sixes -->
+<rect x="985"  y="70" width="195" height="72" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<text x="1001" y="91" font-size="9" fill="#4a5568" letter-spacing=".08em" font-weight="600">TOTAL SIXES</text>
+<text x="1001" y="122" font-size="30" font-weight="800" fill="#ff4d6d" filter="url(#crglow3)">15,668</text>
+
+<!-- ── INFO CARDS ROW ── -->
+<!-- Highest Totals -->
+<rect x="20"   y="158" width="283" height="108" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<rect x="36"   y="174" width="22" height="22" rx="6" fill="#1e3a1e"/>
+<text x="47"   y="189" text-anchor="middle" font-size="12">📈</text>
+<text x="66"   y="189" font-size="9" fill="#4a5568" font-weight="700" letter-spacing=".08em">HIGHEST TOTALS</text>
+<text x="36"   y="218" font-size="11" fill="#e2e8f0">#1 <tspan font-size="22" font-weight="800" fill="#00e676">287</tspan> <tspan font-size="12" fill="#e2e8f0">Sunrisers Hyderabad</tspan></text>
+<text x="36"   y="234" font-size="10" fill="#4a5568">vs Royal Challengers Bengaluru</text>
+<text x="36"   y="253" font-size="10" fill="#00d4ff" font-weight="600">View Top 10 ▾</text>
+
+<!-- Most Sixes -->
+<rect x="313"  y="158" width="283" height="108" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<rect x="329"  y="174" width="22" height="22" rx="6" fill="#3a2e10"/>
+<text x="340"  y="189" text-anchor="middle" font-size="12">⭐</text>
+<text x="359"  y="189" font-size="9" fill="#4a5568" font-weight="700" letter-spacing=".08em">MOST SIXES</text>
+<text x="329"  y="218" font-size="11" fill="#e2e8f0">#1 <tspan font-size="22" font-weight="800" fill="#ffd700">352</tspan> <tspan font-size="12" fill="#e2e8f0">CH Gayle</tspan></text>
+<text x="329"  y="234" font-size="10" fill="#4a5568">141 matches</text>
+<text x="329"  y="253" font-size="10" fill="#00d4ff" font-weight="600">View Top 10 ▾</text>
+
+<!-- Most Fours -->
+<rect x="606"  y="158" width="283" height="108" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<rect x="622"  y="174" width="22" height="22" rx="6" fill="#0e2e38"/>
+<text x="633"  y="189" text-anchor="middle" font-size="12">🎵</text>
+<text x="652"  y="189" font-size="9" fill="#4a5568" font-weight="700" letter-spacing=".08em">MOST FOURS</text>
+<text x="622"  y="218" font-size="11" fill="#e2e8f0">#1 <tspan font-size="22" font-weight="800" fill="#00d4ff">844</tspan> <tspan font-size="12" fill="#e2e8f0">V Kohli</tspan></text>
+<text x="622"  y="234" font-size="10" fill="#4a5568">275 matches</text>
+<text x="622"  y="253" font-size="10" fill="#00d4ff" font-weight="600">View Top 10 ▾</text>
+
+<!-- Most Wickets -->
+<rect x="899"  y="158" width="281" height="108" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<rect x="915"  y="174" width="22" height="22" rx="6" fill="#38101a"/>
+<text x="926"  y="189" text-anchor="middle" font-size="12">🎯</text>
+<text x="945"  y="189" font-size="9" fill="#4a5568" font-weight="700" letter-spacing=".08em">MOST WICKETS</text>
+<text x="915"  y="218" font-size="11" fill="#e2e8f0">#1 <tspan font-size="22" font-weight="800" fill="#ff4d6d">233</tspan> <tspan font-size="12" fill="#e2e8f0">YS Chahal</tspan></text>
+<text x="915"  y="234" font-size="10" fill="#4a5568">184 matches</text>
+<text x="915"  y="253" font-size="10" fill="#00d4ff" font-weight="600">View Top 10 ▾</text>
+
+<!-- ── MOST WINS CHART ── -->
+<rect x="20" y="280" width="580" height="404" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<rect x="36" y="298" width="3" height="18" rx="2" fill="#ffd700"/>
+<text x="46" y="312" font-size="13" font-weight="700" fill="#e2e8f0">Most Wins (All Teams)</text>
+
+<!-- Bar chart rows — label, bar, value -->
+<g font-size="10" fill="#8892a4">
+  <!-- MI -->
+  <text x="52" y="344" text-anchor="end">MI</text>
+  <rect x="58" y="332" width="430" height="16" rx="3" fill="#3b82f6"/>
+  <text x="494" y="344" fill="#e2e8f0" font-weight="600">155</text>
+  <!-- CSK -->
+  <text x="52" y="370" text-anchor="end">CSK</text>
+  <rect x="58" y="358" width="410" height="16" rx="3" fill="#fbbf24"/>
+  <text x="474" y="370" fill="#e2e8f0" font-weight="600">148</text>
+  <!-- RCB -->
+  <text x="52" y="396" text-anchor="end">RCB</text>
+  <rect x="58" y="384" width="396" height="16" rx="3" fill="#ef4444"/>
+  <text x="460" y="396" fill="#e2e8f0" font-weight="600">143</text>
+  <!-- KKR -->
+  <text x="52" y="422" text-anchor="end">KKR</text>
+  <rect x="58" y="410" width="390" height="16" rx="3" fill="#8b5cf6"/>
+  <text x="454" y="422" fill="#e2e8f0" font-weight="600">140</text>
+  <!-- PBKS -->
+  <text x="52" y="448" text-anchor="end">PBKS</text>
+  <rect x="58" y="436" width="350" height="16" rx="3" fill="#ec4899"/>
+  <text x="414" y="448" fill="#e2e8f0" font-weight="600">126</text>
+  <!-- DC -->
+  <text x="52" y="474" text-anchor="end">DC</text>
+  <rect x="58" y="462" width="348" height="16" rx="3" fill="#60a5fa"/>
+  <text x="412" y="474" fill="#e2e8f0" font-weight="600">125</text>
+  <!-- RR -->
+  <text x="52" y="500" text-anchor="end">RR</text>
+  <rect x="58" y="488" width="341" height="16" rx="3" fill="#f472b6"/>
+  <text x="405" y="500" fill="#e2e8f0" font-weight="600">123</text>
+  <!-- SRH -->
+  <text x="52" y="526" text-anchor="end">SRH</text>
+  <rect x="58" y="514" width="283" height="16" rx="3" fill="#fb923c"/>
+  <text x="347" y="526" fill="#e2e8f0" font-weight="600">102</text>
+  <!-- GT -->
+  <text x="52" y="552" text-anchor="end">GT</text>
+  <rect x="58" y="540" width="131" height="16" rx="3" fill="#2dd4bf"/>
+  <text x="195" y="552" fill="#e2e8f0" font-weight="600">47</text>
+  <!-- LSG -->
+  <text x="52" y="578" text-anchor="end">LSG</text>
+  <rect x="58" y="566" width="94" height="16" rx="3" fill="#e11d48"/>
+  <text x="158" y="578" fill="#e2e8f0" font-weight="600">34</text>
+  <!-- RPS -->
+  <text x="52" y="604" text-anchor="end">RPS</text>
+  <rect x="58" y="592" width="42" height="16" rx="3" fill="#a78bfa"/>
+  <text x="106" y="604" fill="#e2e8f0" font-weight="600">15</text>
+  <!-- GL -->
+  <text x="52" y="630" text-anchor="end">GL</text>
+  <rect x="58" y="618" width="36" height="16" rx="3" fill="#f97316"/>
+  <text x="100" y="630" fill="#e2e8f0" font-weight="600">13</text>
+  <!-- PWI -->
+  <text x="52" y="656" text-anchor="end">PWI</text>
+  <rect x="58" y="644" width="33" height="16" rx="3" fill="#38bdf8"/>
+  <text x="97" y="656" fill="#e2e8f0" font-weight="600">12</text>
+  <!-- KTK -->
+  <text x="52" y="678" text-anchor="end">KTK</text>
+  <rect x="58" y="666" width="17" height="16" rx="3" fill="#a3e635"/>
+  <text x="81" y="678" fill="#e2e8f0" font-weight="600">6</text>
+</g>
+
+<!-- ── IPL TITLE WINNERS CHART ── -->
+<rect x="616" y="280" width="564" height="404" rx="8" fill="url(#crcard)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<rect x="632" y="298" width="3" height="18" rx="2" fill="#ffd700"/>
+<text x="642" y="312" font-size="13" font-weight="700" fill="#e2e8f0">IPL Title Winners</text>
+
+<!-- X-axis labels -->
+<g font-size="9" fill="#4a5568" text-anchor="middle">
+  <text x="680" y="674">0</text>
+  <text x="776" y="674">2</text>
+  <text x="872" y="674">4</text>
+  <text x="968" y="674">6</text>
+  <text x="1064" y="674">8</text>
+</g>
+<!-- X-axis line -->
+<line x1="660" y1="660" x2="1160" y2="660" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+<!-- Gridlines -->
+<line x1="776" y1="330" x2="776" y2="660" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+<line x1="872" y1="330" x2="872" y2="660" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+<line x1="968" y1="330" x2="968" y2="660" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+<line x1="1064" y1="330" x2="1064" y2="660" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+<!-- Title winner bars (0=660, 2=776, 4=872, 6=968) — each unit = 48px -->
+<g font-size="10">
+  <!-- CSK — 5 titles -->
+  <text x="648" y="360" text-anchor="end" fill="#8892a4">CSK</text>
+  <rect x="660" y="346" width="240" height="20" rx="3" fill="#fbbf24"/>
+  <text x="906" y="360" fill="#e2e8f0" font-weight="600">5</text>
+  <!-- MI — 5 titles -->
+  <text x="648" y="394" text-anchor="end" fill="#8892a4">MI</text>
+  <rect x="660" y="380" width="240" height="20" rx="3" fill="#3b82f6"/>
+  <text x="906" y="394" fill="#e2e8f0" font-weight="600">5</text>
+  <!-- KKR — 3 titles -->
+  <text x="648" y="428" text-anchor="end" fill="#8892a4">KKR</text>
+  <rect x="660" y="414" width="144" height="20" rx="3" fill="#8b5cf6"/>
+  <text x="810" y="428" fill="#e2e8f0" font-weight="600">3</text>
+  <!-- RCB — 2 titles -->
+  <text x="648" y="462" text-anchor="end" fill="#8892a4">RCB</text>
+  <rect x="660" y="448" width="96" height="20" rx="3" fill="#ef4444"/>
+  <text x="762" y="462" fill="#e2e8f0" font-weight="600">2</text>
+  <!-- RR — 1 title -->
+  <text x="648" y="496" text-anchor="end" fill="#8892a4">RR</text>
+  <rect x="660" y="482" width="48" height="20" rx="3" fill="#f472b6"/>
+  <text x="714" y="496" fill="#e2e8f0" font-weight="600">1</text>
+  <!-- DC — 1 title -->
+  <text x="648" y="530" text-anchor="end" fill="#8892a4">DC</text>
+  <rect x="660" y="516" width="48" height="20" rx="3" fill="#94a3b8"/>
+  <text x="714" y="530" fill="#e2e8f0" font-weight="600">1</text>
+  <!-- SRH — 1 title -->
+  <text x="648" y="564" text-anchor="end" fill="#8892a4">SRH</text>
+  <rect x="660" y="550" width="48" height="20" rx="3" fill="#fb923c"/>
+  <text x="714" y="564" fill="#e2e8f0" font-weight="600">1</text>
+  <!-- GT — 1 title -->
+  <text x="648" y="598" text-anchor="end" fill="#8892a4">GT</text>
+  <rect x="660" y="584" width="48" height="20" rx="3" fill="#2dd4bf"/>
+  <text x="714" y="598" fill="#e2e8f0" font-weight="600">1</text>
+</g>
+</svg>
