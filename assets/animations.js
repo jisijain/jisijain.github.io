@@ -261,10 +261,10 @@
 
     const TARGETS = 'a, button, .magnetic, [role="button"], input, textarea, select, label';
     document.addEventListener('mouseover', e => {
-      if(e.target.closest(TARGETS)){ orb.classList.add('hov'); dotST = 0; }
+      if(e.target.closest(TARGETS)){ orb.classList.add('hov'); }
     });
     document.addEventListener('mouseout', e => {
-      if(e.target.closest(TARGETS)){ orb.classList.remove('hov'); dotST = 1; }
+      if(e.target.closest(TARGETS)){ orb.classList.remove('hov'); }
     });
 
     document.addEventListener('mousedown', () => { clickST = 0.88; });
