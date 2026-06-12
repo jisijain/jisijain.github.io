@@ -183,10 +183,99 @@
     check();
   }
 
+  /* ---- Custom cursor ---- */
+  function initCustomCursor(){
+    if(reduce || window.matchMedia('(pointer: coarse)').matches) return;
+
+    const css = document.createElement('style');
+    css.textContent = `
+      *, *::before, *::after { cursor: none !important; }
+      .cur-dot {
+        position: fixed; left: 0; top: 0;
+        width: 7px; height: 7px; border-radius: 50%;
+        background: #f4ebe6;
+        pointer-events: none; z-index: 10000;
+        will-change: transform;
+        transition: opacity .18s;
+        box-shadow: 0 0 6px rgba(179,36,52,.9), 0 0 2px rgba(244,235,230,.7);
+      }
+      .cur-orb {
+        position: fixed; left: 0; top: 0;
+        width: 30px; height: 30px; border-radius: 50%;
+        pointer-events: none; z-index: 9999;
+        will-change: transform;
+        border: 1.5px solid rgba(244,235,230,.25);
+        background:
+          radial-gradient(circle at 32% 26%, rgba(255,255,255,.14) 0%, transparent 52%),
+          radial-gradient(circle at 65% 72%, rgba(179,36,52,.07) 0%, transparent 48%);
+        box-shadow:
+          inset 0 1.5px 0 rgba(255,255,255,.14),
+          inset 0 -1px 0 rgba(0,0,0,.12),
+          0 0 16px rgba(179,36,52,.1),
+          0 5px 16px rgba(0,0,0,.25);
+        transition:
+          width .38s cubic-bezier(.23,1,.32,1),
+          height .38s cubic-bezier(.23,1,.32,1),
+          border-color .32s, background .32s, box-shadow .32s, opacity .18s;
+      }
+      .cur-orb.hov {
+        width: 50px; height: 50px;
+        border-color: rgba(179,36,52,.52);
+        background:
+          radial-gradient(circle at 32% 26%, rgba(255,255,255,.09) 0%, transparent 48%),
+          radial-gradient(circle at 65% 72%, rgba(179,36,52,.15) 0%, transparent 55%);
+        box-shadow:
+          inset 0 1.5px 0 rgba(255,255,255,.09),
+          inset 0 -1px 0 rgba(0,0,0,.1),
+          0 0 28px rgba(179,36,52,.22),
+          0 8px 24px rgba(0,0,0,.32);
+      }
+      .cur-dot.off, .cur-orb.off { opacity: 0; }
+    `;
+    document.head.appendChild(css);
+
+    const dot = document.createElement('div'); dot.className = 'cur-dot off';
+    const orb = document.createElement('div'); orb.className = 'cur-orb off';
+    document.body.append(orb, dot);
+
+    let mx = -200, my = -200, ox = -200, oy = -200;
+    let dotS = 1, dotST = 1, clickS = 1, clickST = 1;
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    (function tick(){
+      ox = lerp(ox, mx, 0.1);
+      oy = lerp(oy, my, 0.1);
+      dotS   = lerp(dotS,   dotST,   0.14);
+      clickS = lerp(clickS, clickST, 0.17);
+      dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%) scale(${dotS.toFixed(3)})`;
+      orb.style.transform = `translate(${ox}px,${oy}px) translate(-50%,-50%) scale(${clickS.toFixed(3)})`;
+      requestAnimationFrame(tick);
+    })();
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.classList.remove('off'); orb.classList.remove('off');
+    });
+    document.addEventListener('mouseleave', () => { dot.classList.add('off'); orb.classList.add('off'); });
+    document.addEventListener('mouseenter', () => { dot.classList.remove('off'); orb.classList.remove('off'); });
+
+    const TARGETS = 'a, button, .magnetic, [role="button"], input, textarea, select, label';
+    document.addEventListener('mouseover', e => {
+      if(e.target.closest(TARGETS)){ orb.classList.add('hov'); dotST = 0; }
+    });
+    document.addEventListener('mouseout', e => {
+      if(e.target.closest(TARGETS)){ orb.classList.remove('hov'); dotST = 1; }
+    });
+
+    document.addEventListener('mousedown', () => { clickST = 0.88; });
+    document.addEventListener('mouseup',   () => { clickST = 1; });
+  }
+
   /* ---- init all ---- */
   function boot(){
     initLoader(); initNav(); initMobileMenu(); initReveal();
     initParallax(); initMagnetic(); initTilt(); initPointerDrift(); initCounters(); initScrollTop();
+    initCustomCursor();
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
