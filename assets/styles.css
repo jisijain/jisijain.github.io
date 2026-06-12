@@ -41,9 +41,6 @@
   --font-mono: 'Space Mono', ui-monospace, monospace;
 }
 
-/* fluid cursor sits at z-index:0 — keep all layout above it */
-.nav, main, .footer, .mobile-menu, .to-top { position:relative; z-index:1; }
-
 /* ---- Reset ---- */
 *,*::before,*::after{ box-sizing:border-box; }
 html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
