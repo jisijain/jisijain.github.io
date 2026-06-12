@@ -9,7 +9,7 @@
 
   /* ---------- canvas ---------- */
   const canvas = document.createElement('canvas');
-  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.45;';
   document.body.appendChild(canvas);
   setSize();
 
@@ -36,7 +36,7 @@
   const FILT = linFilt ? gl.LINEAR : gl.NEAREST;
 
   /* ---------- config ---------- */
-  const DD = 3.5, VD = 2.0, PR = 0.1, PI = 20, CU = 3, SR = 0.25, SF = 6000;
+  const DD = 7, VD = 2.5, PR = 0.1, PI = 20, CU = 3, SR = 0.15, SF = 2500;
 
   /* ---------- shaders ---------- */
   const VS = `precision highp float;
