@@ -183,86 +183,21 @@
     check();
   }
 
-  /* ---- Custom cursor follower ---- */
-  function initCustomCursor(){
-    if(reduce || window.matchMedia('(pointer: coarse)').matches) return;
-
-    const css = document.createElement('style');
-    css.textContent = `
-      .cur-orb {
-        position: fixed; left: 0; top: 0;
-        width: 32px; height: 32px; border-radius: 50%;
-        pointer-events: none; z-index: 9999;
-        will-change: transform;
-        border: 1.5px solid rgba(244,235,230,.28);
-        background:
-          radial-gradient(circle at 32% 26%, rgba(255,255,255,.16) 0%, transparent 52%),
-          radial-gradient(circle at 65% 72%, rgba(179,36,52,.08) 0%, transparent 48%);
-        box-shadow:
-          inset 0 1.5px 0 rgba(255,255,255,.16),
-          inset 0 -1px 0 rgba(0,0,0,.14),
-          0 0 18px rgba(179,36,52,.12),
-          0 5px 18px rgba(0,0,0,.28);
-        transition:
-          width .38s cubic-bezier(.23,1,.32,1),
-          height .38s cubic-bezier(.23,1,.32,1),
-          border-color .32s, background .32s, box-shadow .32s, opacity .2s;
-      }
-      .cur-orb.hov {
-        width: 52px; height: 52px;
-        border-color: rgba(179,36,52,.55);
-        background:
-          radial-gradient(circle at 32% 26%, rgba(255,255,255,.1) 0%, transparent 48%),
-          radial-gradient(circle at 65% 72%, rgba(179,36,52,.17) 0%, transparent 55%);
-        box-shadow:
-          inset 0 1.5px 0 rgba(255,255,255,.1),
-          inset 0 -1px 0 rgba(0,0,0,.1),
-          0 0 30px rgba(179,36,52,.25),
-          0 8px 26px rgba(0,0,0,.35);
-      }
-      .cur-orb.off { opacity: 0; }
-    `;
-    document.head.appendChild(css);
-
-    const orb = document.createElement('div'); orb.className = 'cur-orb off';
-    document.body.appendChild(orb);
-
-    let mx = -200, my = -200, ox = -200, oy = -200;
-    let clickS = 1, clickST = 1;
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    (function tick(){
-      ox = lerp(ox, mx, 0.1);
-      oy = lerp(oy, my, 0.1);
-      clickS = lerp(clickS, clickST, 0.17);
-      orb.style.transform = `translate(${ox}px,${oy}px) translate(-50%,-50%) scale(${clickS.toFixed(3)})`;
-      requestAnimationFrame(tick);
-    })();
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      orb.classList.remove('off');
-    });
-    document.addEventListener('mouseleave', () => { orb.classList.add('off'); });
-    document.addEventListener('mouseenter', () => { orb.classList.remove('off'); });
-
-    const TARGETS = 'a, button, .magnetic, [role="button"], input, textarea, select, label';
-    document.addEventListener('mouseover', e => {
-      if(e.target.closest(TARGETS)){ orb.classList.add('hov'); }
-    });
-    document.addEventListener('mouseout', e => {
-      if(e.target.closest(TARGETS)){ orb.classList.remove('hov'); }
-    });
-
-    document.addEventListener('mousedown', () => { clickST = 0.88; });
-    document.addEventListener('mouseup',   () => { clickST = 1; });
+  /* ---- Fluid cursor (cursor-splash.js) ---- */
+  function loadFluidCursor(){
+    if(window.matchMedia('(pointer: coarse)').matches) return;
+    const me = document.querySelector('script[src*="animations.js"]');
+    if(!me) return;
+    const s = document.createElement('script');
+    s.src = me.src.replace('animations.js','cursor-splash.js');
+    document.head.appendChild(s);
   }
 
   /* ---- init all ---- */
   function boot(){
     initLoader(); initNav(); initMobileMenu(); initReveal();
     initParallax(); initMagnetic(); initTilt(); initPointerDrift(); initCounters(); initScrollTop();
-    initCustomCursor();
+    loadFluidCursor();
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
