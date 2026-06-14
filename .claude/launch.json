@@ -2,9 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "Portfolio Static Server",
+      "name": "portfolio",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "project", "-l", "3000", "--no-clipboard"],
+      "runtimeArgs": ["serve", ".", "-l", "3000", "--no-clipboard"],
       "port": 3000
     }
   ]

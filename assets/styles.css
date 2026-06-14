@@ -266,6 +266,7 @@ image-slot{ --is-bg:rgba(0,0,0,.18); background:#ebe3db; border-radius:18px; box
 .reveal[data-d="5"]{ transition-delay:.40s; }
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1 !important; transform:none !important; }
+  .reveal.in .case__facts b, .tl.in .case__facts b{ animation:none; }
 }
 
 /* line wipe reveal for headings */
@@ -430,6 +431,16 @@ image-slot{ --is-bg:rgba(0,0,0,.18); background:#ebe3db; border-radius:18px; box
 .case__facts b small{ font-family:var(--font-body); font-size:.5em; opacity:.7; margin-left:.2em; }
 .case__facts span{ font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; opacity:.62; }
 .case__facts--inline{ margin-top:1.4em; }
+
+@keyframes stat-pop{
+  from{ opacity:0; transform:translateY(10px) scale(.8); }
+  to{ opacity:1; transform:none; }
+}
+.reveal.in .case__facts div:nth-child(1) b{ animation:stat-pop .45s cubic-bezier(.34,1.56,.64,1) .05s backwards; }
+.reveal.in .case__facts div:nth-child(2) b{ animation:stat-pop .45s cubic-bezier(.34,1.56,.64,1) .15s backwards; }
+.reveal.in .case__facts div:nth-child(3) b{ animation:stat-pop .45s cubic-bezier(.34,1.56,.64,1) .25s backwards; }
+.tl.in .case__facts div:nth-child(1) b{ animation:stat-pop .45s cubic-bezier(.34,1.56,.64,1) .15s backwards; }
+.tl.in .case__facts div:nth-child(2) b{ animation:stat-pop .45s cubic-bezier(.34,1.56,.64,1) .28s backwards; }
 
 /* ---- Timeline ---- */
 .timeline{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:clamp(20px,2.6vw,34px); }
